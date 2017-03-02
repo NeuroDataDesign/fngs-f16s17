@@ -1,0 +1,35 @@
+---
+title: "Principal Component Analysis  (PCA) & Singular Value Decomposition (SVD)"
+author: "Ewok"
+date: "March 1, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Principal Component Analysis  (PCA)
+
+Principal component analysis is a method for compressing data into a smaller representation of itself. We can reduce the dimensionality of data by reducing the dimensions with minimal variation. PCA takes datasets with high dimensionality and flattens them in a meaningful way such that the data focuses on the features that are different between the dimensions. We can do this by rotating the data to new axes that describe the variation; these new axes are called "principal components." PC1 (the first principal component) is the axis that spans the most variation, PC2 spans the direction of the second most variation, and so on. Each principal component must be mutually orthogonal. Our PCA will allow us the best reconstruction of our original data while minimizing L2 error.
+
+Some data points (at the extremes of the variation) have more influence on a principal component than others. This can be quantified so that datapoints with little influence on the PC are given values close to zero, while datapoints with more influence get numbers further from zero. We can do this for each PC. This weighted influence is called a "loading," and an array of loadings for a PC is called an "eigenvector." We can then represent the data in a new way: each cluster (e.g. a cell with multiple gene readings) of data's PCx score is the multiplicative sum of the original data and the loading on PCx. This gives us values for each principal component so we can now plot these on a graph where each axis is a PC.
+
+There are diagnostics to tell if the PCA is useful. One such diagnostic is the scree plot, where you plot how much variation each principal component can account for. We want most of the variation to be accounted for by just a few of the PCs.
+
+## Singular Value Decomposition (SVD)
+
+Singular value decomposition is a generalization of eigendecomposition for any $m \times n$ matrix. It allows us to see latent dimensions/factors in our data.
+
+$$A_{[m \times n]} = U_{[m \times m]} \Sigma_{[m \times n]} (V_{[n \times n]})^T$$
+
+* $A$: Input data matrix
+* $U$: Left singular vectors (unitary/orthogonal)
+* $\Sigma$: Singular values $\sigma_i$ (diagonal; entries are positive)
+* $V$: Right singular vectors (unitary/orthogonal)
+
+The matrix $U$ is a rotation, the matrix $\Sigma$ is a scaling, and the matrix $V^T$ is a rotation. The left singular vectors are the $m$ eigenvectors of $AA^T$ and the right singular vectors are the $n$ eigenvectors of $A^TA$. The singular values are the square roots of the eigenvalues of $A^TA$.
+
+An example: If we had a matrix $A$ of viewers by movies where each element represented the viewer's rating of the movie, the $U$ matrix would be a "viewer-to-genre" similarity matrix, the $\Sigma$ matrix would be the "strengths" of each genre, and the $V$ matrix would be a "movie-to-genre" similarity matrix.
+
+We can use SVD to decompose our data matrix in order to perform PCA. To reduce the dimensionality of the data from $n$ to $r < n$, we select the first $r$ columns of $U$ along with the upper left $r \times r$ portion of $\Sigma$. The product of these two matrices, $U_r\Sigma_r$ is the $n \times r$ matrix containing the first $r$ principal components. Multiplying this by $V_r^T$ provides us with a reconstruction of our original data matrix $A$, but of a lower rank (of rank $r$). If $m > n$, then the last $m-n$ columns of $U$ will be zeros. We can drop these columns to save computation time and have a $U$ matrix of $m \times n$ size as long as we adjust the other matrices accordingly.
