@@ -1,0 +1,1 @@
+For task-based fMRI datasets, verify that components from white matter using our current compcor method do not correlate with the task-based stimulus (for approx. 10 subjects, 3-4 tasks each). Deliverable: R Markdown/Python Notebook describing experiments & results w/ plots.
