@@ -18,10 +18,10 @@ The directory structure will be as follows:
 +--docs/
 |    +--ebridge2/
 |    |   +--project1/
-|    |   |   +--week_0303/
+|    |   |   +--week_0306/
 |    |   |   |   +--deliverable1.html
 |    |   |   |   +...
-|    |   |   +--week_0310/
+|    |   |   +--week_0313/
 |    |   |   +...  # same structure as above
 |    |   +--project2/
 |    |   +--...
