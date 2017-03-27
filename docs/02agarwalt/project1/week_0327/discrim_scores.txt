@@ -18,4 +18,4 @@ MNI-EPI-template + FLIRT = 0.9210
 MNI-EPI-template + FLIRT + FNIRT + no tweaks = 0.8916
 MNI-EPI-template + FLIRT + FNIRT + mni152 config = 0.7046
 MNI-EPI-template + FLIRT + FNIRT + mni152 config + membrane_energy = 0.7112
-MNI-EPI-template + FLIRT + FNIRT + membrane_energy =
+MNI-EPI-template + FLIRT + FNIRT + membrane_energy = 0.7099
