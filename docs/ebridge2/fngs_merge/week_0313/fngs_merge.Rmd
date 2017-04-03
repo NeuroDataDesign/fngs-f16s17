@@ -17,6 +17,9 @@ output: html_document
   tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
   signal <- tsobj[[1]]
   ids <- tsobj[[3]]
+  
+  signal_overall <- c(signal)
+  ids_overall <- c(ids)
 ```
 
 ### Timeseries
@@ -102,6 +105,9 @@ output: html_document
   tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
   signal <- tsobj[[1]]
   ids <- tsobj[[3]]
+  
+  signal_overall <- c(signal_overall, signal)
+  ids_overall <- c(ids_overall)
 ```
 
 ## Sanity Check
@@ -188,6 +194,9 @@ output: html_document
   tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
   signal <- tsobj[[1]]
   ids <- tsobj[[3]]
+  
+  signal_overall <- c(signal_overall, signal)
+  ids_overall <- c(ids_overall)
 ```
 
 ## Sanity Check
@@ -273,6 +282,9 @@ output: html_document
   tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
   signal <- tsobj[[1]]
   ids <- tsobj[[3]]
+  
+  signal_overall <- c(signal_overall, signal)
+  ids_overall <- c(ids_overall)
 ```
 
 ## Sanity Check
@@ -348,14 +360,16 @@ output: html_document
 ```
 
 ```{r, fig.height=6, fig.width=12, message=FALSE}
-  summaryfig <- ggplot(collection, aes(x=postprocessing, y=discr, color=factor(dataset), shape=factor(dataset))) +
-    geom_point(size=2) +
+  collection$dataset <- factor(collection$dataset)
+  collection$postprocessing <- factor(collection$postprocessing)
+  summaryfig <- ggplot(collection, aes(x=postprocessing, y=discr, color=dataset)) +
+    geom_point(size=4) +
     ggtitle('Comparing Discriminability over 4 reference datasets using different postprocessing techniques')
   print(summaryfig)
 ```
 
 ```{r, fig.height=6, fig.width=12, message=FALSE}
-  summaryfig <- ggplot(collection, aes(x=postprocessing, y=discr, fill=factor(postprocessing))) +
+  summaryfig <- ggplot(collection, aes(x=postprocessing, y=discr, fill=postprocessing)) +
     geom_violin() +
     geom_boxplot(width=0.1) +
     ggtitle('Comparing Discriminability over 4 reference datasets using different postprocessing techniques')

@@ -1,0 +1,95 @@
+---
+title: "Testing new registration"
+author: "Eric Bridgeford"
+date: "March 13, 2017"
+output: html_document
+---
+
+# BNU1
+
+## Sanity Check
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  require(Discriminability)
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_merge/multi_reg_43/'
+  tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
+  scan_pos = 2
+  tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
+  signal <- tsobj[[1]]
+  ids <- tsobj[[3]]
+  
+  signal_overall <- c(signal)
+  ids_overall <- c(ids)
+```
+
+### Timeseries
+
+```{r fig.height=6, fig.width=12, message=FALSE}
+  ts1 = signal[[1]]
+  title = paste('Timeseries plot for subject', ids[1])
+  print(plot_timeseries(ts1, title=title))
+
+```
+### Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(cor(ts1), title=title, legend="corr"))
+```
+
+## Non Ranking
+
+### Spectral Approach 
+
+#### Raw Amplitude Spectrum
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tr = 2.5
+  lc = 0.01
+  amp <- freq_discr(signal, ids, tr, lc, spec='amp', rank=FALSE)
+  print(amp$combinedplot)
+```
+
+#### Raw Power Spectrum
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  pow <- freq_discr(signal, ids, tr, lc, spec='pow', rank=FALSE)
+  print(pow$combinedplot)
+```
+
+### Standard Discriminability Approach
+
+#### Raw Correaltion Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  td <- time_discr(signal, ids, rank=FALSE)
+  print(td$combinedplot)
+```
+
+## Ranking
+
+### Spectral Approach 
+
+#### Ranked Amplitude Spectrum
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  ampr <- freq_discr(signal, ids, tr, lc, spec='amp', rank=TRUE)
+  print(ampr$combinedplot)
+```
+
+#### Ranked Power Spectrum
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  powr <- freq_discr(signal, ids, tr, lc, spec='pow', rank=TRUE)
+  print(powr$combinedplot)
+```
+
+### Standard Discriminability Approach
+
+#### Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tdr <- time_discr(signal, ids, rank=TRUE)
+  print(tdr$combinedplot)
+```
+
+```{r }
+  collection <- data.frame(dataset='BNU1', postprocessing=c('amp', 'power', 'corr', 'ramped', 'rpower', 'rcorr'),
+                           discr=c(amp$d, pow$d, td$d, ampr$d, powr$d, tdr$d))
+```
