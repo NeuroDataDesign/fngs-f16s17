@@ -1,5 +1,9 @@
 # fngs
 
+# Procedure
+
+![Flowchart](https://neurodatadesign.github.io/fngs/02agarwalt/project1/week_0327/flowchart5.jpeg)
+
 # Tutorial
 
 ## Getting the Pipeline Running
