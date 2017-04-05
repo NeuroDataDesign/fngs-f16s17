@@ -2,6 +2,8 @@
 
 # Methods
 
+![Schematic](https://neurodatadesign.github.io/fngs/ewalke31/tutorials/week_0410/img/schematic.png)
+
 ## Preprocessing
 
 ## Registration
