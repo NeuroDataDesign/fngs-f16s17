@@ -1,10 +1,18 @@
 # fngs
 
-# Procedure
+# Methods
 
-![Flowchart](https://neurodatadesign.github.io/fngs/02agarwalt/project1/week_0327/flowchart5.jpeg)
+## Preprocessing
+
+## Registration
+
+## Nuisance Correction
+
+## Timeseries Extraction
 
 # Tutorial
+
+![Flowchart](https://neurodatadesign.github.io/fngs/02agarwalt/project1/week_0327/flowchart5.jpeg)
 
 ## Getting the Pipeline Running
 
