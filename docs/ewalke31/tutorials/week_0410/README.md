@@ -4,7 +4,11 @@
 
 ![Schematic](https://neurodatadesign.github.io/fngs/ewalke31/tutorials/week_0410/img/schematic.png)
 
+For a single subject, the pipeline is to be provided with the path to a 4d (fMRI) image, the path to a 3d (anatomical) image, the path to a reference atlas, the path to a reference atlas w/ brain extracted, the path to a reference brain mask, the path to the lateral ventricles mask, a list of labels files, the base output directory to place outputs, a flag whether or not to clean out directories once finished (defaults to False), slice timing arguments (defaults to None), and the format for produced graphs (either gpickle or graphml, defaults to gpickle).
+
 ## Preprocessing
+
+During the first step of preprocessing, if slice timing arguments were provided, slice timing correction occurs. Valid slice timing correction arguments include a path to a single-column file listing TR shifts per slice where a value of 0.5 corresponds to no shift and valid values range from 0 to 1 inclusive, the strings 'up' or 'down' indicating slice indexing direction (defaults to 'up'), or the string 'interleaved' indicating the slices are interleaved. The fMRI image volume is then run through FSL's slicetimer command with the appropriate options. Slice timing correction occurs via Hanning-windowed sinc interpolation used to independently shift each voxel's timeseries by an appropriate fraction of a TR relative to the middle of the TR period. The fMRI image volume then undergoes motion correction using MCFLIRT, where it is self-aligned to a specified index (currently the zero slice) or is self-aligned to the mean volume if no index is specified. MCFLIRT works by registering the brain scan at each timestep to the reference scan using FLIRT, which works by applying combinations of transformations (rigid transformations such as rotations and translations in the case of MCFLIRT) to the input brain scan in order to minimize a cost function (which measures the similarity between the input and reference brain scans, defaults to normcorr in the case of MCFLIRT) until it reaches a global optimum, finding the best fit in an 8mm search grid.
 
 ## Registration
 
