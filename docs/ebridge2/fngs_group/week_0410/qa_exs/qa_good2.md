@@ -16,7 +16,7 @@
 ![temp-alignment](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_group/week_0410/qa_exs/good2/reg/func/align/temp/final_score_831/sub-16_func_run5_aligned.png)
 ![cnr](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_group/week_0410/qa_exs/good2/reg/func/align/temp/final_score_831/sub-16_func_run5_aligned_cnr.png)
 ![snr](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_group/week_0410/qa_exs/good2/reg/func/align/temp/final_score_831/sub-16_func_run5_aligned_snr.png)
-![bet quality](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_group/week_0410/qa_exs/good2/reg/func/align/temp/final_score_831/sub-16_func_run5_preproc_temp-aligned_nonlinear_bet_quality.png)
+![bet quality](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_group/week_0410/qa_exs/good2/reg/func/align/temp/fnirt_score_831/sub-16_func_run5_preproc_temp-aligned_nonlinear_bet_quality.png)
 
 ## Timesries QA
 ### Labelled tlas alignment
