@@ -17,6 +17,10 @@ def submitJob(bucket, data, public_access_key, secret_access_key, myJobName):
     myEnvironmentOverride = [{'name':'AWS_ACCESS_KEY_ID', 'value':public_access_key}, {'name':'AWS_SECRET_ACCESS_KEY', 'value':secret_access_key}, {'name':'AWS_DEFAULT_REGION', 'value':'us-east-1'}]
     response = batch.submit_job(jobName=myJobName, jobQueue=myJobQueue, jobDefinition=myJobDefinition, containerOverrides={'command':myCommandOverride, 'environment':myEnvironmentOverride}) 
     return response
+    
+def checkJobStatus(public_access_key, secret_access_key, jobId):
+    batch = boto3.client('batch', aws_access_key_id=public_access_key, aws_secret_access_key=secret_access_key)
+    return batch.describe_jobs(jobs=[jobId])['jobs'][0]['status']
 
 def main():
     parser = ArgumentParser(description="This is a test")
@@ -39,7 +43,14 @@ def main():
         rowcounter = rowcounter + 1
     
     uploadS3(bucket, data, public_access_key, secret_access_key)
-    submitJob(bucket, data, public_access_key, secret_access_key, "testjob")
+    response = submitJob(bucket, data, public_access_key, secret_access_key, "testjob")
+    
+    jobId = response['jobId']    
+    print("JobID = " + jobId)
+    while(checkJobStatus(public_access_key, secret_access_key, jobId) != 'SUCCEEDED'):
+        pass
+    print("Job successful!")
+    
     
 if __name__ == "__main__":
     main()
