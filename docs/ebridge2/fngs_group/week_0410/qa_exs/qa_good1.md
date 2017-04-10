@@ -10,7 +10,7 @@
 
 ### Self Reg
 
-![self-alignment][https://neurodatadesign.github.io/fngs/ebridge2/fngs_group/week_0410/qa_exs/good1/reg/func/align/self/final_score_815/sub-0025864_ses-1_bold_preproc_self-aligned.png]
+![self-alignment][https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_group/week_0410/qa_exs/good1/reg/func/align/self/final_score_815/sub-0025864_ses-1_bold_preproc_self-aligned.png]
 
 ### Template Reg
 
