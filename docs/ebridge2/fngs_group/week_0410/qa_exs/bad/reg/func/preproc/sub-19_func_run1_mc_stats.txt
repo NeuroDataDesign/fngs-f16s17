@@ -1,0 +1,53 @@
+Motion Statistics
+Absolute Translational Statistics>>
+Max absolute motion: 1.9214
+Mean absolute motion: 1.3010
+Number of absolute motions > 1mm: 210.0000
+Number of absolute motions > 5mm: 0.0000
+Mean absolute x motion: -0.3260
+Std absolute x motion: 0.1238
+Max absolute x motion: 0.6046
+Mean absolute y motion: -1.1169
+Std absolute y motion: 0.4156
+Max absolute y motion: 1.6046
+Mean absolute z motion: -0.5773
+Std absolute z motion: 0.2214
+Max absolute z motion: 0.9712
+Relative Translational Statistics>>
+Max relative motion: 0.2395
+Mean relative motion: 0.0419
+Number of relative motions > 1mm: 0.0000
+Number of relative motions > 5mm: 0.0000
+Mean relative x motion: -0.3260
+Std relative x motion: 0.0254
+Max relative x motion: 0.1565
+Mean relative y motion: -1.1169
+Std relative y motion: 0.0241
+Max relative y motion: 0.1854
+Mean relative z motion: -0.5773
+Std relative z motion: 0.0357
+Max relative z motion: 0.1629
+Absolute Rotational Statistics>>
+Max absolute rotation: 0.0318
+Mean absolute rotation: 0.0258
+Mean absolute x rotation: -0.0248
+Std absolute x rotation: 0.0074
+Max absolute x rotation: 0.0306
+Mean absolute y rotation: 0.0002
+Std absolute y rotation: 0.0016
+Max absolute y rotation: 0.0041
+Mean absolute z rotation: 0.0067
+Std absolute z rotation: 0.0019
+Max absolute z rotation: 0.0101
+Relative Rotational Statistics>>
+Max relative rotation: 0.0038
+Mean relative rotation: 0.0007
+Mean relative x rotation: -0.0001
+Std relative x rotation: 0.0007
+Max relative x rotation: 0.0037
+Mean relative y rotation: -0.0000
+Std relative y rotation: 0.0004
+Max relative y rotation: 0.0019
+Mean relative z rotation: 0.0000
+Std relative z rotation: 0.0004
+Max relative z rotation: 0.0012
