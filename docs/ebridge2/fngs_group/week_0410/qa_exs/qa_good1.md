@@ -23,7 +23,7 @@
 ![atlas](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_group/week_0410/qa_exs/good1/ts_roi/aal-2mm/sub-0025864_ses-1_T1w_aligned.png)
 
 ### Timeseries
-![timeseries](https://neurodatadesign.github.io/fngs/ebridge2/fngs_group/week_0410/qa_exs/good1/ts_roi/aal-2mm/sub-0025864_ses-1_bold_aal-2mm_timeseries.html)
+[timeseries](https://neurodatadesign.github.io/fngs/ebridge2/fngs_group/week_0410/qa_exs/good1/ts_roi/aal-2mm/sub-0025864_ses-1_bold_aal-2mm_timeseries.html)
 
 ### Connectome
 ![aal-atlas-connectome](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_group/week_0410/qa_exs/good1/ts_roi/aal-2mm/sub-0025864_ses-1_bold_aal-2mm_corr.png)
