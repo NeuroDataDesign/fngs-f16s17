@@ -67,7 +67,7 @@ Next, we will look at some motion statistics. These correspond to the motion par
 ![temp-alignment](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/align/temp/final_score_857/sub-0025864_session-1_bold_small_aligned.png)
 ![cnr](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/align/temp/final_score_877/sub-0025864_session-1_bold_small_aligned_cnr.png)
 ![snr](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/align/temp/final_score_877/sub-0025864_session-1_bold_small_aligned_snr.png)
-![bet quality](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/align/temp/final_score_877/sub-0025864_session-1_bol_smalld_preproc_temp-aligned_nonlinear_bet_quality.png)
+![bet quality](https://github.com/NeuroDataDesign/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/align/temp/final_score_877/sub-0025864_session-1_bol_smalld_preproc_temp-aligned_nonlinear_bet_quality.png)
 
 ## Timesries QA
 ### Labelled tlas alignment
