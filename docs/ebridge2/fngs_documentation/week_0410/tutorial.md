@@ -53,28 +53,28 @@ Next, we will look at some motion statistics. These correspond to the motion par
 
 ## Motion QA
 
-[displacement mc](https://neurodatadesign.github.io/fngs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/func/preproc/sub-0025864_ses-1_bold_mc_disp.html)
-[rotational mc](https://neurodatadesign.github.io/fngs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/preproc/sub-0025864_ses-1_bold_mc_rot.html)
-[translational mc](https://neurodatadesign.github.io/fngs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/preproc/sub-0025864_ses-1_bold_mc_trans.html)
+[displacement mc](https://neurodatadesign.github.io/fngs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/func/preproc/sub-0025864_ses-1_bold_small_mc_disp.html)
+[rotational mc](https://neurodatadesign.github.io/fngs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/preproc/sub-0025864_ses-1_bold_small_mc_rot.html)
+[translational mc](https://neurodatadesign.github.io/fngs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/preproc/sub-0025864_ses-1_bold_small_mc_trans.html)
 
 ## Registration QA
 
 ### Self Reg
 
-![self-alignment](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/reg/func/align/self/final_score_817/sub-0025864_ses-1_bold_preproc_self-aligned.png)
+![self-alignment](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/align/self/final_score_817/sub-0025864_ses-1_bold_small_preproc_self-aligned.png)
 
 ### Template Reg
-![temp-alignment](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/align/temp/final_score_857/sub-0025864_ses-1_bold_aligned.png)
-![cnr](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/align/temp/final_score_877/sub-0025864_ses-1_bold_aligned_cnr.png)
-![snr](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/align/temp/final_score_877/sub-0025864_ses-1_bold_aligned_snr.png)
-![bet quality](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/align/temp/final_score_877/sub-0025864_ses-1_bold_preproc_temp-aligned_nonlinear_bet_quality.png)
+![temp-alignment](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/align/temp/final_score_857/sub-0025864_ses-1_bold_small_aligned.png)
+![cnr](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/align/temp/final_score_877/sub-0025864_ses-1_bold_small_aligned_cnr.png)
+![snr](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/align/temp/final_score_877/sub-0025864_ses-1_bold_small_aligned_snr.png)
+![bet quality](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/reg/func/align/temp/final_score_877/sub-0025864_ses-1_bol_smalld_preproc_temp-aligned_nonlinear_bet_quality.png)
 
 ## Timesries QA
 ### Labelled tlas alignment
-![atlas](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/ts_roi/aal-2mm/sub-0025864_ses-1_T1w_aligned.png)
+![atlas](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/ts_roi/aal-2mm/sub-0025864_ses-1_T1w_small_aligned.png)
 
 ### Timeseries
-[timeseries](https://neurodatadesign.github.io/fngs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/ts_roi/aal-2mm/sub-0025864_ses-1_bold_aal-2mm_timeseries.html)
+[timeseries](https://neurodatadesign.github.io/fngs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/ts_roi/aal-2mm/sub-0025864_ses-1_bold_small_aal-2mm_timeseries.html)
 
 ### Connectome
-![aal-atlas-connectome](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/ts_roi/aal-2mm/sub-0025864_ses-1_bold_aal-2mm_corr.png)
+![aal-atlas-connectome](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/ts_roi/aal-2mm/sub-0025864_ses-1_bold_small_aal-2mm_corr.png)
