@@ -71,10 +71,10 @@ Next, we will look at some motion statistics. These correspond to the motion par
 
 ## Timesries QA
 ### Labelled tlas alignment
-![atlas](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/ts_roi/desikan-2mm/sub-0025864_session-1_T1w_small_aligned.png)
+![atlas](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/ts_roi/desikan-4mm/sub-0025864_session-1_T1w_small_aligned.png)
 
 ### Timeseries
-[timeseries](https://neurodatadesign.github.io/fngs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/ts_roi/desikan-2mm/sub-0025864_session-1_bold_small_desikan-4mm_timeseries.html)
+[timeseries](https://neurodatadesign.github.io/fngs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/ts_roi/desikan-4mm/sub-0025864_session-1_bold_small_desikan-4mm_timeseries.html)
 
 ### Connectome
-![aal-atlas-connectome](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/ts_roi/desikan-2mm/sub-0025864_session-1_bold_small_desikan-4mm_corr.png)
+![aal-atlas-connectome](https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_documentation/week_0410/sub-0025864_session-1_bold_small/ts_roi/desikan-4mm/sub-0025864_session-1_bold_small_desikan-4mm_corr.png)
