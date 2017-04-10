@@ -11,7 +11,7 @@ output: html_document
 
 ```{r, fig.height=6, fig.width=12, message=FALSE}
   require(Discriminability)
-  inpath <- 'C:/Users/ebrid/Documents/R/fngs_merge/BNU1/roi_timeseries/desikan-2mm/'
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_merge/fngs_0410/ts_roi/desikan-2mm/'
   tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
   scan_pos = 3
   tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
