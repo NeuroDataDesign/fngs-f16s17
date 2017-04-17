@@ -413,6 +413,7 @@ Below, we first show an aggregation of the latest version of FNGS for our respec
   summaryfig_fng <- ggplot(collection, aes(x=postprocessing, y=discr, color=dataset)) +
     geom_point(size=4) +
     ggtitle('Comparing Discriminability over 4 reference datasets using different postprocessing techniques')
+  print(summaryfig_fng)
 ```
 
 ```{r, fig.height=6, fig.width=12, message=FALSE}
