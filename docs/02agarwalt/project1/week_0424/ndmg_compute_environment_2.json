@@ -1,0 +1,26 @@
+{
+    "computeEnvironmentName": "ndmg-env",
+    "type": "MANAGED",
+    "state": "ENABLED",
+    "computeResources": {
+        "type": "EC2",
+        "minvCpus": 0,
+        "maxvCpus": 256,
+        "desiredvCpus": 4,
+        "instanceTypes": [
+            "r4.xlarge"
+        ],
+        "subnets": [
+            "subnet-a1d3b49d",
+            "subnet-81c1a7e4",
+            "subnet-3dcd2e75",
+            "subnet-13e7d43e",
+            "subnet-d8507e83"
+        ],
+        "securityGroupIds": [
+            "sg-bb11e9c4"
+        ],
+        "instanceRole": "arn:aws:iam::967305970717:instance-profile/ecsInstanceRole"
+    },
+    "serviceRole": "arn:aws:iam::967305970717:role/service-role/AWSBatchServiceRole"
+}
