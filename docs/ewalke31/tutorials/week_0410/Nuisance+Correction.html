@@ -11752,7 +11752,23 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Nuisance-Correction">Nuisance Correction<a class="anchor-link" href="#Nuisance-Correction">&#182;</a></h1><p><img src='./img/nuiscorr.png', width=200, align=right></p>
-<p>For the associated code within the FNGS pipeline for each of these steps, see the Github repository found <a href="https://github.com/neurodata/ndmg/blob/eric-dev-gkiar-fmri/ndmg/nuis/nuis.py">here</a>.</p>
+<table>
+<thead><tr>
+<th>Links</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FNGS Github Repository (Nuisance Correction)</td>
+<td><a href="https://github.com/neurodata/ndmg/blob/eric-dev-gkiar-fmri/ndmg/nuis/nuis.py">Link</a></td>
+</tr>
+<tr>
+<td>FNGS Github Repository (Quality Assurance)</td>
+<td><a href="https://github.com/neurodata/ndmg/blob/eric-dev-gkiar-fmri/ndmg/stats/qa_func.py">Link</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="Linear-Drift-Removal">Linear Drift Removal<a class="anchor-link" href="#Linear-Drift-Removal">&#182;</a></h2><p>"Over the course of an fMRI scanning session, many sources of noise arise that must be corrected for in order to make quality data inferences. The scanner inadvertantly heats up (producing a high strength magnetic field for sessions lasting up to ten minutes produces an enormous amount of heat). As the scanner heats, the fine electronic equipment inadvertantly drifts in the signal it picks up (first demonstrated by [Smith et al.]<a href="https://www.ncbi.nlm.nih.gov/pubmed/10329292">$^{[1]}$</a> when they showed that a heated scanner detected 'brain activity' in cadavers). This drift has been shown to be approximately quadratic."$^{[2]}$</p>
 <p>"To fit the quadratic drift, we use a General Linear Model (<a href="http://support.minitab.com/en-us/minitab/17/topic-library/modeling-statistics/anova/basics/what-is-a-general-linear-model/">GLM</a>). For our $n$ voxels, the $t$ timestep <a href="https://radiopaedia.org/articles/bold-imaging">BOLD</a> signal, we can decompose $T_{raw} \in \mathbb{R}^{t \times n}$ as:$^{[2]}$</p>
 $$\begin{equation}
@@ -11782,7 +11798,7 @@ $$\epsilon = T_{raw} - RC$$<h2 id="Low-Frequency-Drift-Removal">Low Frequency Dr
 (or a frequency of 0.2 Hz), as it has been shown [by Buxton et al.]<a href="https://www.ncbi.nlm.nih.gov/pubmed/15501093">$^{[3]}$</a>. Using this information, we can select to remove sinusoidal components with frequencies far exceeding those of our predicted responses. Conservatively, we set a threshold of 0.01 Hz for highpass-filtering out low-frequency noise."$^{[2]}$</p>
 <h2 id="T1-Effect-Removal">T1 Effect Removal<a class="anchor-link" href="#T1-Effect-Removal">&#182;</a></h2><p>"During the fMRI session, the first few volumes may appear to have brighter intensities as the <a href="https://radiopaedia.org/articles/t1-weighted-image">T1</a> effects are not fully saturated<a href="http://www.fil.ion.ucl.ac.uk/spm/doc/books/hbf1/Ch9.pdf#page=18">$^{[4]}$</a>. External attempts that remove the T1 effect include component-correction<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2214855/">$^{[5]}$</a> and global mean normalization<a href="https://www.ncbi.nlm.nih.gov/pubmed/15110027">$^{[6]}$</a> of each slice, both of which have been shown to negatively impact task MRI analysis$^{[7]}$<a href="https://www.ncbi.nlm.nih.gov/pubmed/18976716">$^{[8]}$</a>. To account for this, we simply discard the first 2 volumes from our fMRI sequence, which tends to account for the majority of contrast-dependent issues."$^{[2]}$</p>
 <p><strong>TODO</strong>: include an image of a timeseries with the T1 effect, and corrected with slices removed</p>
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ol>
+<h2 id="Quality-Assurance">Quality Assurance<a class="anchor-link" href="#Quality-Assurance">&#182;</a></h2><h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ol>
 <li>Anne M Smith, Bobbi K Lewis, Urs E Ruttimann, Frank Q Ye, Teresa M Sinnwell, Yihong Yang, Jeff H Duyn, and Joseph A Frank. Investigation of Low Frequency Drift in fMRI Signal. 1999.</li>
 <li>Bridgeford, Eric W. Functional NeuroData Graph Service: A One-Click Pipeline and Web Service for Reliable Functional Connectome Estimation.</li>
 <li>Buxton RB, Uludağ K, Dubowitz DJ, Liu TT. Modeling the hemodynamic response to brain activation. NeuroImage. 2004;23 Suppl 1:S220-33.</li>

@@ -11771,6 +11771,10 @@ div#notebook {
 <td>FNGS Github Repository (Preprocessing)</td>
 <td><a href="https://github.com/neurodata/ndmg/blob/eric-dev-gkiar-fmri/ndmg/preproc/preproc_func.py">Link</a></td>
 </tr>
+<tr>
+<td>FNGS Github Repository (Quality Assurance)</td>
+<td><a href="https://github.com/neurodata/ndmg/blob/eric-dev-gkiar-fmri/ndmg/stats/qa_func.py">Link</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="Slice-Timing-Correction">Slice Timing Correction<a class="anchor-link" href="#Slice-Timing-Correction">&#182;</a></h2><p>"To collect an individual 4D EPI sequence, a 3D volume is constructed as a combination of individual 2D slices. The 2D slices are collected incrementally; that is, we collect each 2D slice for approximately 10 milliseconds, and the entire 3D volume is complete in about 30 2D slices. This gives a repetition time, or <a href="https://radiopaedia.org/articles/repetition-time">TR</a>, for the volume on the order of 1 to 3 seconds depending on the scanner. In response to a stimulus, we expect a typical brain response on the order of about 16 seconds. This means that during the course of a single volume being collected, we may have a different amount of <a href="https://radiopaedia.org/articles/bold-imaging">BOLD</a> [signal] present in the first volume than when the last volume is actually collected. While intuitively we might want our observations to represent a ”snapshot” of the data at a given time point, instead we have a 'sliding snapshot'; that is, our observations are not all at a fixed point in time."$^{[2]}$</p>
@@ -11788,14 +11792,15 @@ volume in a 4D sequence using the same linear or non-linear transformation. This
 <p>The fMRI image volume undergoes motion correction using MCFLIRT as follows. It is self-aligned to a specified index (currently the zero slice) or is self-aligned to the mean volume if no index is specified. This is known as the reference scan. MCFLIRT works by registering the brain scan at each timestep to the reference scan using FLIRT, which in this case applies combinations of rigid transformations (e.g. rotations, translations) to the input brain scan. This is done in order to minimize a cost function (defaults to normcorr) until it reaches a global optimum, finding the best fit in an 8mm search grid. For a further explanation of FLIRT, please reference the associated section of the Registration documentation found <a href="./Registration.html#FLIRT">here</a>.</p>
 <p>To observe a basic simulated example of MCFLIRT, we can examine a series of four squares that are not centered at the same position. We see before (left) and after (right) plots of the simulated data below:$^{[5]}$</p>
 <p><img src='./img/mcflirt.jpg', width=650></p>
-<p>We observe that post-MCFLIRT the squares are all aligned in the same relative position. We can also observe the algorithm's effect on real data as well. We can see MCFLIRT's effect on the <a href="./Quality+Assurance.html#Discriminability">discriminability</a> and Hellinger distance of the <a href="http://fcon_1000.projects.nitrc.org/indi/CoRR/html/bnu_1.html">BNU1</a> dataset in the before and after plots below:$^{[5]}$</p>
+<p>We observe that post-MCFLIRT the squares are all aligned in the same relative position. We can also observe the algorithm's effect on real data as well. We can see MCFLIRT's effect on the <a href="./Timeseries+Extraction.html#Discriminability">discriminability</a>$^{[6]}$ of the <a href="http://fcon_1000.projects.nitrc.org/indi/CoRR/html/bnu_1.html">BNU1</a> dataset in the before and after plots below:$^{[5]}$</p>
 <p><img src='./img/BNU1_mcflirt.png', width=750></p>
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ol>
+<h2 id="Quality-Assurance">Quality Assurance<a class="anchor-link" href="#Quality-Assurance">&#182;</a></h2><h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ol>
 <li>M.W. Woolrich, S. Jbabdi, B. Patenaude, M. Chappell, S. Makni, T. Behrens, C. Beckmann, M. Jenkinson, S.M. Smith. Bayesian analysis of neuroimaging data in FSL. NeuroImage, 45:S173-86, 2009</li>
 <li>Bridgeford, Eric W. Functional NeuroData Graph Service: A One-Click Pipeline and Web Service for Reliable Functional Connectome Estimation.</li>
 <li>Walker, Eric. Slice Timing Correction. Jupyter Notebook. <a href="https://neurodatadesign.github.io/fngs-archive/ewok_weekly/stc/Slice_Timing_Correction.html">https://neurodatadesign.github.io/fngs-archive/ewok_weekly/stc/Slice_Timing_Correction.html</a></li>
 <li>Jenkinson, M., Bannister, P., Brady, J. M. and Smith, S. M. Improved Optimisation for the Robust and Accurate Linear Registration and Motion Correction of Brain Images. NeuroImage, 17(2), 825-841, 2002.</li>
 <li>Agarwal, Tanay. MCFLIRT. Jupyter Notebook. <a href="https://neurodatadesign.github.io/fngs-archive/tanay/MCFLIRT.html">https://neurodatadesign.github.io/fngs-archive/tanay/MCFLIRT.html</a></li>
+<li>Shangsi Wang, et al. Optimal decisions for discovery science via maximizing discriminability: applications in neuroimaging. <a href="https://github.com/shangsiwang/Reliability/blob/master/Draft/discriminability.pdf">https://github.com/shangsiwang/Reliability/blob/master/Draft/discriminability.pdf</a></li>
 </ol>
 
 </div>

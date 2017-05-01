@@ -324,8 +324,17 @@ def main():
     os.system(cmd)
     jsonfile = json.load(open("temp.json", 'r'))
     if len(jsonfile["computeEnvironments"]) == 0:
+        cmd = 'aws batch get-user > user.json'
+        os.system(cmd)
+        x = json.load(open("user.json", 'r'))
+        userarn = x["User"]["Arn"]
+        usernamelength = len(x["User"]["UserName"])
         cmd = 'wget https://raw.githubusercontent.com/02agarwalt/ndmg/master/templates/ndmg_compute_environment.json'
         os.system(cmd)
+        envtempl = json.load(open("ndmg_compute_environment.json", 'r'))
+        envtempl["computeResources"]["instanceRole"] = userarn[: -1*(usernamelength + 5)] + "instance-profile/ecsInstanceRole"
+        envtempl["serviceRole"] = userarn[: -1*(usernamelength + 5)] + "role/service-role/AWSBatchServiceRole"
+        json.dump(envtempl, open("ndmg_compute_environment.json", 'w'))
         cmd = 'aws batch create-compute-environment --cli-input-json file://ndmg_compute_environment.json'
         os.system(cmd)
         time.sleep(15)
