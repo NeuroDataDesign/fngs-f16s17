@@ -1,0 +1,505 @@
+---
+title: "Merging FNGS"
+author: "Eric Bridgeford"
+date: "May 4, 2017"
+output: html_document
+---
+
+Below, we first show an aggregation of the latest version of FNGS for our respective post-processing pipelines:
+
+```{r}
+  require(Discriminability)
+  signal_overall <- c()
+  ids_overall <- c()
+  cpac_graphs_overall <- c()
+  cpac_ids_overall <- c()
+  dataset_overall <- c()
+```
+
+# FNGS
+
+## BNU1
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  require(Discriminability)
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_merge/BNU1/roi_timeseries/aal-2mm/'
+  tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
+  scan_pos = 3
+  tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
+  signal <- tsobj[[1]]
+  ids <- tsobj[[3]]
+  
+  signal_overall <- c(signal_overall, signal)
+  ids_overall <- c(ids_overall, tsobj$dataset)
+  
+  cpac_inpath <- 'C:/Users/ebrid/Documents/R/CPAC_results/BNU1/FSL_frf_nsc_ngs_des/'
+  cpac_tsnames <- list.files(cpac_inpath, pattern="\\.graphml", full.names=TRUE)
+  scan_pos = 2
+  cpac_graobj <- open_graphs(cpac_tsnames, sub_pos=scan_pos)
+  cpac_graphs <- cpac_graobj[[1]]
+  cpac_ids <- cpac_graobj[[3]]
+  
+  cpac_graphs_overall <- c(cpac_graphs_overall, cpac_graphs)
+  ids_overall <- c(ids_overall, cpac_graobj$dataset)
+```
+
+### Sanity Check
+
+#### Timeseries
+
+```{r fig.height=6, fig.width=12, message=FALSE}
+  ts1 = signal[[1]]
+  title = paste('Timeseries plot for subject', ids[1])
+  print(plot_timeseries(ts1, title=title))
+
+```
+#### FNGS Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
+```
+
+#### CPAC Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(cpac_graphs[[1]], title=title, legend="corr"))
+```
+
+
+
+#### FNGS Raw Correaltion Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  td <- time_discr(signal, ids, rank=FALSE)
+  print(td$combinedplot)
+```
+
+#### FNGS Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tdr <- time_discr(signal, ids, rank=TRUE)
+  print(tdr$combinedplot)
+```
+
+#### CPAC Raw Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  cpac_td <- time_discr(cpac_graphs, cpac_ids, rank=FALSE, graphs = TRUE)
+  print(cpac_td$combinedplot)
+```
+
+#### CPAC Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  cpac_tdr <- time_discr(cpac_graphs, cpac_ids, rank=TRUE, graphs = TRUE)
+  print(cpac_tdr$combinedplot)
+```
+
+```{r }
+  collection <- data.frame(dataset='BNU1',
+                                             postprocessing=c('fngs_corr', 'fngs_rcorr',
+                                                              'cpac_corr', 'cpac_rcorr'),
+                           discr=c(td$d, tdr$d, cpac_td$d, cpac_tdr$d))
+```
+
+## DC1
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0503/DC1/aal-2mm/'
+  tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
+  scan_pos = 2
+  tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
+  signal <- tsobj[[1]]
+  ids <- tsobj[[3]]
+  
+  signal_overall <- c(signal_overall, signal)
+  ids_overall <- c(ids_overall, tsobj$dataset)
+
+  cpac_inpath <- 'C:/Users/ebrid/Documents/R/CPAC_results/DC1/FSL_frf_nsc_ngs_aal/'
+  cpac_tsnames <- list.files(cpac_inpath, pattern="\\.graphml", full.names=TRUE)
+  scan_pos = 2
+  cpac_graobj <- open_graphs(cpac_tsnames, sub_pos=scan_pos)
+  cpac_graphs <- cpac_graobj[[1]]
+  cpac_ids <- cpac_graobj[[3]]
+  
+  cpac_graphs_overall <- c(cpac_graphs_overall, cpac_graphs)
+  ids_overall <- c(ids_overall, cpac_graobj$dataset)
+```
+
+### Sanity Check
+
+#### Timeseries
+
+```{r fig.height=6, fig.width=12, message=FALSE}
+  ts1 = signal[[1]]
+  title = paste('Timeseries plot for subject', ids[1])
+  print(plot_timeseries(ts1, title=title))
+
+```
+#### FNGS Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
+```
+
+#### CPAC Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(cpac_graphs[[1]], title=title, legend="corr"))
+```
+
+#### FNGS Raw Correaltion Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  td <- time_discr(signal, ids, rank=FALSE)
+  print(td$combinedplot)
+```
+
+#### FNGS Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tdr <- time_discr(signal, ids, rank=TRUE)
+  print(tdr$combinedplot)
+```
+
+#### CPAC Raw Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  cpac_td <- time_discr(cpac_graphs, cpac_ids, rank=FALSE, graphs = TRUE)
+  print(cpac_td$combinedplot)
+```
+
+#### CPAC Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  cpac_tdr <- time_discr(cpac_graphs, cpac_ids, rank=TRUE, graphs = TRUE)
+  print(cpac_tdr$combinedplot)
+```
+
+```{r }
+  collection <- rbind(collection, data.frame(dataset='DC1',
+                                             postprocessing=c('fngs_corr', 'fngs_rcorr',
+                                                              'cpac_corr', 'cpac_rcorr'),
+                           discr=c(td$d, tdr$d, cpac_td$d, cpac_tdr$d)))
+```
+
+## HNU1
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0503/HNU1/aal-2mm/'
+  tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
+  scan_pos = 2
+  tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
+  signal <- tsobj[[1]]
+  ids <- tsobj[[3]]
+  
+  signal_overall <- c(signal_overall, signal)
+  ids_overall <- c(ids_overall, tsobj$dataset)
+
+  cpac_inpath <- 'C:/Users/ebrid/Documents/R/CPAC_results/HNU1/FSL_frf_nsc_ngs_aal/'
+  cpac_tsnames <- list.files(cpac_inpath, pattern="\\.graphml", full.names=TRUE)
+  scan_pos = 2
+  cpac_graobj <- open_graphs(cpac_tsnames, sub_pos=scan_pos)
+  cpac_graphs <- cpac_graobj[[1]]
+  cpac_ids <- cpac_graobj[[3]]
+  
+  cpac_graphs_overall <- c(cpac_graphs_overall, cpac_graphs)
+  ids_overall <- c(ids_overall, cpac_graobj$dataset)
+```
+
+### Sanity Check
+
+#### Timeseries
+
+```{r fig.height=6, fig.width=12, message=FALSE}
+  ts1 = signal[[1]]
+  title = paste('Timeseries plot for subject', ids[1])
+  print(plot_timeseries(ts1, title=title))
+
+```
+#### FNGS Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
+```
+
+#### CPAC Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(cpac_graphs[[1]], title=title, legend="corr"))
+```
+
+#### FNGS Raw Correaltion Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE, eval=FALSE}
+  td <- time_discr(signal, ids, rank=FALSE)
+  print(td$combinedplot)
+```
+
+#### FNGS Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tdr <- time_discr(signal, ids, rank=TRUE)
+  print(tdr$combinedplot)
+```
+
+#### CPAC Raw Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  cpac_td <- time_discr(cpac_graphs, cpac_ids, rank=FALSE, graphs = TRUE)
+  print(cpac_td$combinedplot)
+```
+
+#### CPAC Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  cpac_tdr <- time_discr(cpac_graphs, cpac_ids, rank=TRUE, graphs = TRUE)
+  print(cpac_tdr$combinedplot)
+```
+
+```{r}
+  collection <- rbind(collection, data.frame(dataset='HNU1',
+                                             postprocessing=c('fngs_corr', 'fngs_rcorr',
+                                                              'cpac_corr', 'cpac_rcorr'),
+                           discr=c(td$d, tdr$d, cpac_td$d, cpac_tdr$d)))
+```
+
+## NYU1
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0503/NYU1/aal-2mm/'
+  tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
+  scan_pos = 2
+  tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
+  signal <- tsobj[[1]]
+  ids <- tsobj[[3]]
+  
+  signal_overall <- c(signal_overall, signal)
+  ids_overall <- c(ids_overall, tsobj$dataset)
+
+  cpac_inpath <- 'C:/Users/ebrid/Documents/R/CPAC_results/NYU1/FSL_frf_nsc_ngs_aal/'
+  cpac_tsnames <- list.files(cpac_inpath, pattern="\\.graphml", full.names=TRUE)
+  scan_pos = 2
+  cpac_graobj <- open_graphs(cpac_tsnames, sub_pos=scan_pos)
+  cpac_graphs <- cpac_graobj[[1]]
+  cpac_ids <- cpac_graobj[[3]]
+  
+  cpac_graphs_overall <- c(cpac_graphs_overall, cpac_graphs)
+  ids_overall <- c(ids_overall, cpac_graobj$dataset)
+```
+
+### Sanity Check
+
+#### Timeseries
+
+```{r fig.height=6, fig.width=12, message=FALSE}
+  ts1 = signal[[1]]
+  title = paste('Timeseries plot for subject', ids[1])
+  print(plot_timeseries(ts1, title=title))
+
+```
+#### FNGS Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
+```
+
+#### CPAC Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(cpac_graphs[[1]], title=title, legend="corr"))
+```
+
+#### FNGS Raw Correaltion Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  td <- time_discr(signal, ids, rank=FALSE)
+  print(td$combinedplot)
+```
+
+#### FNGS Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tdr <- time_discr(signal, ids, rank=TRUE)
+  print(tdr$combinedplot)
+```
+
+#### CPAC Raw Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  cpac_td <- time_discr(cpac_graphs, cpac_ids, rank=FALSE, graphs = TRUE)
+  print(cpac_td$combinedplot)
+```
+
+#### CPAC Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  cpac_tdr <- time_discr(cpac_graphs, cpac_ids, rank=TRUE, graphs = TRUE)
+  print(cpac_tdr$combinedplot)
+```
+
+```{r}
+  collection <- rbind(collection, data.frame(dataset='NYU1',
+                                             postprocessing=c('fngs_corr', 'fngs_rcorr',
+                                                              'cpac_corr', 'cpac_rcorr'),
+                           discr=c(td$d, tdr$d, cpac_td$d, cpac_tdr$d)))
+```
+## SWU4
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0503/SWU4/aal-2mm/'
+  tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
+  scan_pos = 2
+  tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
+  signal <- tsobj[[1]]
+  ids <- tsobj[[3]]
+  
+  signal_overall <- c(signal_overall, signal)
+  ids_overall <- c(ids_overall, tsobj$dataset)
+
+  cpac_inpath <- 'C:/Users/ebrid/Documents/R/CPAC_results/SWU4/FSL_frf_nsc_ngs_aal/'
+  cpac_tsnames <- list.files(cpac_inpath, pattern="\\.graphml", full.names=TRUE)
+  scan_pos = 2
+  cpac_graobj <- open_graphs(cpac_tsnames, sub_pos=scan_pos)
+  cpac_graphs <- cpac_graobj[[1]]
+  cpac_ids <- cpac_graobj[[3]]
+  
+  cpac_graphs_overall <- c(cpac_graphs_overall, cpac_graphs)
+  ids_overall <- c(ids_overall, cpac_graobj$dataset)
+```
+
+### Sanity Check
+
+#### Timeseries
+
+```{r fig.height=6, fig.width=12, message=FALSE}
+  ts1 = signal[[1]]
+  title = paste('Timeseries plot for subject', ids[1])
+  print(plot_timeseries(ts1, title=title))
+
+```
+#### FNGS Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
+```
+
+#### CPAC Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(cpac_graphs[[1]], title=title, legend="corr"))
+```
+
+#### FNGS Raw Correaltion Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  td <- time_discr(signal, ids, rank=FALSE)
+  print(td$combinedplot)
+```
+
+#### FNGS Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tdr <- time_discr(signal, ids, rank=TRUE)
+  print(tdr$combinedplot)
+```
+
+#### CPAC Raw Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  cpac_td <- time_discr(cpac_graphs, cpac_ids, rank=FALSE, graphs = TRUE)
+  print(cpac_td$combinedplot)
+```
+
+#### CPAC Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE, eval=FALSE}
+  cpac_tdr <- time_discr(cpac_graphs, cpac_ids, rank=TRUE, graphs = TRUE)
+  print(cpac_tdr$combinedplot)
+```
+
+## BNU2
+
+```{r, fig.height=6, fig.width=12, message=FALSE, eval=FALSE}
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_merge/BNU2/roi_timeseries/desikan-2mm/'
+  tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
+  scan_pos = 3
+  tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
+  signal <- tsobj[[1]]
+  ids <- tsobj[[3]]
+  
+  signal_overall <- c(signal_overall, signal)
+  ids_overall <- c(ids_overall, tsobj$dataset)
+
+  cpac_inpath <- 'C:/Users/ebrid/Documents/R/CPAC_results/BNU2/FSL_frf_nsc_ngs_des/'
+  cpac_tsnames <- list.files(cpac_inpath, pattern="\\.graphml", full.names=TRUE)
+  scan_pos = 2
+  cpac_graobj <- open_graphs(cpac_tsnames, sub_pos=scan_pos)
+  cpac_graphs <- cpac_graobj[[1]]
+  cpac_ids <- cpac_graobj[[3]]
+  
+  cpac_graphs_overall <- c(cpac_graphs_overall, cpac_graphs)
+  ids_overall <- c(ids_overall, cpac_graobj$dataset)
+```
+
+### Sanity Check
+
+#### Timeseries
+
+```{r fig.height=6, fig.width=12, message=FALSE, eval=FALSE}
+  ts1 = signal[[1]]
+  title = paste('Timeseries plot for subject', ids[1])
+  print(plot_timeseries(ts1, title=title))
+
+```
+#### FNGS Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE, eval=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
+```
+
+#### CPAC Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE, eval=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(cpac_graphs[[1]], title=title, legend="corr"))
+```
+
+#### FNGS Raw Correaltion Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE, eval=FALSE}
+  td <- time_discr(signal, ids, rank=FALSE)
+  print(td$combinedplot)
+```
+
+#### FNGS Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE, eval=FALSE}
+  tdr <- time_discr(signal, ids, rank=TRUE)
+  print(tdr$combinedplot)
+```
+
+#### CPAC Raw Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE, eval=FALSE}
+  cpac_td <- time_discr(cpac_graphs, cpac_ids, rank=FALSE, graphs = TRUE)
+  print(cpac_td$combinedplot)
+```
+
+#### CPAC Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE, eval=FALSE}
+  cpac_tdr <- time_discr(cpac_graphs, cpac_ids, rank=TRUE, graphs = TRUE)
+  print(cpac_tdr$combinedplot)
+```
+
+```{r, eval=FALSE}
+  collection <- rbind(collection, data.frame(dataset='HNU1',
+                                             postprocessing=c('fngs_corr', 'fngs_rcorr',
+                                                              'cpac_corr', 'cpac_rcorr'),
+                           discr=c(td$d, tdr$d, cpac_td$d, cpac_tdr$d)))
+```
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  collection$dataset <- factor(collection$dataset)
+  collection$postprocessing <- factor(collection$postprocessing)
+  summaryfig_fng <- ggplot(collection, aes(x=postprocessing, y=discr, color=dataset)) +
+    geom_point(size=4) +
+    ggtitle('Comparing Discriminability over 4 reference datasets using different postprocessing techniques')
+  print(summaryfig_fng)
+```
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  summaryfig_fng <- ggplot(collection, aes(x=postprocessing, y=discr, fill=postprocessing)) +
+    geom_violin() +
+    geom_boxplot(width=0.1) +
+    ggtitle('Comparing Discriminability over 4 reference datasets using different postprocessing techniques')
+  print(summaryfig_fng)
+```
