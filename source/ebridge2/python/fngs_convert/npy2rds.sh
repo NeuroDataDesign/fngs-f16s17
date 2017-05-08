@@ -14,7 +14,7 @@ echo "$(pwd)"
 while read -r npyline; do
     ./npy2csv.py $npyline ${npyline//.npy/.csv}
     ./csv2rds.R ${npyline//.npy/.csv} ${npyline//.npy/.rds}
-done < <(find $1 -wholename "*ts_roi*.npy")
+done < <(find $1 -wholename "*.npy")
 
 cd -
 echo "$(pwd)"
