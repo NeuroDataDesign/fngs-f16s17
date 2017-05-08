@@ -1,7 +1,7 @@
 
 ## Getting Data in BIDs spec
 
-Next, we will go through the deployment phase of beginning a job. For these purposes, I have made a small dataset available for us to play around with. First, download the following tarball in your home directory (you can download it anywhere, but we will assume the home directory here):
+For these purposes, I have made a small dataset available for us to play around with. First, download the following tarball in your home directory (you can download it anywhere, but we will assume the home directory here):
 
 ```
 $ cd ~/
