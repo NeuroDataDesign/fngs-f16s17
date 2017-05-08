@@ -38,5 +38,6 @@ Default output format [None]:
 Now, all that's left to do is click "go" using our deployment utilities:
 
 ```
-ndmg_cloud participant --bucket <your-bucket-name> --bidsdir <folder-in-bucket> --jobdir /test --credentials /credentials/accessKeys.csv --modality func
+ndmg_cloud participant --bucket <your-bucket-name> --bidsdir <folder-in-bucket> --jobdir /test \
+--credentials /credentials/accessKeys.csv --modality func
 ```
