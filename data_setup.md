@@ -117,28 +117,4 @@ $ aws sync BNUtest/ s3://fngs-test/BNUtest/
 
 This will upload our data to S3.
 
-### Getting and navigating the Docker Container
-
-Next, we will need to pull the docker container. If you don't already have docker installed, see the docker page for details [docker](https://docs.docker.com/engine/installation/). Once you have docker installed, pull the docker container:
-
-```
-docker pull ericw95/fngs:0.0.7
-```
-
-Now, we will enter the docker container. Remember where you placed your access Keys from earlier: we assume they will be at "/home/<your-user>/Downloads/accessKeys.csv", but if you placed them somewhere else, be sure to reflect that here:
-
-```
-docker run -ti --entrypoint /bin/bash -v /home/<your-user>/Downloads:/credentials ericw95/fngs:0.0.7
-```
-
-Next, we will configure the AWS CLI, this time for the docker container:
-
-```
-$ aws configure
-AWS Access Key ID [None]: ****your-access-key***********
-AWS Secret Access Key [None]: *******your-secret-key*********
-Default region name [None]: us-east-1
-Default output format [None]:
-```
-
 Now, you are ready to analyze your scans. 
