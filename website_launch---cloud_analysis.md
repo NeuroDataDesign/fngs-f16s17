@@ -30,6 +30,8 @@ into the form is the same as the root folder in the zip.
 
 To start analyzing, click the "Submit Job" button. Once your data is analyzed, the outputs can be found in your specified S3 bucket, inside the specified BIDs directory root.
 
+NOTE: Click the "Submit Job" button exactly once. Once clicked, do not interfere with the page in any way. You might have to wait a bit before the page registers, especially if you chose to upload data directly.
+
 
 
 We can also use the website to glean information about previously submitted jobs. Click the "Query" tab:
