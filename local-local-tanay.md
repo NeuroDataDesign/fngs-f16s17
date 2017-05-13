@@ -15,7 +15,7 @@ Next, we will need to pull the docker container. If you don't already have docke
 $ docker pull ericw95/fngs:0.0.7
 ```
 
-Now, we will enter the docker container. Remember where you placed your access Keys from earlier: we assume they will be at "/home/<your-user>/Downloads/accessKeys.csv", but if you placed them somewhere else, be sure to reflect that here:
+Now, we will enter the docker container:
 
 ```
 $ docker run -ti --entrypoint /bin/bash -v $bidsdir:/data ericw95/fngs:0.0.7
@@ -27,4 +27,4 @@ Next, we will run our subjects:
 ndmg_bids /data /data/outputs participant func
 ```
 
-And your runs will begin.
+And your runs will begin. Once the runs are complete, the outputs will be placed in /data/outputs, as specified.
