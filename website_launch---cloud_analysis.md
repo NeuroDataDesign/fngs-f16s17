@@ -36,8 +36,7 @@ We can also use the website to glean information about previously submitted jobs
 
 ![image]()
 
-Here, we can do one of two things: either get a job status, or kill a job. To do either, simply select the option from the dropdown menu, 
-and enter the same unique token that was used when the job was submitted. Be sure to also upload your credentials CSV file:
+Here, we can do one of two things: either get the status of a job, or kill a job. To do either, simply select the option from the dropdown menu, and enter the same unique token that was used when the job was submitted. Be sure to also upload your credentials CSV file:
 
 ![image]()
 
