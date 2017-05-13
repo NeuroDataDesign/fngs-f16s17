@@ -56,9 +56,9 @@ As we can see, the bucket "fngs-test" we made earlier is there. Now, we will upl
 
 ```
 $ cd ~/
-$ aws sync BNUtest/ s3://fngs-test/BNUtest/
+$ aws sync BNUtest/ s3://fngs-test/BNUtest/ --acl public-read
 ```
 
-This will upload our data to S3.
+This will upload our data to S3 with the appropriate permissions.
 
 Now, you are ready to analyze your scans. 
