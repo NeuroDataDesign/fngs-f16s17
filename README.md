@@ -83,7 +83,7 @@ As we can see, the bucket "fngs-test" we made earlier is there. Now, we will upl
 
 ```
 $ cd ~/
-$ aws s3 sync /data/ s3://fngs-test/DC1-test/ --acl public-read-write
+$ aws s3 sync /data/ s3://<your-bucket>/<your-folder>/ --acl public-read-write
 ```
 
 This will upload our data to S3 with the appropriate permissions.
