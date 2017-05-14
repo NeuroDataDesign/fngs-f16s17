@@ -1,0 +1,1372 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ndmg.stats package &mdash; ndmg fngs 0.0.7 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="ndmg fngs 0.0.7 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ndmg fngs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ndmg.stats package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-ndmg.stats.func_qa_utils">ndmg.stats.func_qa_utils module</a></li>
+<li><a class="reference internal" href="#module-ndmg.stats.group_func">ndmg.stats.group_func module</a></li>
+<li><a class="reference internal" href="#module-ndmg.stats.plotly_helper">ndmg.stats.plotly_helper module</a></li>
+<li><a class="reference internal" href="#module-ndmg.stats.qa_adjacency">ndmg.stats.qa_adjacency module</a></li>
+<li><a class="reference internal" href="#module-ndmg.stats.qa_fibers">ndmg.stats.qa_fibers module</a></li>
+<li><a class="reference internal" href="#module-ndmg.stats.qa_func">ndmg.stats.qa_func module</a></li>
+<li><a class="reference internal" href="#module-ndmg.stats.qa_graphs">ndmg.stats.qa_graphs module</a></li>
+<li><a class="reference internal" href="#module-ndmg.stats.qa_graphs_plotting">ndmg.stats.qa_graphs_plotting module</a></li>
+<li><a class="reference internal" href="#module-ndmg.stats.qa_reg">ndmg.stats.qa_reg module</a></li>
+<li><a class="reference internal" href="#module-ndmg.stats.qa_tensor">ndmg.stats.qa_tensor module</a></li>
+<li><a class="reference internal" href="#module-ndmg.stats">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ndmg fngs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>ndmg.stats package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ndmg.stats.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ndmg-stats-package">
+<h1>ndmg.stats package<a class="headerlink" href="#ndmg-stats-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ndmg.stats.func_qa_utils">
+<span id="ndmg-stats-func-qa-utils-module"></span><h2>ndmg.stats.func_qa_utils module<a class="headerlink" href="#module-ndmg.stats.func_qa_utils" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ndmg.stats.func_qa_utils.check_alignments">
+<code class="descclassname">ndmg.stats.func_qa_utils.</code><code class="descname">check_alignments</code><span class="sig-paren">(</span><em>mri_bname</em>, <em>mri_aname</em>, <em>refname</em>, <em>qcdir</em>, <em>fname</em>, <em>title=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.func_qa_utils.check_alignments" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to check alignments and generate descriptive statistics
+and plots based on the overlap between two images.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments</strong></dt>
+<dd><dl class="first last docutils">
+<dt>mri_bname:</dt>
+<dd><ul class="first last simple">
+<li>the 4d mri file before an operation has taken place</li>
+</ul>
+</dd>
+<dt>mri_aname:</dt>
+<dd><ul class="first last simple">
+<li>the 4d mri file after an operation has taken place</li>
+</ul>
+</dd>
+<dt>refname:</dt>
+<dd><ul class="first last simple">
+<li>the 3d file used as a reference for the operation</li>
+</ul>
+</dd>
+<dt>qcdir:</dt>
+<dd><ul class="first last simple">
+<li>the output directory for the plots</li>
+</ul>
+</dd>
+<dt>title:</dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>a string (such as the operation name) for use in the plot</dt>
+<dd>titles (defaults to &#8220;&#8221;)</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>fname:</dt>
+<dd><ul class="first last simple">
+<li>a string to use in the file handle for easy finding</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.func_qa_utils.compute_kdes">
+<code class="descclassname">ndmg.stats.func_qa_utils.</code><code class="descname">compute_kdes</code><span class="sig-paren">(</span><em>before</em>, <em>after</em>, <em>steps=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.func_qa_utils.compute_kdes" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to plot kdes of the arrays for the similarity between
+the before/reference and after/reference.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><dl class="first last docutils">
+<dt>before:</dt>
+<dd><ul class="first last simple">
+<li>a numpy array before an operational step.</li>
+</ul>
+</dd>
+<dt>after:</dt>
+<dd><ul class="first last simple">
+<li>a numpy array after an operational step.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.func_qa_utils.dice_coefficient">
+<code class="descclassname">ndmg.stats.func_qa_utils.</code><code class="descname">dice_coefficient</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.func_qa_utils.dice_coefficient" title="Permalink to this definition">¶</a></dt>
+<dd><p>dice coefficient 2nt/na + nb.
+Code taken from <a class="reference external" href="https://en.wikibooks.org/wiki/Algorithm_Implementation">https://en.wikibooks.org/wiki/Algorithm_Implementation</a>
+/Strings/Dice%27s_coefficient#Python</p>
+<dl class="docutils">
+<dt>** Positional Arguments:**</dt>
+<dd><dl class="first last docutils">
+<dt>a:</dt>
+<dd><ul class="first last simple">
+<li>the first array.</li>
+</ul>
+</dd>
+<dt>b:</dt>
+<dd><ul class="first last simple">
+<li>the second array.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.func_qa_utils.expected_variance">
+<code class="descclassname">ndmg.stats.func_qa_utils.</code><code class="descname">expected_variance</code><span class="sig-paren">(</span><em>s</em>, <em>n</em>, <em>qcdir</em>, <em>scanid=''</em>, <em>title=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.func_qa_utils.expected_variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to show the expected variance of each component
+in nuisance regression.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>s:</dt>
+<dd><ul class="first last">
+<li>an array of the variance of each component, or the
+eigenvalues computed in SVD/eigendecomposition for each
+component (should be sorted by variance).</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>n:</dt>
+<dd><ul class="first last">
+<li>the number of components chosen for compcor.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>qcdir:</dt>
+<dd><ul class="first last">
+<li>the directory to place outputs in.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>scanid:</dt>
+<dd><ul class="first last">
+<li>the id of the particular subject.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>title:</dt>
+<dd><ul class="first last">
+<li>the method being employed that an expected variance
+plot is neede for. Examples are &#8220;CompCor&#8221; or &#8220;PCA&#8221;.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.func_qa_utils.hdist">
+<code class="descclassname">ndmg.stats.func_qa_utils.</code><code class="descname">hdist</code><span class="sig-paren">(</span><em>array1</em>, <em>array2</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.func_qa_utils.hdist" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function for computing the hellinger distance between arrays
+1 and 2.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><dl class="first last docutils">
+<dt>array1:</dt>
+<dd><ul class="first last simple">
+<li>the first array.</li>
+</ul>
+</dd>
+<dt>array2:</dt>
+<dd><ul class="first last simple">
+<li>the second array.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.func_qa_utils.image_align">
+<code class="descclassname">ndmg.stats.func_qa_utils.</code><code class="descname">image_align</code><span class="sig-paren">(</span><em>mri_data</em>, <em>ref_data</em>, <em>qcdir</em>, <em>scanid=''</em>, <em>refid=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.func_qa_utils.image_align" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to produce an image showing the alignments of two
+reference images.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><dl class="first last docutils">
+<dt>mri_image:</dt>
+<dd><ul class="first last simple">
+<li>the first matrix.</li>
+</ul>
+</dd>
+<dt>ref_image:</dt>
+<dd><ul class="first last simple">
+<li>the reference matrix.</li>
+</ul>
+</dd>
+<dt>qcdir:</dt>
+<dd><ul class="first last simple">
+<li>the path to a directory to dump the outputs.</li>
+</ul>
+</dd>
+<dt>scan_id:</dt>
+<dd><ul class="first last simple">
+<li>the id of the scan being analyzed.</li>
+</ul>
+</dd>
+<dt>refid:</dt>
+<dd><ul class="first last simple">
+<li>the id of the reference being analyzed.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.func_qa_utils.mask_align">
+<code class="descclassname">ndmg.stats.func_qa_utils.</code><code class="descname">mask_align</code><span class="sig-paren">(</span><em>mri_data</em>, <em>ref_data</em>, <em>qcdir</em>, <em>scanid=''</em>, <em>refid=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.func_qa_utils.mask_align" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to produce an image showing the alignments of two
+reference images for checking mask alignments.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><dl class="first last docutils">
+<dt>mri_image:</dt>
+<dd><ul class="first last simple">
+<li>the first matrix.</li>
+</ul>
+</dd>
+<dt>ref_image:</dt>
+<dd><ul class="first last simple">
+<li>the reference matrix.</li>
+</ul>
+</dd>
+<dt>qcdir:</dt>
+<dd><ul class="first last simple">
+<li>the path to a directory to dump the outputs.</li>
+</ul>
+</dd>
+<dt>scan_id:</dt>
+<dd><ul class="first last simple">
+<li>the id of the scan being analyzed.</li>
+</ul>
+</dd>
+<dt>refid:</dt>
+<dd><ul class="first last simple">
+<li>the id of the reference being analyzed.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.func_qa_utils.mse">
+<code class="descclassname">ndmg.stats.func_qa_utils.</code><code class="descname">mse</code><span class="sig-paren">(</span><em>imageA</em>, <em>imageB</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.func_qa_utils.mse" title="Permalink to this definition">¶</a></dt>
+<dd><p>the &#8216;Mean Squared Error&#8217; between the two images is the
+sum of the squared difference between the two images;
+NOTE: the two images must have the same dimension
+from <a class="reference external" href="http://www.pyimagesearch.com/2014/09/15/python-compare-two-images/">http://www.pyimagesearch.com/2014/09/15/python-compare-two-images/</a>
+NOTE: we&#8217;ve normalized the signals by the mean intensity at each
+point to make comparisons btwn fMRI and MPRAGE more viable.
+Otherwise, fMRI signal vastly overpowers MPRAGE signal and our MSE
+would have very low accuracy (fMRI signal differences &gt;&gt;&gt; actual
+differences we are looking for).</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><dl class="first last docutils">
+<dt>imageA:</dt>
+<dd><ul class="first last simple">
+<li>the first image.</li>
+</ul>
+</dd>
+<dt>imageB:</dt>
+<dd><ul class="first last simple">
+<li>the second image.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.func_qa_utils.opaque_colorscale">
+<code class="descclassname">ndmg.stats.func_qa_utils.</code><code class="descname">opaque_colorscale</code><span class="sig-paren">(</span><em>basemap</em>, <em>reference</em>, <em>alpha=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.func_qa_utils.opaque_colorscale" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to return a colorscale, with opacities
+dependent on reference intensities.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>basemap:</dt>
+<dd><ul class="first last">
+<li>the colormap to use for this colorscale.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>reference:</dt>
+<dd><ul class="first last">
+<li>the reference matrix.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.func_qa_utils.percent_overlap">
+<code class="descclassname">ndmg.stats.func_qa_utils.</code><code class="descname">percent_overlap</code><span class="sig-paren">(</span><em>array1</em>, <em>array2</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.func_qa_utils.percent_overlap" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to compute the degree of overlap between two binarized
+arrays. Assumes that inputs are already appropriately thresholded,
+and are of the desired shape.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><dl class="first last docutils">
+<dt>array1:</dt>
+<dd><ul class="first last simple">
+<li>the first array.</li>
+</ul>
+</dd>
+<dt>array2:</dt>
+<dd><ul class="first last simple">
+<li>the second array.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.func_qa_utils.plot_timeseries">
+<code class="descclassname">ndmg.stats.func_qa_utils.</code><code class="descname">plot_timeseries</code><span class="sig-paren">(</span><em>timeseries</em>, <em>qcdir=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.func_qa_utils.plot_timeseries" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to generate a plot of the timeseries
+of the particular ROI. Makes sure nothing nonsensical is
+happening here.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>timeseries:</dt>
+<dd><ul class="first last">
+<li>the path to a roi timeseries.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>qcdir:</dt>
+<dd><ul class="first last">
+<li>the directory to place quality control figures.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.func_qa_utils.registration_score">
+<code class="descclassname">ndmg.stats.func_qa_utils.</code><code class="descname">registration_score</code><span class="sig-paren">(</span><em>aligned_func</em>, <em>reference_mask</em>, <em>outdir</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.func_qa_utils.registration_score" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>A function to compute the registration score between two images.</div></blockquote>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd>aligned_func:
+- the brain being aligned. assumed to be a 4d fMRI scan.
+reference_mask:
+- the template being aligned to. assumed to be a 3d mask.
+outdir:
+- the directory in which temporary files will be placed.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.stats.group_func">
+<span id="ndmg-stats-group-func-module"></span><h2>ndmg.stats.group_func module<a class="headerlink" href="#module-ndmg.stats.group_func" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ndmg.stats.group_func.group_func">
+<em class="property">class </em><code class="descclassname">ndmg.stats.group_func.</code><code class="descname">group_func</code><span class="sig-paren">(</span><em>basedir</em>, <em>outdir</em>, <em>dataset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.group_func.group_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="ndmg.stats.group_func.group_func.connectome_analysis">
+<code class="descname">connectome_analysis</code><span class="sig-paren">(</span><em>thr=0.6</em>, <em>minimal=False</em>, <em>log=False</em>, <em>hemispheres=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.group_func.group_func.connectome_analysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to threshold and binarize the connectomes.
+Presently just thresholds to reference correlation of
+setting all edges below 0.3 to 0, and those greater to 1.
+This value of 0.3 was generally the highest performing in
+discriminability analyses.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>thr:</dt>
+<dd><ul class="first last">
+<li>the threshold to binarize below.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.group_func.group_func.get_connectomes">
+<code class="descname">get_connectomes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.group_func.group_func.get_connectomes" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to load the relevant connectomes for all of the subjects
+for each parcellation we have.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.group_func.group_func.get_qa_files">
+<code class="descname">get_qa_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.group_func.group_func.get_qa_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to load the relevant quality assessment files,
+for all the subjects we have in our study, given a properly-formatted
+ndmg functional directory.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.group_func.group_func.group_level_analysis">
+<code class="descname">group_level_analysis</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.group_func.group_func.group_level_analysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to perform group level analysis after loading the
+functional qa objects properly.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.group_func.group_func.group_motion">
+<code class="descname">group_motion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.group_func.group_func.group_motion" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that performs group level motion corrective quality control.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.group_func.group_func.group_reg">
+<code class="descname">group_reg</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.group_func.group_func.group_reg" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that performs group level registration quality control.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.group_func.group_func.load_qa">
+<code class="descname">load_qa</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.group_func.group_func.load_qa" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to load the quality control objects.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.stats.plotly_helper">
+<span id="ndmg-stats-plotly-helper-module"></span><h2>ndmg.stats.plotly_helper module<a class="headerlink" href="#module-ndmg.stats.plotly_helper" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ndmg.stats.plotly_helper.factors">
+<code class="descclassname">ndmg.stats.plotly_helper.</code><code class="descname">factors</code><span class="sig-paren">(</span><em>N</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.plotly_helper.factors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.plotly_helper.fig_to_trace">
+<code class="descclassname">ndmg.stats.plotly_helper.</code><code class="descname">fig_to_trace</code><span class="sig-paren">(</span><em>fig</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.plotly_helper.fig_to_trace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.plotly_helper.panel_arrangement">
+<code class="descclassname">ndmg.stats.plotly_helper.</code><code class="descname">panel_arrangement</code><span class="sig-paren">(</span><em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.plotly_helper.panel_arrangement" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.plotly_helper.panel_invisible">
+<code class="descclassname">ndmg.stats.plotly_helper.</code><code class="descname">panel_invisible</code><span class="sig-paren">(</span><em>plot</em>, <em>idx</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.plotly_helper.panel_invisible" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.plotly_helper.plot_degrees">
+<code class="descclassname">ndmg.stats.plotly_helper.</code><code class="descname">plot_degrees</code><span class="sig-paren">(</span><em>dats</em>, <em>name=None</em>, <em>ylab=None</em>, <em>xlab=None</em>, <em>hemi=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.plotly_helper.plot_degrees" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.plotly_helper.plot_density">
+<code class="descclassname">ndmg.stats.plotly_helper.</code><code class="descname">plot_density</code><span class="sig-paren">(</span><em>xs</em>, <em>ys</em>, <em>name=None</em>, <em>ylab=None</em>, <em>xlab=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.plotly_helper.plot_density" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.plotly_helper.plot_heatmap">
+<code class="descclassname">ndmg.stats.plotly_helper.</code><code class="descname">plot_heatmap</code><span class="sig-paren">(</span><em>dats</em>, <em>name=None</em>, <em>ylab=None</em>, <em>xlab=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.plotly_helper.plot_heatmap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.plotly_helper.plot_rugdensity">
+<code class="descclassname">ndmg.stats.plotly_helper.</code><code class="descname">plot_rugdensity</code><span class="sig-paren">(</span><em>series</em>, <em>name=None</em>, <em>ylab=None</em>, <em>xlab=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.plotly_helper.plot_rugdensity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.plotly_helper.plot_series">
+<code class="descclassname">ndmg.stats.plotly_helper.</code><code class="descname">plot_series</code><span class="sig-paren">(</span><em>dats</em>, <em>name=None</em>, <em>ylab=None</em>, <em>xlab=None</em>, <em>sort=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.plotly_helper.plot_series" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.plotly_helper.rand_jitter">
+<code class="descclassname">ndmg.stats.plotly_helper.</code><code class="descname">rand_jitter</code><span class="sig-paren">(</span><em>arr</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.plotly_helper.rand_jitter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.plotly_helper.std_layout">
+<code class="descclassname">ndmg.stats.plotly_helper.</code><code class="descname">std_layout</code><span class="sig-paren">(</span><em>name=None</em>, <em>ylab=None</em>, <em>xlab=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.plotly_helper.std_layout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.plotly_helper.traces_to_panels">
+<code class="descclassname">ndmg.stats.plotly_helper.</code><code class="descname">traces_to_panels</code><span class="sig-paren">(</span><em>traces</em>, <em>names=[]</em>, <em>ylabs=None</em>, <em>xlabs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.plotly_helper.traces_to_panels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.stats.qa_adjacency">
+<span id="ndmg-stats-qa-adjacency-module"></span><h2>ndmg.stats.qa_adjacency module<a class="headerlink" href="#module-ndmg.stats.qa_adjacency" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ndmg.stats.qa_adjacency.graph2png">
+<code class="descclassname">ndmg.stats.qa_adjacency.</code><code class="descname">graph2png</code><span class="sig-paren">(</span><em>infile</em>, <em>outdir</em>, <em>fname=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_adjacency.graph2png" title="Permalink to this definition">¶</a></dt>
+<dd><p>infile: input .gpickle or .graphml file
+outdir: path to directory to store output png files</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_adjacency.main">
+<code class="descclassname">ndmg.stats.qa_adjacency.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_adjacency.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Argument parser and directory crawler. Takes organization and atlas
+information and produces a dictionary of file lists based on datasets
+of interest and then passes it off for processing.
+Required parameters:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>infile:</dt>
+<dd><ul class="first last simple">
+<li>Basepath for which data can be found directly inwards from</li>
+</ul>
+</dd>
+<dt>outdir:</dt>
+<dd><ul class="first last simple">
+<li>Path to derivative save location</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.stats.qa_fibers">
+<span id="ndmg-stats-qa-fibers-module"></span><h2>ndmg.stats.qa_fibers module<a class="headerlink" href="#module-ndmg.stats.qa_fibers" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ndmg.stats.qa_fibers.load_atlas">
+<code class="descclassname">ndmg.stats.qa_fibers.</code><code class="descname">load_atlas</code><span class="sig-paren">(</span><em>path</em>, <em>opacity</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_fibers.load_atlas" title="Permalink to this definition">¶</a></dt>
+<dd><p>path: path to atlas file
+opacity: opacity of overlayed atlas brain</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_fibers.random_sample">
+<code class="descclassname">ndmg.stats.qa_fibers.</code><code class="descname">random_sample</code><span class="sig-paren">(</span><em>fibs</em>, <em>num_samples</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_fibers.random_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>fibs: fibers thresholded above median
+num_samples: number of fibers to sample from fibs</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_fibers.threshold_fibers">
+<code class="descclassname">ndmg.stats.qa_fibers.</code><code class="descname">threshold_fibers</code><span class="sig-paren">(</span><em>fibs</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_fibers.threshold_fibers" title="Permalink to this definition">¶</a></dt>
+<dd><p>fibs: fibers as 2D array (N,3)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_fibers.visualize_fibs">
+<code class="descclassname">ndmg.stats.qa_fibers.</code><code class="descname">visualize_fibs</code><span class="sig-paren">(</span><em>fibs</em>, <em>fibfile</em>, <em>atlasfile</em>, <em>outdir</em>, <em>opacity</em>, <em>num_samples</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_fibers.visualize_fibs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes fiber streamlines and visualizes them using DiPy
+Required Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>fibfile: Path to fiber file</li>
+<li>atlasfile: Path to atlas file</li>
+<li>outdir: Path to output directory</li>
+<li>opacity: Opacity of overlayed brain</li>
+<li>num_samples: number of fibers to randomly sample from fibfile</li>
+</ul>
+</div></blockquote>
+<p>Optional Arguments:</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.stats.qa_func">
+<span id="ndmg-stats-qa-func-module"></span><h2>ndmg.stats.qa_func module<a class="headerlink" href="#module-ndmg.stats.qa_func" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ndmg.stats.qa_func.qa_func">
+<em class="property">class </em><code class="descclassname">ndmg.stats.qa_func.</code><code class="descname">qa_func</code><a class="headerlink" href="#ndmg.stats.qa_func.qa_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="ndmg.stats.qa_func.qa_func.load">
+<em class="property">static </em><code class="descname">load</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_func.qa_func.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function for loading a qa_func object, so that we
+can perform group level quality control easily.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>filename: the name of the pickle file containing</dt>
+<dd>our qa_func object</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.qa_func.qa_func.nuisance_qa">
+<code class="descname">nuisance_qa</code><span class="sig-paren">(</span><em>nuis_ts</em>, <em>nuis_brain</em>, <em>prenuis_brain</em>, <em>qcdir</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_func.qa_func.nuisance_qa" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to assess the quality of nuisance correction.</p>
+<p><strong>Positional Arguments</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>nuis_ts:</dt>
+<dd><ul class="first last simple">
+<li>the timeseries after nuisance correction.</li>
+</ul>
+</dd>
+<dt>nuis_brain:</dt>
+<dd><ul class="first last simple">
+<li>the nuisance corrected brain image.</li>
+</ul>
+</dd>
+<dt>prenuis_brain:</dt>
+<dd><ul class="first last simple">
+<li>the brain before nuisance correction.</li>
+</ul>
+</dd>
+<dt>qcdir:</dt>
+<dd><ul class="first last simple">
+<li>the directory to place quality control images.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.qa_func.qa_func.preproc_qa">
+<code class="descname">preproc_qa</code><span class="sig-paren">(</span><em>mc_brain</em>, <em>qcdir=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_func.qa_func.preproc_qa" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function for performing quality control given motion
+correction information. Produces plots of the motion correction
+parameters used.</p>
+<p><strong>Positional Arguments</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>mc_brain:</dt>
+<dd><ul class="first simple">
+<li>the motion corrected brain. should have</li>
+</ul>
+<p class="last">an identically named file + &#8216;.par&#8217; created by mcflirt.</p>
+</dd>
+<dt>scan_id:</dt>
+<dd><ul class="first last simple">
+<li>the id of the subject.</li>
+</ul>
+</dd>
+<dt>qcdir:</dt>
+<dd><ul class="first last simple">
+<li>the quality control directory.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.qa_func.qa_func.reg_anat_qa">
+<code class="descname">reg_anat_qa</code><span class="sig-paren">(</span><em>aligned_anat</em>, <em>atlas</em>, <em>outdir</em>, <em>qcdir</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_func.qa_func.reg_anat_qa" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that produces quality control information for registration
+leg of the pipeline for anatomical scans.</p>
+<p><strong>Positional Arguments</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>aligned_anat:</dt>
+<dd><ul class="first last simple">
+<li>the aligned anatomical MRI.</li>
+</ul>
+</dd>
+<dt>atlas:</dt>
+<dd><ul class="first simple">
+<li>the atlas the functional and anatomical brains</li>
+</ul>
+<p class="last">were aligned to.</p>
+</dd>
+<dt>outdir:</dt>
+<dd><ul class="first last simple">
+<li>the directory where temporary files will be placed.</li>
+</ul>
+</dd>
+<dt>qcdir:</dt>
+<dd><ul class="first simple">
+<li>the directory in which quality control images will</li>
+</ul>
+<p class="last">be placed.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.qa_func.qa_func.reg_func_qa">
+<code class="descname">reg_func_qa</code><span class="sig-paren">(</span><em>aligned_func</em>, <em>atlas</em>, <em>outdir</em>, <em>qcdir</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_func.qa_func.reg_func_qa" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that produces quality control information for registration
+leg of the pipeline for functional scans.</p>
+<p><strong>Positional Arguments</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>aligned_func:</dt>
+<dd><ul class="first last simple">
+<li>the aligned functional MRI.</li>
+</ul>
+</dd>
+<dt>atlas:</dt>
+<dd><ul class="first last simple">
+<li>the atlas the functional brain is aligned to.</li>
+</ul>
+</dd>
+<dt>outdir:</dt>
+<dd><ul class="first last simple">
+<li>the directory where temporary files will be placed.</li>
+</ul>
+</dd>
+<dt>qcdir:</dt>
+<dd><ul class="first simple">
+<li>the directory in which quality control images will</li>
+</ul>
+<p class="last">be placed.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.qa_func.qa_func.roi_ts_qa">
+<code class="descname">roi_ts_qa</code><span class="sig-paren">(</span><em>timeseries</em>, <em>func</em>, <em>anat</em>, <em>label</em>, <em>qcdir</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_func.qa_func.roi_ts_qa" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to perform ROI timeseries quality control.</p>
+<p><strong>Positional Arguments</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>timeseries:</dt>
+<dd><ul class="first last simple">
+<li>a path to the ROI timeseries.</li>
+</ul>
+</dd>
+<dt>func:</dt>
+<dd><ul class="first simple">
+<li>the functional image that has timeseries</li>
+</ul>
+<p class="last">extract from it.</p>
+</dd>
+<dt>anat:</dt>
+<dd><ul class="first last simple">
+<li>the anatomical image that is aligned.</li>
+</ul>
+</dd>
+<dt>label:</dt>
+<dd><ul class="first simple">
+<li>the label in which voxel timeseries will be</li>
+</ul>
+<p class="last">downsampled.</p>
+</dd>
+<dt>qcdir:</dt>
+<dd><ul class="first last simple">
+<li>the quality control directory to place outputs.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.qa_func.qa_func.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_func.qa_func.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function for saving a qa_func object.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div>filename: the name of the file we want to save to.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.qa_func.qa_func.self_reg_qa">
+<code class="descname">self_reg_qa</code><span class="sig-paren">(</span><em>freg</em>, <em>sreg_func_dir</em>, <em>sreg_anat_dir</em>, <em>outdir</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_func.qa_func.self_reg_qa" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that produces self-registration quality control figures.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>freg:</dt>
+<dd><ul class="first last simple">
+<li>the func_register object from registration.</li>
+</ul>
+</dd>
+<dt>sreg_func_dir:</dt>
+<dd><ul class="first last simple">
+<li>the directory to place functional qc images.</li>
+</ul>
+</dd>
+<dt>outdir:</dt>
+<dd><ul class="first last simple">
+<li>the directory where the temporary files will be placed.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.qa_func.qa_func.temp_reg_qa">
+<code class="descname">temp_reg_qa</code><span class="sig-paren">(</span><em>freg</em>, <em>treg_func_dir</em>, <em>treg_anat_dir</em>, <em>outdir</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_func.qa_func.temp_reg_qa" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that produces self-registration quality control figures.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>freg:</dt>
+<dd><ul class="first last simple">
+<li>the functional registration object.</li>
+</ul>
+</dd>
+<dt>treg_func_dir:</dt>
+<dd><ul class="first last simple">
+<li>the directory to place functional qc images.</li>
+</ul>
+</dd>
+<dt>treg_anat_dir:</dt>
+<dd><ul class="first last simple">
+<li>the directory to place anatomical qc images.</li>
+</ul>
+</dd>
+<dt>outdir:</dt>
+<dd><ul class="first last simple">
+<li>the directory where the temporary files will be placed.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.qa_func.qa_func.voxel_qa">
+<code class="descname">voxel_qa</code><span class="sig-paren">(</span><em>func</em>, <em>mask</em>, <em>qadir</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_func.qa_func.voxel_qa" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to compute voxelwise statistics, such as voxelwise mean,
+voxelwise snr, voxelwise cnr, for an image, and produce related
+qa plots.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>func:</dt>
+<dd><ul class="first last simple">
+<li>the path to the functional image we want statistics for.</li>
+</ul>
+</dd>
+<dt>mask:</dt>
+<dd><ul class="first last simple">
+<li>the path to the anatomical mask.</li>
+</ul>
+</dd>
+<dt>qadir:</dt>
+<dd><ul class="first last simple">
+<li>the directory to place qa images.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.stats.qa_func.qa_func.voxel_ts_qa">
+<code class="descname">voxel_ts_qa</code><span class="sig-paren">(</span><em>timeseries</em>, <em>voxel_func</em>, <em>atlas_mask</em>, <em>qcdir</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_func.qa_func.voxel_ts_qa" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to analyze the voxel timeseries extracted.</p>
+<p><strong>Positional Arguments</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>voxel_func:</dt>
+<dd><blockquote class="first">
+<div><ul class="simple">
+<li>the functional timeseries that</li>
+</ul>
+</div></blockquote>
+<p class="last">has voxel timeseries extracted from it.</p>
+</dd>
+<dt>atlas_mask:</dt>
+<dd><blockquote class="first">
+<div><ul class="simple">
+<li>the mask under which</li>
+</ul>
+</div></blockquote>
+<p class="last">voxel timeseries was extracted.</p>
+</dd>
+<dt>qcdir:</dt>
+<dd><ul class="first last simple">
+<li>the directory to place qc in.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.stats.qa_graphs">
+<span id="ndmg-stats-qa-graphs-module"></span><h2>ndmg.stats.qa_graphs module<a class="headerlink" href="#module-ndmg.stats.qa_graphs" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ndmg.stats.qa_graphs.compute_metrics">
+<code class="descclassname">ndmg.stats.qa_graphs.</code><code class="descname">compute_metrics</code><span class="sig-paren">(</span><em>fs</em>, <em>outdir</em>, <em>atlas</em>, <em>verb=False</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_graphs.compute_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a set of files and a directory to put things, loads graphs and
+performs set of analyses on them, storing derivatives in a pickle format
+in the desired output location.</p>
+<dl class="docutils">
+<dt>Required parameters:</dt>
+<dd><dl class="first last docutils">
+<dt>fs:</dt>
+<dd><ul class="first last simple">
+<li>Dictionary of lists of files in each dataset</li>
+</ul>
+</dd>
+<dt>outdir:</dt>
+<dd><ul class="first last simple">
+<li>Path to derivative save location</li>
+</ul>
+</dd>
+<dt>atlas:</dt>
+<dd><ul class="first last simple">
+<li>Name of atlas of interest as it appears in the directory titles</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>Optional parameters:</dt>
+<dd><dl class="first last docutils">
+<dt>verb:</dt>
+<dd><ul class="first last simple">
+<li>Toggles verbose output statements</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_graphs.density">
+<code class="descclassname">ndmg.stats.qa_graphs.</code><code class="descname">density</code><span class="sig-paren">(</span><em>data</em>, <em>nbins=500</em>, <em>rng=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_graphs.density" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes density for metrics which return vectors</p>
+<dl class="docutils">
+<dt>Required parameters:</dt>
+<dd><dl class="first last docutils">
+<dt>data:</dt>
+<dd><ul class="first last simple">
+<li>Dictionary of the vectors of data</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_graphs.main">
+<code class="descclassname">ndmg.stats.qa_graphs.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_graphs.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Argument parser and directory crawler. Takes organization and atlas
+information and produces a dictionary of file lists based on datasets
+of interest and then passes it off for processing.</p>
+<dl class="docutils">
+<dt>Required parameters:</dt>
+<dd><dl class="first last docutils">
+<dt>atlas:</dt>
+<dd><ul class="first last simple">
+<li>Name of atlas of interest as it appears in the directory titles</li>
+</ul>
+</dd>
+<dt>basepath:</dt>
+<dd><ul class="first last simple">
+<li>Basepath for which data can be found directly inwards from</li>
+</ul>
+</dd>
+<dt>outdir:</dt>
+<dd><ul class="first last simple">
+<li>Path to derivative save location</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>Optional parameters:</dt>
+<dd><dl class="first last docutils">
+<dt>fmt:</dt>
+<dd><ul class="first last simple">
+<li>Determines file organization; whether graphs are stored as
+.../atlas/dataset/graphs or .../dataset/atlas/graphs. If the
+latter, use the flag.</li>
+</ul>
+</dd>
+<dt>verb:</dt>
+<dd><ul class="first last simple">
+<li>Toggles verbose output statements</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_graphs.scan_statistic">
+<code class="descclassname">ndmg.stats.qa_graphs.</code><code class="descname">scan_statistic</code><span class="sig-paren">(</span><em>mygs</em>, <em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_graphs.scan_statistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes scan statistic-i on a set of graphs</p>
+<dl class="docutils">
+<dt>Required Parameters:</dt>
+<dd><dl class="first last docutils">
+<dt>mygs:</dt>
+<dd><ul class="first last simple">
+<li>Dictionary of graphs</li>
+</ul>
+</dd>
+<dt>i:</dt>
+<dd><ul class="first last simple">
+<li>which scan statistic to compute</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_graphs.show_means">
+<code class="descclassname">ndmg.stats.qa_graphs.</code><code class="descname">show_means</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_graphs.show_means" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_graphs.write">
+<code class="descclassname">ndmg.stats.qa_graphs.</code><code class="descname">write</code><span class="sig-paren">(</span><em>outdir</em>, <em>metric</em>, <em>data</em>, <em>atlas</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_graphs.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write computed derivative to disk in a pickle file</p>
+<dl class="docutils">
+<dt>Required parameters:</dt>
+<dd><dl class="first last docutils">
+<dt>outdir:</dt>
+<dd><ul class="first last simple">
+<li>Path to derivative save location</li>
+</ul>
+</dd>
+<dt>metric:</dt>
+<dd><ul class="first last simple">
+<li>The value that was calculated</li>
+</ul>
+</dd>
+<dt>data:</dt>
+<dd><ul class="first last simple">
+<li>The results of this calculation</li>
+</ul>
+</dd>
+<dt>atlas:</dt>
+<dd><ul class="first last simple">
+<li>Name of atlas of interest as it appears in the directory titles</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.stats.qa_graphs_plotting">
+<span id="ndmg-stats-qa-graphs-plotting-module"></span><h2>ndmg.stats.qa_graphs_plotting module<a class="headerlink" href="#module-ndmg.stats.qa_graphs_plotting" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ndmg.stats.qa_graphs_plotting.main">
+<code class="descclassname">ndmg.stats.qa_graphs_plotting.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_graphs_plotting.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_graphs_plotting.make_panel_plot">
+<code class="descclassname">ndmg.stats.qa_graphs_plotting.</code><code class="descname">make_panel_plot</code><span class="sig-paren">(</span><em>basepath</em>, <em>outf</em>, <em>dataset=None</em>, <em>atlas=None</em>, <em>minimal=True</em>, <em>log=True</em>, <em>hemispheres=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_graphs_plotting.make_panel_plot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.stats.qa_reg">
+<span id="ndmg-stats-qa-reg-module"></span><h2>ndmg.stats.qa_reg module<a class="headerlink" href="#module-ndmg.stats.qa_reg" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ndmg.stats.qa_reg.get_min_max">
+<code class="descclassname">ndmg.stats.qa_reg.</code><code class="descname">get_min_max</code><span class="sig-paren">(</span><em>data</em>, <em>minth=2</em>, <em>maxthr=95</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_reg.get_min_max" title="Permalink to this definition">¶</a></dt>
+<dd><p>data: regmri data to threshold.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_reg.plot_brain">
+<code class="descclassname">ndmg.stats.qa_reg.</code><code class="descname">plot_brain</code><span class="sig-paren">(</span><em>brain</em>, <em>minthr=2</em>, <em>maxthr=95</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_reg.plot_brain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_reg.plot_overlays">
+<code class="descclassname">ndmg.stats.qa_reg.</code><code class="descname">plot_overlays</code><span class="sig-paren">(</span><em>atlas</em>, <em>b0</em>, <em>cmaps=None</em>, <em>minthr=2</em>, <em>maxthr=95</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_reg.plot_overlays" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_reg.reg_mri_pngs">
+<code class="descclassname">ndmg.stats.qa_reg.</code><code class="descname">reg_mri_pngs</code><span class="sig-paren">(</span><em>mri</em>, <em>atlas</em>, <em>outdir</em>, <em>loc=0</em>, <em>mean=False</em>, <em>minthr=2</em>, <em>maxthr=95</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_reg.reg_mri_pngs" title="Permalink to this definition">¶</a></dt>
+<dd><p>outdir: directory where output png file is saved
+fname: name of output file WITHOUT FULL PATH. Path provided in outdir.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.stats.qa_tensor">
+<span id="ndmg-stats-qa-tensor-module"></span><h2>ndmg.stats.qa_tensor module<a class="headerlink" href="#module-ndmg.stats.qa_tensor" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ndmg.stats.qa_tensor.fa_pngs">
+<code class="descclassname">ndmg.stats.qa_tensor.</code><code class="descname">fa_pngs</code><span class="sig-paren">(</span><em>data</em>, <em>fname</em>, <em>outdir</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_tensor.fa_pngs" title="Permalink to this definition">¶</a></dt>
+<dd><p>data: fa map</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_tensor.plot_rgb">
+<code class="descclassname">ndmg.stats.qa_tensor.</code><code class="descname">plot_rgb</code><span class="sig-paren">(</span><em>im</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_tensor.plot_rgb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.stats.qa_tensor.tensor2fa">
+<code class="descclassname">ndmg.stats.qa_tensor.</code><code class="descname">tensor2fa</code><span class="sig-paren">(</span><em>tensors</em>, <em>tensor_name</em>, <em>dwi</em>, <em>derivdir</em>, <em>qcdir</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.stats.qa_tensor.tensor2fa" title="Permalink to this definition">¶</a></dt>
+<dd><p>outdir: location of output directory.
+fname: name of output fa map file. default is none (name created based on
+input file)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.stats">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ndmg.stats" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, NeuroData.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.7',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

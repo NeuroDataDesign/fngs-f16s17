@@ -1,0 +1,597 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ndmg.register package &mdash; ndmg fngs 0.0.7 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="ndmg fngs 0.0.7 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ndmg fngs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ndmg.register package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-ndmg.register.register">ndmg.register.register module</a></li>
+<li><a class="reference internal" href="#module-ndmg.register">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ndmg fngs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>ndmg.register package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ndmg.register.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ndmg-register-package">
+<h1>ndmg.register package<a class="headerlink" href="#ndmg-register-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ndmg.register.register">
+<span id="ndmg-register-register-module"></span><h2>ndmg.register.register module<a class="headerlink" href="#module-ndmg.register.register" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ndmg.register.register.func_register">
+<em class="property">class </em><code class="descclassname">ndmg.register.register.</code><code class="descname">func_register</code><span class="sig-paren">(</span><em>func</em>, <em>t1w</em>, <em>atlas</em>, <em>atlas_brain</em>, <em>atlas_mask</em>, <em>aligned_func</em>, <em>aligned_t1w</em>, <em>outdir</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.register.register.func_register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ndmg.register.register.register" title="ndmg.register.register.register"><code class="xref py py-class docutils literal"><span class="pre">ndmg.register.register.register</span></code></a></p>
+<dl class="method">
+<dt id="ndmg.register.register.func_register.register">
+<code class="descname">register</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.register.register.func_register.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to perform self registration followed by
+template registration.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.register.register.func_register.self_align">
+<code class="descname">self_align</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.register.register.func_register.self_align" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to perform self alignment. Uses a local optimisation
+cost function to get the two images close, and then uses bbr
+to obtain a good alignment of brain boundaries.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.register.register.func_register.template_align">
+<code class="descname">template_align</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.register.register.func_register.template_align" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to perform template alignment. First tries nonlinear
+registration, and if that does not work effectively, does a linear
+registration instead.
+NOTE: for this to work, must first have called self-align.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ndmg.register.register.register">
+<em class="property">class </em><code class="descclassname">ndmg.register.register.</code><code class="descname">register</code><a class="headerlink" href="#ndmg.register.register.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="ndmg.register.register.register.align">
+<code class="descname">align</code><span class="sig-paren">(</span><em>inp</em>, <em>ref</em>, <em>xfm=None</em>, <em>out=None</em>, <em>dof=12</em>, <em>searchrad=True</em>, <em>bins=256</em>, <em>interp=None</em>, <em>cost='mutualinfo'</em>, <em>sch=None</em>, <em>init=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.register.register.register.align" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns two images and stores the transform between them</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>inp:</dt>
+<dd><ul class="first last simple">
+<li>Input impage to be aligned as a nifti image file</li>
+</ul>
+</dd>
+<dt>ref:</dt>
+<dd><ul class="first last simple">
+<li>Image being aligned to as a nifti image file</li>
+</ul>
+</dd>
+<dt>xfm:</dt>
+<dd><ul class="first last simple">
+<li>Returned transform between two images</li>
+</ul>
+</dd>
+<dt>out:</dt>
+<dd><ul class="first simple">
+<li>determines whether the image will be automatically</li>
+</ul>
+<p class="last">aligned.</p>
+</dd>
+<dt>dof:</dt>
+<dd><ul class="first last simple">
+<li>the number of degrees of freedom of the alignment.</li>
+</ul>
+</dd>
+<dt>searchrad:</dt>
+<dd><ul class="first simple">
+<li>a bool indicating whether to use the predefined</li>
+</ul>
+<p class="last">searchradius parameter (180 degree sweep in x, y, and z).</p>
+</dd>
+<dt>interp:</dt>
+<dd><ul class="first last simple">
+<li>the interpolation method to use.</li>
+</ul>
+</dd>
+<dt>sch:</dt>
+<dd><ul class="first last simple">
+<li>the optional FLIRT schedule file.</li>
+</ul>
+</dd>
+<dt>init:</dt>
+<dd><ul class="first last simple">
+<li>an initial guess of an alignment.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.register.register.register.align_epi">
+<code class="descname">align_epi</code><span class="sig-paren">(</span><em>epi</em>, <em>t1</em>, <em>brain</em>, <em>out</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.register.register.register.align_epi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Algins EPI images to T1w image</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.register.register.register.align_nonlinear">
+<code class="descname">align_nonlinear</code><span class="sig-paren">(</span><em>inp</em>, <em>ref</em>, <em>xfm</em>, <em>warp</em>, <em>mask=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.register.register.register.align_nonlinear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns two images using nonlinear methods and stores the
+transform between them.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>inp:</dt>
+<dd><ul class="first last simple">
+<li>the input image.</li>
+</ul>
+</dd>
+<dt>ref:</dt>
+<dd><ul class="first last simple">
+<li>the reference image.</li>
+</ul>
+</dd>
+<dt>affxfm:</dt>
+<dd><ul class="first last simple">
+<li>the affine transform to use.</li>
+</ul>
+</dd>
+<dt>warp:</dt>
+<dd><ul class="first last simple">
+<li>the path to store the nonlinear warp.</li>
+</ul>
+</dd>
+<dt>mask:</dt>
+<dd><ul class="first simple">
+<li>a mask in which voxels will be extracted</li>
+</ul>
+<p class="last">during nonlinear alignment.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.register.register.register.align_slices">
+<code class="descname">align_slices</code><span class="sig-paren">(</span><em>dwi</em>, <em>corrected_dwi</em>, <em>idx</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.register.register.register.align_slices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs eddy-correction (or self-alignment) of a stack of 3D images</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><dl class="first last docutils">
+<dt>dwi:</dt>
+<dd><ul class="first last simple">
+<li>4D (DTI) image volume as a nifti file</li>
+</ul>
+</dd>
+<dt>corrected_dwi:</dt>
+<dd><ul class="first last simple">
+<li>Corrected and aligned DTI volume in a nifti file</li>
+</ul>
+</dd>
+<dt>idx:</dt>
+<dd><ul class="first last simple">
+<li>Index of the first B0 volume in the stack</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.register.register.register.apply_warp">
+<code class="descname">apply_warp</code><span class="sig-paren">(</span><em>inp</em>, <em>out</em>, <em>ref</em>, <em>warp</em>, <em>xfm=None</em>, <em>mask=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.register.register.register.apply_warp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a warp from the functional to reference space
+in a single step, using information about the structural-&gt;ref
+mapping as well as the functional to structural mapping.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>inp:</dt>
+<dd><ul class="first last simple">
+<li>the input image to be aligned as a nifti image file.</li>
+</ul>
+</dd>
+<dt>out:</dt>
+<dd><ul class="first last simple">
+<li>the output aligned image.</li>
+</ul>
+</dd>
+<dt>ref:</dt>
+<dd><ul class="first last simple">
+<li>the image being aligned to.</li>
+</ul>
+</dd>
+<dt>warp:</dt>
+<dd><ul class="first last simple">
+<li>the warp from the structural to reference space.</li>
+</ul>
+</dd>
+<dt>premat:</dt>
+<dd><ul class="first simple">
+<li>the affine transformation from functional to</li>
+</ul>
+<p class="last">structural space.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.register.register.register.applyxfm">
+<code class="descname">applyxfm</code><span class="sig-paren">(</span><em>inp</em>, <em>ref</em>, <em>xfm</em>, <em>aligned</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.register.register.register.applyxfm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns two images with a given transform</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>inp:</dt>
+<dd><ul class="first last simple">
+<li>Input impage to be aligned as a nifti image file</li>
+</ul>
+</dd>
+<dt>ref:</dt>
+<dd><ul class="first last simple">
+<li>Image being aligned to as a nifti image file</li>
+</ul>
+</dd>
+<dt>xfm:</dt>
+<dd><ul class="first last simple">
+<li>Transform between two images</li>
+</ul>
+</dd>
+<dt>aligned:</dt>
+<dd><ul class="first last simple">
+<li>Aligned output image as a nifti image file</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.register.register.register.combine_xfms">
+<code class="descname">combine_xfms</code><span class="sig-paren">(</span><em>xfm1</em>, <em>xfm2</em>, <em>xfmout</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.register.register.register.combine_xfms" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to combine two transformations, and output the
+resulting transformation.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments</strong></dt>
+<dd><dl class="first last docutils">
+<dt>xfm1:</dt>
+<dd><ul class="first last simple">
+<li>the path to the first transformation</li>
+</ul>
+</dd>
+<dt>xfm2:</dt>
+<dd><ul class="first last simple">
+<li>the path to the second transformation</li>
+</ul>
+</dd>
+<dt>xfmout:</dt>
+<dd><ul class="first last simple">
+<li>the path to the output transformation</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.register.register.register.dwi2atlas">
+<code class="descname">dwi2atlas</code><span class="sig-paren">(</span><em>dwi</em>, <em>gtab</em>, <em>t1w</em>, <em>atlas</em>, <em>aligned_dwi</em>, <em>outdir</em>, <em>clean=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.register.register.register.dwi2atlas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligns two images and stores the transform between them</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>dwi:</dt>
+<dd><ul class="first last simple">
+<li>Input impage to be aligned as a nifti image file</li>
+</ul>
+</dd>
+<dt>gtab:</dt>
+<dd><ul class="first last simple">
+<li>object containing gradient directions and strength</li>
+</ul>
+</dd>
+<dt>t1w:</dt>
+<dd><ul class="first last simple">
+<li>Intermediate image being aligned to as a nifti image file</li>
+</ul>
+</dd>
+<dt>atlas:</dt>
+<dd><ul class="first last simple">
+<li>Terminal image being aligned to as a nifti image file</li>
+</ul>
+</dd>
+<dt>aligned_dwi:</dt>
+<dd><ul class="first last simple">
+<li>Aligned output dwi image as a nifti image file</li>
+</ul>
+</dd>
+<dt>outdir:</dt>
+<dd><ul class="first last simple">
+<li>Directory for derivatives to be stored</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.register.register.register.resample">
+<code class="descname">resample</code><span class="sig-paren">(</span><em>base</em>, <em>ingested</em>, <em>template</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.register.register.register.resample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resamples the image such that images which have already been aligned
+in real coordinates also overlap in the image/voxel space.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments</strong></dt>
+<dd><dl class="first last docutils">
+<dt>base:</dt>
+<dd><ul class="first last simple">
+<li>Image to be aligned</li>
+</ul>
+</dd>
+<dt>ingested:</dt>
+<dd><ul class="first last simple">
+<li>Name of image after alignment</li>
+</ul>
+</dd>
+<dt>template:</dt>
+<dd><ul class="first last simple">
+<li>Image that is the target of the alignment</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.register.register.register.resample_fsl">
+<code class="descname">resample_fsl</code><span class="sig-paren">(</span><em>base</em>, <em>res</em>, <em>goal_res</em>, <em>interp='nearestneighbour'</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.register.register.register.resample_fsl" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to resample a base image in fsl to that of a template.
+<strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>base:</dt>
+<dd><ul class="first last simple">
+<li>the path to the base image to resample.</li>
+</ul>
+</dd>
+<dt>res:</dt>
+<dd><ul class="first last simple">
+<li>the filename after resampling.</li>
+</ul>
+</dd>
+<dt>goal_res:</dt>
+<dd><ul class="first last simple">
+<li>the desired resolution.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.register">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ndmg.register" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, NeuroData.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.7',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

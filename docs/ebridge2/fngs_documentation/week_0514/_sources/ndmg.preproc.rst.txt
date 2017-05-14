@@ -1,0 +1,30 @@
+ndmg.preproc package
+====================
+
+Submodules
+----------
+
+ndmg.preproc.preproc_func module
+--------------------------------
+
+.. automodule:: ndmg.preproc.preproc_func
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.preproc.rescale_bvec module
+--------------------------------
+
+.. automodule:: ndmg.preproc.rescale_bvec
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: ndmg.preproc
+    :members:
+    :undoc-members:
+    :show-inheritance:

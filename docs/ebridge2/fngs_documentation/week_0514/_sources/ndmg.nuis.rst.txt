@@ -1,0 +1,22 @@
+ndmg.nuis package
+=================
+
+Submodules
+----------
+
+ndmg.nuis.nuis module
+---------------------
+
+.. automodule:: ndmg.nuis.nuis
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: ndmg.nuis
+    :members:
+    :undoc-members:
+    :show-inheritance:

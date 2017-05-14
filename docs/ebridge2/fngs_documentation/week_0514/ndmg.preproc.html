@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ndmg.preproc package &mdash; ndmg fngs 0.0.7 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="ndmg fngs 0.0.7 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ndmg fngs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ndmg.preproc package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-ndmg.preproc.preproc_func">ndmg.preproc.preproc_func module</a></li>
+<li><a class="reference internal" href="#module-ndmg.preproc.rescale_bvec">ndmg.preproc.rescale_bvec module</a></li>
+<li><a class="reference internal" href="#module-ndmg.preproc">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ndmg fngs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>ndmg.preproc package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ndmg.preproc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ndmg-preproc-package">
+<h1>ndmg.preproc package<a class="headerlink" href="#ndmg-preproc-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ndmg.preproc.preproc_func">
+<span id="ndmg-preproc-preproc-func-module"></span><h2>ndmg.preproc.preproc_func module<a class="headerlink" href="#module-ndmg.preproc.preproc_func" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ndmg.preproc.preproc_func.preproc_func">
+<em class="property">class </em><code class="descclassname">ndmg.preproc.preproc_func.</code><code class="descname">preproc_func</code><a class="headerlink" href="#ndmg.preproc.preproc_func.preproc_func" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="ndmg.preproc.preproc_func.preproc_func.motion_correct">
+<code class="descname">motion_correct</code><span class="sig-paren">(</span><em>mri</em>, <em>corrected_mri</em>, <em>idx=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.preproc.preproc_func.preproc_func.motion_correct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs motion correction of a stack of 3D images.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><dl class="first last docutils">
+<dt>mri (String):</dt>
+<dd>-the 4d (fMRI) image volume as a nifti file.</dd>
+<dt>corrected_mri (String):</dt>
+<dd><ul class="first last simple">
+<li>the corrected and aligned fMRI image volume.</li>
+</ul>
+</dd>
+<dt>idx:</dt>
+<dd><ul class="first last simple">
+<li>the index to use as a reference for self
+alignment. Uses the meanvolume if not specified</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.preproc.preproc_func.preproc_func.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>func</em>, <em>preproc_func</em>, <em>motion_func</em>, <em>outdir</em>, <em>stc=None</em>, <em>qcdir=''</em>, <em>scanid=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.preproc.preproc_func.preproc_func.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to preprocess a stack of 3D images.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>mri:</dt>
+<dd><ul class="first last simple">
+<li>the 4d (fMRI) image volume as a nifti file (String).</li>
+</ul>
+</dd>
+<dt>motion_mri:</dt>
+<dd><ul class="first last simple">
+<li>the 4d (fMRI) image volume that is motion aligned (String).</li>
+</ul>
+</dd>
+<dt>preproc_mri:</dt>
+<dd><ul class="first simple">
+<li>the 4d (fMRI) preprocessed image volume</li>
+</ul>
+<p class="last">as a nifti image (String).</p>
+</dd>
+<dt>stc:</dt>
+<dd><ul class="first last simple">
+<li>the slice timing correction information. See documentation
+for slice_time_correct() for details.</li>
+</ul>
+</dd>
+<dt>mri_name:</dt>
+<dd><ul class="first last simple">
+<li>the name to append before all paths for file naming.</li>
+</ul>
+</dd>
+<dt>outdir:</dt>
+<dd><ul class="first last simple">
+<li>the location to place outputs (String).</li>
+</ul>
+</dd>
+<dt>qcdir:</dt>
+<dd><ul class="first simple">
+<li>optional argument required for quality control output</li>
+</ul>
+<p class="last">directory (String).</p>
+</dd>
+<dt>scanid:</dt>
+<dd><ul class="first simple">
+<li>optional argument required for quality control, is the id</li>
+</ul>
+<p class="last">of the subject (String).</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.preproc.preproc_func.preproc_func.slice_time_correct">
+<code class="descname">slice_time_correct</code><span class="sig-paren">(</span><em>func</em>, <em>corrected_func</em>, <em>stc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.preproc.preproc_func.preproc_func.slice_time_correct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs slice timing correction of a stack of 3D images.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><dl class="first last docutils">
+<dt>mri (String):</dt>
+<dd>-the 4d (fMRI) image volume as a nifti file.</dd>
+<dt>corrected_mri (String):</dt>
+<dd><ul class="first last simple">
+<li>the corrected and aligned fMRI image volume.</li>
+</ul>
+</dd>
+<dt>stc: the slice timing correction options, a string</dt>
+<dd>corresponding to the acquisition sequence.
+Options are &#8220;/path/to/file&#8221;, &#8220;down&#8221;, &#8220;up&#8221;,
+&#8220;interleaved&#8221;. If a file is passed, each line
+should correspond to a single value (in TRs)
+of the shift of each slice. For example,
+if the first slice has no shift, the first line
+in the text file would be &#8220;0.5&#8221;.
+If not None, make sure the &#8220;zooms&#8221; property is set
+in your data (nb.load(mri).header.get_zooms()), otherwise
+this function will throw an error.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.preproc.rescale_bvec">
+<span id="ndmg-preproc-rescale-bvec-module"></span><h2>ndmg.preproc.rescale_bvec module<a class="headerlink" href="#module-ndmg.preproc.rescale_bvec" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ndmg.preproc.rescale_bvec.rescale_bvec">
+<code class="descclassname">ndmg.preproc.rescale_bvec.</code><code class="descname">rescale_bvec</code><span class="sig-paren">(</span><em>bvec</em>, <em>bvec_new</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.preproc.rescale_bvec.rescale_bvec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalizes b-vectors to be of unit length for the non-zero b-values. If the
+b-value is 0, the vector is untouched.</p>
+<dl class="docutils">
+<dt>Positional Arguments:</dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>bvec:</dt>
+<dd>File name of the original b-vectors file</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>bvec_new:</dt>
+<dd>File name of the new (normalized) b-vectors file. Must have
+extension <cite>.bvec</cite></dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.preproc">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ndmg.preproc" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, NeuroData.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.7',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

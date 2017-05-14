@@ -1,0 +1,62 @@
+ndmg.scripts package
+====================
+
+Submodules
+----------
+
+ndmg.scripts.multigraph_pipeline module
+---------------------------------------
+
+.. automodule:: ndmg.scripts.multigraph_pipeline
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.scripts.ndmg_bids module
+-----------------------------
+
+.. automodule:: ndmg.scripts.ndmg_bids
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.scripts.ndmg_cloud module
+------------------------------
+
+.. automodule:: ndmg.scripts.ndmg_cloud
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.scripts.ndmg_dwi_pipeline module
+-------------------------------------
+
+.. automodule:: ndmg.scripts.ndmg_dwi_pipeline
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.scripts.ndmg_func_pipeline module
+--------------------------------------
+
+.. automodule:: ndmg.scripts.ndmg_func_pipeline
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.scripts.ndmg_setup module
+------------------------------
+
+.. automodule:: ndmg.scripts.ndmg_setup
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: ndmg.scripts
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ndmg.utils package &mdash; ndmg fngs 0.0.7 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="ndmg fngs 0.0.7 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ndmg fngs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ndmg.utils package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-ndmg.utils.bids">ndmg.utils.bids module</a></li>
+<li><a class="reference internal" href="#module-ndmg.utils.loadGraphs">ndmg.utils.loadGraphs module</a></li>
+<li><a class="reference internal" href="#ndmg-utils-mri-autoingest-module">ndmg.utils.mri_autoingest module</a></li>
+<li><a class="reference internal" href="#module-ndmg.utils.nifti_to_binary">ndmg.utils.nifti_to_binary module</a></li>
+<li><a class="reference internal" href="#module-ndmg.utils.nifti_to_png">ndmg.utils.nifti_to_png module</a></li>
+<li><a class="reference internal" href="#module-ndmg.utils.utils">ndmg.utils.utils module</a></li>
+<li><a class="reference internal" href="#module-ndmg.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ndmg fngs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>ndmg.utils package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ndmg.utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ndmg-utils-package">
+<h1>ndmg.utils package<a class="headerlink" href="#ndmg-utils-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ndmg.utils.bids">
+<span id="ndmg-utils-bids-module"></span><h2>ndmg.utils.bids module<a class="headerlink" href="#module-ndmg.utils.bids" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ndmg.utils.bids.crawl_bids_directory">
+<code class="descclassname">ndmg.utils.bids.</code><code class="descname">crawl_bids_directory</code><span class="sig-paren">(</span><em>inDir</em>, <em>subjs</em>, <em>sesh</em>, <em>dwi=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.bids.crawl_bids_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a BIDS directory and optionally list of sessions and subjects,
+crawls the path and returns pointers to all relevant files for analysis.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.bids.match_anatomical">
+<code class="descclassname">ndmg.utils.bids.</code><code class="descname">match_anatomical</code><span class="sig-paren">(</span><em>inDir</em>, <em>subj</em>, <em>anat_opt</em>, <em>modal</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.bids.match_anatomical" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to match from a list of anatomical scans to a corresponding
+modality specific scan.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>inDir:</dt>
+<dd><ul class="first last">
+<li>the base directory for inputs.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>subj:</dt>
+<dd><ul class="first last">
+<li>the current subject.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>anat_opt:</dt>
+<dd><ul class="first last">
+<li>a list of possible anatomical scans. Note that the list
+is expected to have at least 1 element.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>modal:</dt>
+<dd><ul class="first last">
+<li>a modality specific scan that we want to find a corresponding
+anatomical match for.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.bids.s3_get_data">
+<code class="descclassname">ndmg.utils.bids.</code><code class="descname">s3_get_data</code><span class="sig-paren">(</span><em>bucket</em>, <em>remote</em>, <em>local</em>, <em>public=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.bids.s3_get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an s3 bucket, data location on the bucket, and a download location,
+crawls the bucket and recursively pulls all data.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.bids.s3_push_data">
+<code class="descclassname">ndmg.utils.bids.</code><code class="descname">s3_push_data</code><span class="sig-paren">(</span><em>bucket</em>, <em>remote</em>, <em>outDir</em>, <em>modifier</em>, <em>creds=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.bids.s3_push_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.utils.loadGraphs">
+<span id="ndmg-utils-loadgraphs-module"></span><h2>ndmg.utils.loadGraphs module<a class="headerlink" href="#module-ndmg.utils.loadGraphs" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ndmg.utils.loadGraphs.loadGraphs">
+<code class="descclassname">ndmg.utils.loadGraphs.</code><code class="descname">loadGraphs</code><span class="sig-paren">(</span><em>filenames</em>, <em>verb=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.loadGraphs.loadGraphs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a list of files, returns a dictionary of graphs</p>
+<dl class="docutils">
+<dt>Required parameters:</dt>
+<dd><dl class="first last docutils">
+<dt>filenames:</dt>
+<dd><ul class="first last simple">
+<li>List of filenames for graphs</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>Optional parameters:</dt>
+<dd><dl class="first last docutils">
+<dt>verb:</dt>
+<dd><ul class="first last simple">
+<li>Toggles verbose output statements</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="ndmg-utils-mri-autoingest-module">
+<h2>ndmg.utils.mri_autoingest module<a class="headerlink" href="#ndmg-utils-mri-autoingest-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ndmg.utils.nifti_to_binary">
+<span id="ndmg-utils-nifti-to-binary-module"></span><h2>ndmg.utils.nifti_to_binary module<a class="headerlink" href="#module-ndmg.utils.nifti_to_binary" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ndmg.utils.nifti_to_binary.main">
+<code class="descclassname">ndmg.utils.nifti_to_binary.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.nifti_to_binary.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.nifti_to_binary.nib_to_bin">
+<code class="descclassname">ndmg.utils.nifti_to_binary.</code><code class="descname">nib_to_bin</code><span class="sig-paren">(</span><em>nii</em>, <em>dat</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.nifti_to_binary.nib_to_bin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.utils.nifti_to_png">
+<span id="ndmg-utils-nifti-to-png-module"></span><h2>ndmg.utils.nifti_to_png module<a class="headerlink" href="#module-ndmg.utils.nifti_to_png" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ndmg.utils.nifti_to_png.convert">
+<code class="descclassname">ndmg.utils.nifti_to_png.</code><code class="descname">convert</code><span class="sig-paren">(</span><em>indir</em>, <em>outdir</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.nifti_to_png.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes in nifti images, creates directory structure desired by ndstore
+ingest, and then converts niftis to png stacks. This script should be
+called prior to ingesting MR data into ndstore.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.nifti_to_png.main">
+<code class="descclassname">ndmg.utils.nifti_to_png.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.nifti_to_png.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.utils.utils">
+<span id="ndmg-utils-utils-module"></span><h2>ndmg.utils.utils module<a class="headerlink" href="#module-ndmg.utils.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ndmg.utils.utils.apply_mask">
+<code class="descclassname">ndmg.utils.utils.</code><code class="descname">apply_mask</code><span class="sig-paren">(</span><em>inp</em>, <em>masked</em>, <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.utils.apply_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to apply a mask to a brain.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>inp:</dt>
+<dd><ul class="first last simple">
+<li>the input path to an mri image.</li>
+</ul>
+</dd>
+<dt>masked:</dt>
+<dd><ul class="first last simple">
+<li>the output path to the masked image.</li>
+</ul>
+</dd>
+<dt>mask:</dt>
+<dd><ul class="first last simple">
+<li>the path to a brain mask.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.utils.execute_cmd">
+<code class="descclassname">ndmg.utils.utils.</code><code class="descname">execute_cmd</code><span class="sig-paren">(</span><em>cmd</em>, <em>verb=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.utils.execute_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a bash command, it is executed and the response piped back to the
+calling script</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.utils.extract_brain">
+<code class="descclassname">ndmg.utils.utils.</code><code class="descname">extract_brain</code><span class="sig-paren">(</span><em>inp</em>, <em>out</em>, <em>opts='-B'</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.utils.extract_brain" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to extract the brain from an image using FSL&#8217;s BET.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>inp:</dt>
+<dd><ul class="first last simple">
+<li>the input image.</li>
+</ul>
+</dd>
+<dt>out:</dt>
+<dd><ul class="first last simple">
+<li>the output brain extracted image.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.utils.get_b0">
+<code class="descclassname">ndmg.utils.utils.</code><code class="descname">get_b0</code><span class="sig-paren">(</span><em>gtab</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.utils.get_b0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes bval and bvec files and produces a structure in dipy format</p>
+<p><strong>Positional Arguments:</strong></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.utils.get_braindata">
+<code class="descclassname">ndmg.utils.utils.</code><code class="descname">get_braindata</code><span class="sig-paren">(</span><em>brain_file</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.utils.get_braindata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens a brain data series for a mask, mri image, or atlas.
+Returns a numpy.ndarray representation of a brain.</p>
+<p><strong>Positional Arguements</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>brain_file:</dt>
+<dd><ul class="first simple">
+<li>an object to open the data for a brain.</li>
+</ul>
+<p class="last">Can be a string (path to a brain file),
+nibabel.nifti1.nifti1image, or a numpy.ndarray</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.utils.get_filename">
+<code class="descclassname">ndmg.utils.utils.</code><code class="descname">get_filename</code><span class="sig-paren">(</span><em>label</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.utils.get_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a fully qualified path gets just the file name, without extension</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.utils.get_slice">
+<code class="descclassname">ndmg.utils.utils.</code><code class="descname">get_slice</code><span class="sig-paren">(</span><em>mri</em>, <em>volid</em>, <em>sli</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.utils.get_slice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a volume index and constructs a new nifti image from
+the specified volume.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>mri:</dt>
+<dd><ul class="first last simple">
+<li>the path to a 4d mri volume to extract a slice from.</li>
+</ul>
+</dd>
+<dt>volid:</dt>
+<dd><ul class="first last simple">
+<li>the index of the volume desired.</li>
+</ul>
+</dd>
+<dt>sli:</dt>
+<dd><ul class="first last simple">
+<li>the path to the destination for the slice.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.utils.graph2mtx">
+<code class="descclassname">ndmg.utils.utils.</code><code class="descname">graph2mtx</code><span class="sig-paren">(</span><em>self</em>, <em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.utils.graph2mtx" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to convert a networkx graph to an appropriate
+numpy matrix that is ordered properly from smallest
+ROI to largest.</p>
+<dl class="docutils">
+<dt><strong>Positional Arguments:</strong></dt>
+<dd><dl class="first last docutils">
+<dt>graph:</dt>
+<dd><ul class="first last simple">
+<li>a networkx graph.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.utils.load_bval_bvec">
+<code class="descclassname">ndmg.utils.utils.</code><code class="descname">load_bval_bvec</code><span class="sig-paren">(</span><em>fbval</em>, <em>fbvec</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.utils.load_bval_bvec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes bval and bvec files and produces a structure in dipy format</p>
+<p><strong>Positional Arguments:</strong></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.utils.load_bval_bvec_dwi">
+<code class="descclassname">ndmg.utils.utils.</code><code class="descname">load_bval_bvec_dwi</code><span class="sig-paren">(</span><em>fbval</em>, <em>fbvec</em>, <em>dwi_file</em>, <em>dwi_file_out</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.utils.load_bval_bvec_dwi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes bval and bvec files and produces a structure in dipy format</p>
+<p><strong>Positional Arguments:</strong></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ndmg.utils.utils.name_tmps">
+<code class="descclassname">ndmg.utils.utils.</code><code class="descname">name_tmps</code><span class="sig-paren">(</span><em>basedir</em>, <em>basename</em>, <em>extension</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.utils.utils.name_tmps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ndmg.utils" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, NeuroData.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.7',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+ndmg.utils package
+==================
+
+Submodules
+----------
+
+ndmg.utils.bids module
+----------------------
+
+.. automodule:: ndmg.utils.bids
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.utils.loadGraphs module
+----------------------------
+
+.. automodule:: ndmg.utils.loadGraphs
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.utils.mri_autoingest module
+--------------------------------
+
+.. automodule:: ndmg.utils.mri_autoingest
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.utils.nifti_to_binary module
+---------------------------------
+
+.. automodule:: ndmg.utils.nifti_to_binary
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.utils.nifti_to_png module
+------------------------------
+
+.. automodule:: ndmg.utils.nifti_to_png
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.utils.utils module
+-----------------------
+
+.. automodule:: ndmg.utils.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: ndmg.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:

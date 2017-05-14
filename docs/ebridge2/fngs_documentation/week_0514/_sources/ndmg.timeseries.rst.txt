@@ -1,0 +1,22 @@
+ndmg.timeseries package
+=======================
+
+Submodules
+----------
+
+ndmg.timeseries.timeseries module
+---------------------------------
+
+.. automodule:: ndmg.timeseries.timeseries
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: ndmg.timeseries
+    :members:
+    :undoc-members:
+    :show-inheritance:

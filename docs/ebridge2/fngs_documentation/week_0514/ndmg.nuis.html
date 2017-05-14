@@ -1,0 +1,511 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ndmg.nuis package &mdash; ndmg fngs 0.0.7 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="ndmg fngs 0.0.7 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ndmg fngs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ndmg.nuis package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-ndmg.nuis.nuis">ndmg.nuis.nuis module</a></li>
+<li><a class="reference internal" href="#module-ndmg.nuis">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ndmg fngs</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>ndmg.nuis package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ndmg.nuis.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ndmg-nuis-package">
+<h1>ndmg.nuis package<a class="headerlink" href="#ndmg-nuis-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ndmg.nuis.nuis">
+<span id="ndmg-nuis-nuis-module"></span><h2>ndmg.nuis.nuis module<a class="headerlink" href="#module-ndmg.nuis.nuis" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ndmg.nuis.nuis.nuis">
+<em class="property">class </em><code class="descclassname">ndmg.nuis.nuis.</code><code class="descname">nuis</code><a class="headerlink" href="#ndmg.nuis.nuis.nuis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="ndmg.nuis.nuis.nuis.compcor">
+<code class="descname">compcor</code><span class="sig-paren">(</span><em>masked_ts</em>, <em>n=None</em>, <em>t=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.nuis.nuis.nuis.compcor" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to extract principal components on
+timeseries of nuisance variables.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>masked_ts:</dt>
+<dd><ul class="first last simple">
+<li>the timeseries over a masked region.</li>
+</ul>
+</dd>
+<dt>n:</dt>
+<dd><ul class="first last simple">
+<li>the number of components to use. Default is None.
+Note that either n or t should be set, but not
+both.</li>
+</ul>
+</dd>
+<dt>t:</dt>
+<dd><ul class="first last simple">
+<li>the threshold for the amount of expected variance,
+as a float between 0 and 1, where the number of
+components returned will be less than the threshold
+indicated.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.nuis.nuis.nuis.erode_mask">
+<code class="descname">erode_mask</code><span class="sig-paren">(</span><em>mask_path</em>, <em>eroded_path</em>, <em>v=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.nuis.nuis.nuis.erode_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to erode a mask by a specified number of
+voxels. Here, we define erosion as the process of checking
+whether all the voxels within a number of voxels for a
+mask have values.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>mask_path:</dt>
+<dd><ul class="first last simple">
+<li>a path to a nifti containing a mask.</li>
+</ul>
+</dd>
+<dt>eroded_path:</dt>
+<dd><ul class="first last simple">
+<li>a path to the eroded mask to be created.</li>
+</ul>
+</dd>
+<dt>v:</dt>
+<dd><ul class="first last simple">
+<li>the number of voxels to erode by.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.nuis.nuis.nuis.extract_mask">
+<code class="descname">extract_mask</code><span class="sig-paren">(</span><em>prob_map</em>, <em>mask_path</em>, <em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.nuis.nuis.nuis.extract_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to extract a mask from a probability map.
+Also, performs mask erosion as a substep.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>prob_map:</dt>
+<dd><ul class="first last simple">
+<li>the path to probability map for the given class
+of brain tissue.</li>
+</ul>
+</dd>
+<dt>mask_path:</dt>
+<dd><ul class="first last simple">
+<li>the path to the extracted mask.</li>
+</ul>
+</dd>
+<dt>t:</dt>
+<dd><ul class="first last simple">
+<li>the threshold to consider voxels part of the class.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.nuis.nuis.nuis.freq_filter">
+<code class="descname">freq_filter</code><span class="sig-paren">(</span><em>mri</em>, <em>tr</em>, <em>highpass=0.01</em>, <em>lowpass=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.nuis.nuis.nuis.freq_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that uses scipy&#8217;s fft and ifft to frequency filter
+an fMRI image.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>mri:</dt>
+<dd><ul class="first last simple">
+<li>an ndarray containing timeseries of dimensions
+[voxels,timesteps] which the user wants to have
+frequency filtered.</li>
+</ul>
+</dd>
+<dt>highpass:</dt>
+<dd><ul class="first last simple">
+<li>the lower limit frequency band to remove below.</li>
+</ul>
+</dd>
+<dt>lowpass:</dt>
+<dd><ul class="first last simple">
+<li>the upper limit  frequency band to remove above.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.nuis.nuis.nuis.linear_reg">
+<code class="descname">linear_reg</code><span class="sig-paren">(</span><em>voxel</em>, <em>csf_reg=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.nuis.nuis.nuis.linear_reg" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to perform quadratic detrending of fMRI data.</p>
+<p><strong>Positional Arguments</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>voxel:</dt>
+<dd><ul class="first last simple">
+<li>an ndarray containing a voxel timeseries.
+dimensions should be [timesteps, voxels]</li>
+</ul>
+</dd>
+<dt>csf_reg:</dt>
+<dd><ul class="first last simple">
+<li>a timeseries for csf mean regression. If not
+provided, regression will not be performed.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.nuis.nuis.nuis.normalize_signal">
+<code class="descname">normalize_signal</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.nuis.nuis.nuis.normalize_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that performs normalization to a
+given fMRI signal. We subtract out the mean of
+each dimension, and then normalze our signal
+by the difference between the maximum and the minimum.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>data:</dt>
+<dd><ul class="first last simple">
+<li>the fMRI data. Should be passed as an ndarray,
+with dimensions [ntimesteps, nvoxels].</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.nuis.nuis.nuis.nuis_correct">
+<code class="descname">nuis_correct</code><span class="sig-paren">(</span><em>fmri</em>, <em>nuisance_mri</em>, <em>er_csfmask=None</em>, <em>highpass=0.01</em>, <em>lowpass=None</em>, <em>trim=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.nuis.nuis.nuis.nuis_correct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes Nuisance Signals from brain images, using a combination
+of Frequency filtering, and mean csf/quadratic regression.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>fmri:</dt>
+<dd><ul class="first last simple">
+<li>the path to a fmri brain as a nifti image.</li>
+</ul>
+</dd>
+<dt>nuisance_fmri:</dt>
+<dd><ul class="first last simple">
+<li>the desired path for the nuisance corrected brain.</li>
+</ul>
+</dd>
+<dt>wmmask:</dt>
+<dd><ul class="first last simple">
+<li>the path to a white matter mask (should be eroded ahead of
+time).</li>
+</ul>
+</dd>
+<dt>er_csfmask:</dt>
+<dd><ul class="first last simple">
+<li>the path to a lateral ventricles csf mask.</li>
+</ul>
+</dd>
+<dt>highpass:</dt>
+<dd><ul class="first last simple">
+<li>the highpass cutoff for FFT.</li>
+</ul>
+</dd>
+<dt>lowpass:</dt>
+<dd><ul class="first last simple">
+<li>the lowpass cutoff for FFT. NOT recommended.</li>
+</ul>
+</dd>
+<dt>trim:</dt>
+<dd><ul class="first last simple">
+<li>trim the timeseries by a number of slices. Corrects
+for T1 effects; that is, in some datasets, the first few
+timesteps may have a non-saturated T1 contrast and as such
+will show non-standard intensities.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.nuis.nuis.nuis.regress_signal">
+<code class="descname">regress_signal</code><span class="sig-paren">(</span><em>data</em>, <em>R</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.nuis.nuis.nuis.regress_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regresses data to given regressors.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>data:</dt>
+<dd><ul class="first last simple">
+<li>the data as a ndarray.</li>
+</ul>
+</dd>
+<dt>R:</dt>
+<dd><ul class="first last simple">
+<li>a numpy ndarray of regressors to
+regress to.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ndmg.nuis.nuis.nuis.segment_anat">
+<code class="descname">segment_anat</code><span class="sig-paren">(</span><em>anat</em>, <em>an</em>, <em>basename</em><span class="sig-paren">)</span><a class="headerlink" href="#ndmg.nuis.nuis.nuis.segment_anat" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to use FSL&#8217;s FAST to segment an anatomical
+image into GM, WM, and CSF maps.</p>
+<p><strong>Positional Arguments:</strong></p>
+<blockquote>
+<div><dl class="docutils">
+<dt>anat:</dt>
+<dd><ul class="first last simple">
+<li>an anatomical image.</li>
+</ul>
+</dd>
+<dt>an:</dt>
+<dd><ul class="first last simple">
+<li>an integer representing the type of the anatomical image.
+(1 for T1w, 2 for T2w, 3 for PD).</li>
+</ul>
+</dd>
+<dt>basename:</dt>
+<dd><ul class="first last simple">
+<li>the basename for outputs. Often it will be
+most convenient for this to be the dataset,
+followed by the subject, followed by the step of
+processing. Note that this anticipates a path as well;
+ie, /path/to/dataset_sub_nuis, with no extension.</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ndmg.nuis">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ndmg.nuis" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, NeuroData.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.7',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

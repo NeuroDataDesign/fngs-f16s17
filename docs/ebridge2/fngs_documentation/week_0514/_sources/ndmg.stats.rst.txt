@@ -1,0 +1,94 @@
+ndmg.stats package
+==================
+
+Submodules
+----------
+
+ndmg.stats.func_qa_utils module
+-------------------------------
+
+.. automodule:: ndmg.stats.func_qa_utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.stats.group_func module
+----------------------------
+
+.. automodule:: ndmg.stats.group_func
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.stats.plotly_helper module
+-------------------------------
+
+.. automodule:: ndmg.stats.plotly_helper
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.stats.qa_adjacency module
+------------------------------
+
+.. automodule:: ndmg.stats.qa_adjacency
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.stats.qa_fibers module
+---------------------------
+
+.. automodule:: ndmg.stats.qa_fibers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.stats.qa_func module
+-------------------------
+
+.. automodule:: ndmg.stats.qa_func
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.stats.qa_graphs module
+---------------------------
+
+.. automodule:: ndmg.stats.qa_graphs
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.stats.qa_graphs_plotting module
+------------------------------------
+
+.. automodule:: ndmg.stats.qa_graphs_plotting
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.stats.qa_reg module
+------------------------
+
+.. automodule:: ndmg.stats.qa_reg
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+ndmg.stats.qa_tensor module
+---------------------------
+
+.. automodule:: ndmg.stats.qa_tensor
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: ndmg.stats
+    :members:
+    :undoc-members:
+    :show-inheritance:
