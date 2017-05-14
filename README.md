@@ -81,7 +81,7 @@ As we can see, the bucket "fngs-test" we made earlier is there. Now, we will upl
 
 ```
 $ cd ~/
-$ aws sync /data/ s3://fngs-test/DC1-test/ --acl public-read
+$ aws s3 sync /data/ s3://fngs-test/DC1-test/ --acl public-read-write
 ```
 
 This will upload our data to S3 with the appropriate permissions.
@@ -96,8 +96,23 @@ Now that you have data in the cloud on S3, you are ready to deploy your analyses
 
 Now that we have that disclaimer out of the way, we can get our analysis up and running.
 
-Assuming you are still in your docker container (if you have exited, please reconfigure your instance using the preceving tutorial [Getting data into the Cloud](#getting-data-into-the-cloud)
+If you have exited the container, please relink with your aws account:
+
+```
+$ docker run -ti --entrypoint /bin/bash -v </path/to/your/credentials/>:/credentials ericw95/fngs:0.0.7
+$ aws configure 
+AWS Access Key ID [None]: ****your-access-key***********
+AWS Secret Access Key [None]: *******your-secret-key*********
+Default region name [None]: us-east-1
+Default output format [None]:
+```
 
 # Basic Tutorial
 
-In this basic tutorial, we will cover everything that is needed for you to do a basic analysis of your 
+In this basic tutorial, we will cover everything that is needed for you to do a basic, downsampled, demonstration. This demo is heavily miniaturized data, and as such some steps that prefer more fine-quality data (ie, skippstripping, registration, etc) will not work perfectly here, but will still give you an idea of the outputs you will get with the pipeline. To begin, let's pull the docker:
+
+```
+$ docker pull ericw95/fngs:0.0.7
+```
+
+This gets the docker 
