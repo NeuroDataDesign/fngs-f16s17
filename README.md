@@ -86,7 +86,13 @@ $ aws sync /data/ s3://fngs-test/DC1-test/ --acl public-read
 
 This will upload our data to S3 with the appropriate permissions.
 
-Now, you are ready to analyze your scans. 
+Now, you are ready to analyze your scans on the cloud.
+
+### Launching local cloud analysis
+
+Now that you have data in the cloud on S3, you are ready to deploy your analyses.
+
+*NOTE* after this step, AWS will start to bill you for using EC2 instances. For pricing and billing information for S3, see: [AWS billing](https://aws.amazon.com/documentation/account-billing/). The instances you spawn can be pricey, so make sure to kill them as necessary after your runs have concluded. The amount you will be billed can vary, but if you leave instances running, you can easily rack several thousands of dollars in bills in a small fraction of time. The FNGS team takes no responsibility for any of your AWS billing costs, including when you leave instances running, so be warned. 
 
 # Basic Tutorial
 
