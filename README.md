@@ -96,7 +96,7 @@ Now that you have data in the cloud on S3, you are ready to deploy your analyses
 
 Now that we have that disclaimer out of the way, we can get our analysis up and running.
 
-Assuming you are still in your docker container (if you have exited, please reconfigure your instance using the preceving tutorial [Getting data into the Cloud](###getting-data-into-the-cloud)
+Assuming you are still in your docker container (if you have exited, please reconfigure your instance using the preceving tutorial [Getting data into the Cloud](#getting-data-into-the-cloud)
 
 # Basic Tutorial
 
