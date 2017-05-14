@@ -94,6 +94,10 @@ Now that you have data in the cloud on S3, you are ready to deploy your analyses
 
 *NOTE* after this step, AWS will start to bill you for using EC2 instances. For pricing and billing information for S3, see: [AWS billing](https://aws.amazon.com/documentation/account-billing/). The instances you spawn can be pricey, so make sure to kill them as necessary after your runs have concluded. The amount you will be billed can vary, but if you leave instances running, you can easily rack several thousands of dollars in bills in a small fraction of time. The FNGS team takes no responsibility for any of your AWS billing costs, including when you leave instances running, so be warned. 
 
+Now that we have that disclaimer out of the way, we can get our analysis up and running.
+
+Assuming you are still in your docker container (if you have exited, please reconfigure your instance using the preceving tutorial [Getting data into the Cloud](###getting-data-into-the-cloud)
+
 # Basic Tutorial
 
 In this basic tutorial, we will cover everything that is needed for you to do a basic analysis of your 
