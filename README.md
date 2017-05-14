@@ -37,7 +37,9 @@ Create a new buckets will be the bucket in which we will place our data.
 
 ![image](https://cloud.githubusercontent.com/assets/8883547/26030203/c07b302c-3819-11e7-84df-e7f58d1201e9.png)
 
-Your user will already have read and write access to objects and object permissions, so just click through the "nexts" to finalize the bucket.
+When you get to the "permissions" tab, be sure to make your data public so that you can access it when you go to run:
+
+![image](https://cloud.githubusercontent.com/assets/8883547/26031179/d68109f0-3837-11e7-88e8-075c632d79b6.png)
 
 Click your new bucket, and then click "create folder" along the top. Then, enter a name for your new folder, and click "save".
 
