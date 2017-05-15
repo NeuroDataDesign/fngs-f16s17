@@ -42,8 +42,5 @@ Here, we can do one of two things: either get the status of a job, or kill a job
 
 ![image]()
 
-Upon clicking "Submit Query", the page should refresh and you should see the relevant information as requested:
-
-![image]()
-
+Upon clicking "Submit Query", the page should refresh and you should see the requested information below the form.
 
