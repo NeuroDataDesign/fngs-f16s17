@@ -21,10 +21,10 @@ Now, we will enter the docker container:
 $ docker run -ti --entrypoint /bin/bash -v $bidsdir:/data ericw95/fngs:0.0.7
 ```
 
-Next, we will run our subjects:
+Next, we will run our subjects. We will be using the "ndmg_bids" program, which takes in four arguments: input path, output path, analysis level, and modality. Calling the command below will perform participant level analysis on the functional data in your "bidsdir" path, and store the outputs in a newly created folder inside your "bidsdir" path:
 
 ```
 ndmg_bids /data /data/outputs participant func
 ```
 
-And your runs will begin. Once the runs are complete, the outputs will be placed in /data/outputs, as specified.
+Your runs will now begin. Once the runs are complete, you will be able to find the outputs in /data/outputs, as specified.
