@@ -14,7 +14,7 @@ And extract it:
 $ unzip ndmg_func_cloud_demo.zip
 ```
 
-Next, you should see that you have a folder called "BNUtest", with the following directory structure:
+Next, you should see that you have a folder called "DC1-demo", with the following directory structure:
 
 ```
 DC1-demo/
