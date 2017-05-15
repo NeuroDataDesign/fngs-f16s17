@@ -8,7 +8,7 @@ https://cortex.jhu.edu:8003
 
 You should now be on the homepage of the website. To analyze data, click the "Submit" tab:
 
-![image]()
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/home.JPG)
 
 Fill out the form fields appropriately. 
 First select the analysis level you want to perform.
@@ -19,8 +19,6 @@ First select the analysis level you want to perform.
 "Dataset Name" is the name of your dataset (for group level analysis)
 "Modality" is the modality of your data.
 "Slice Timing Method" is relevant for functional data.
-
-![image]()
 
 The website also offers functionality to upload data directly through the website. You can upload a .zip of your BIDs spec'd data (including the root folder).
 If this option is selected, the website will upload the contents of the zip to the S3 bucket specified in the form. Please make sure the "BIDS Directory" entered
