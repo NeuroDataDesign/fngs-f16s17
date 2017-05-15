@@ -104,5 +104,5 @@ ndmg_bids /data /data/outputs group func --atlas aal-2mm
 
 Once the group analysis is complete, you will be able to see the outputs in the specified output folder.
 
-That about wraps it up for this tutorial. You should now be well equipped to use the FNGS docker container to analyze your data.
+That about wraps it up for this tutorial. You should now be well equipped to use the FNGS docker container to analyze your data locally.
 
