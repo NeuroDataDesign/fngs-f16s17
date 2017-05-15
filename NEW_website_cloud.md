@@ -1,6 +1,6 @@
 Welcome to our website cloud deployment tutorial! In this walkthrough, we will cover how to launch your analyses in the cloud, without having to use the command line. We do not assume any requisite software is installed for this tutorial. 
 
-# Getting Data in BIDs Spec
+# Getting Data into BIDs Spec
 
 For these purposes, I have made a small dataset available for us to play around with. First, download the following tarball in your home directory (you can download it anywhere, but we will assume the home directory here):
 
@@ -88,7 +88,7 @@ Great! Now your user is created, and you can continue with the actual deployment
 /home/<your-user>/Downloads/accessKeys.csv
 ```
 
-# Uploading data to S3
+# Uploading Data to S3
 
 Next, we will need to upload to S3 the data that we wish to use for processing. To accomplish this, we will use the S3 command line utilities. These can be installed with:
 
@@ -150,8 +150,19 @@ $ aws sync DC1-demo/ s3://fngs-test/DC1-demo/ --acl public-read
 
 This will upload our data to S3 with the appropriate permissions.
 
-# Setting up Batch
+# Setting up AWS Batch
 
+To use the NDMG pipeline on the cloud, we will need to initialize AWS Batch. Type the following into your address bar:
 
+```
+https://aws.amazon.com/batch/
+```
 
-# Navigating the Website
+You may be prompted with a login screen. Put your corresponding information in, and click to sign in. Next, click on "Getting Started":
+
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/batch1.JPG)
+
+This should take you to your Batch dashboard. Since you've never used Batch before, you will have to go through the first-run wizard to initialize your Batch account. Make sure that you follow the tutorial exactly and don't change any of the default options that the wizard selects for you.
+
+# Using the FNGS Website
+
