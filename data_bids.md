@@ -5,48 +5,42 @@ For these purposes, I have made a small dataset available for us to play around 
 
 ```
 $ cd ~/
-$ wget http://openconnecto.me/mrdata/share/demo_data/ndmg_func_cloud_demo.tar.gz
+$ wget http://openconnecto.me/mrdata/share/demo_data/ndmg_func_cloud_demo.zip
 ```
 
 And extract it:
 
 ```
-$ tar -xvzf ndmg_func_cloud_demo.tar.gz
+$ unzip ndmg_func_cloud_demo.zip
 ```
 
 Next, you should see that you have a folder called "BNUtest", with the following directory structure:
 
 ```
-BNUtest/
-  + sub-0025864/
+DC1-demo/
+  + sub-0027306/
   | + ses-1/
   | | + anat/
-  | | | + sub-0025865_ses-1_T1w.nii.gz
+  | | | + sub-0027306_ses-1_T1w.nii.gz
   | | + dwi/
-  | | | + sub-0025865_ses-1_dwi.nii.gz 
-  | | | + sub-0025865_ses-1_dwi.bvec
-  | | | + sub-0025865_ses-1_dwi.bval
+  | | | + sub-0027306_ses-1_dwi.nii.gz 
+  | | | + sub-0027306_ses-1_dwi.bvec
+  | | | + sub-0027306_ses-1_dwi.bval
   | | + func/
-  | |   + sub-0025865_ses-1_bold.nii.gz
-  | + ses-1/
+  | |   + sub-0027306_ses-1_bold.nii.gz
+  | + ses-2/
   | | + anat/
-  | | | + sub-0025865_ses-1_T1w.nii.gz
+  | | | + sub-0027306_ses-2_T1w.nii.gz
   | | + dwi/
-  | | | + sub-0025865_ses-1_dwi.nii.gz 
-  | | | + sub-0025865_ses-1_dwi.bvec
-  | | | + sub-0025865_ses-1_dwi.bval
+  | | | + sub-0027306_ses-2_dwi.nii.gz 
+  | | | + sub-0027306_ses-2_dwi.bvec
+  | | | + sub-0027306_ses-2_dwi.bval
   | | + func/
-  | |   + sub-0025865_ses-1_bold.nii.gz  
-  + sub-0025865/
-  | + ses-1/
-  | | + anat/
-  | | | + sub-0025865_ses-1_T1w.nii.gz
-  | | + dwi/
-  | | | + sub-0025865_ses-1_dwi.nii.gz 
-  | | | + sub-0025865_ses-1_dwi.bvec
-  | | | + sub-0025865_ses-1_dwi.bval
-  | | + func/
-  | |   + sub-0025865_ses-1_bold.nii.gz
+  | |   + sub-0027306_ses-2_bold.nii.gz  
+  + sub-0027307/
+  ...
+  ...
+  ...
 ```
 
 This format is known as the BIDs spec. For more information on how to get your data to conform to the BIDs spec, see the notes from the creators [BIDs](http://bids.neuroimaging.io/). For our purposes, what you can assume is that you must adhere to a naming convention that is similar or identical to the one above, with your own subject names. Note that we don't need the dwi directories and corresponding files here, but we include them so that this tutorial can be used for dwi as well if the user is interested.
