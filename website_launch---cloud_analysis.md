@@ -18,11 +18,15 @@ First select the analysis level you want to perform. This can be either 'partici
 
 "BIDS Directory" is the root directory of your BIDs spec'd data on the S3 bucket. If performing participant level analysis, this folder should have all the desired raw data (for example, the BIDS directory of the FNGS-provided demo data is DC1-demo). If performing group level analysis, this directory should contain the outputs of the participant level analysis (for example, after performing participant analysis on the demo data, the BIDS directory for group analysis becomes DC1-demo/ndmg_0-0-49).
 
-"Unique Token" is any unique identifier that you can later use to query information about your jobs.
-"AWS Credentials File" is the CSV file containing your user's access keys.
-"Dataset Name" is the name of your dataset (for group level analysis)
-"Modality" is the modality of your data.
-"Slice Timing Method" is relevant for functional data.
+"Unique Token" is any personalized unique identifier that you can later use to query information about your jobs. It's basically like your "password" for accessing information about the jobs that you submit. Try to make this as unique as possible so as to avoid possible conflicts with other users.
+
+"AWS Credentials File" is the CSV file containing your user's access keys. Make sure you obtain these keys in the correct manner, according to our instructions on setting up an AWS user.
+
+"Dataset Name" is the name of your dataset (used only for group analysis). For example, for the FNGS-provided demo data, this would be DC1.
+
+"Modality" is the modality of your data. This can be either "functional" or "DWI".
+
+"Slice Timing Method" is the manner in which the brain data slices were acquired through the fMRI scanner (used only for participant level functional analysis). The choices are none, bottom up, top down, and interleaved. 
 
 The website also offers functionality to upload data directly through the website. You can upload a .zip of your BIDs spec'd data (including the root folder).
 If this option is selected, the website will upload the contents of the zip to the S3 bucket specified in the form. Please make sure the "BIDS Directory" entered
