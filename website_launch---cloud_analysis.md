@@ -10,10 +10,14 @@ You should now be on the homepage of the website. To analyze data, click the "Su
 
 ![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/home.JPG)
 
-Fill out the form fields appropriately. 
-First select the analysis level you want to perform.
-"S3 Bucket Name" is the name of the bucket where your data lives.
-"BIDS Directory" is the root directory of your BIDs spec'd data on the S3 bucket.
+Fill out the form fields appropriately: 
+
+First select the analysis level you want to perform. This can be either 'participant' or 'group'.
+
+"S3 Bucket Name" is the name of the bucket where your data lives. This bucket should have been created using our instructions on how to properly set up S3 for FNGS.
+
+"BIDS Directory" is the root directory of your BIDs spec'd data on the S3 bucket. If performing participant level analysis, this folder should have all the desired raw data (for example, the BIDS directory of the FNGS-provided demo data is DC1-demo). If performing group level analysis, this directory should contain the outputs of the participant level analysis (for example, after performing participant analysis on the demo data, the BIDS directory for group analysis becomes DC1-demo/ndmg_0-0-49).
+
 "Unique Token" is any unique identifier that you can later use to query information about your jobs.
 "AWS Credentials File" is the CSV file containing your user's access keys.
 "Dataset Name" is the name of your dataset (for group level analysis)
