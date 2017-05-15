@@ -28,13 +28,13 @@ First select the analysis level you want to perform. This can be either 'partici
 
 "Slice Timing Method" is the manner in which the brain data slices were acquired through the fMRI scanner (used only for participant level functional analysis). The choices are none, bottom up, top down, and interleaved. 
 
-The website also offers functionality to upload data directly through the website. You can upload a .zip of your BIDs spec'd data (including the root folder).
-If this option is selected, the website will upload the contents of the zip to the S3 bucket specified in the form. Please make sure the "BIDS Directory" entered
-into the form is the same as the root folder in the zip.
+The website also offers functionality to upload data directly through the website. To do so, you must upload a .zip of your BIDs spec'd data at the root level. For example, for the FNGS-provided demo data, the first folder inside the zip file is DC1-demo, which is the BIDS directory. If using this feature, make sure you fill in the "BIDS Directory" and "S3 bucket" field correctly. If you select the option to upload data, the website will upload the contents of the zip file to the specified S3 bucket, and will continue analysis by looking for the specified BIDS directory. So, please make sure the BIDS directory that is specified has the same name as the root folder inside the submitted zip file.
+
+NOTE: We ask that you limit your zip sizes to 2GB in size. If your data is larger than this, you will have to upload your data to S3 using our previous instructions outlining how to do so.
 
 ![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/submit1.JPG)
 
-To start analyzing, click the "Submit Job" button. Once your data is analyzed, the outputs can be found in your specified S3 bucket, inside the specified BIDs directory root.
+To start analyzing, click the "Submit Job" button. Once your data is analyzed, the outputs can be found in your specified S3 bucket, inside the specified BIDs directory root. You will see a new folder called "ndmg_0-0-49" with all your outputs.
 
 NOTE: Click the "Submit Job" button exactly once. Once clicked, do not interfere with the page in any way. You might have to wait a bit before the page registers, especially if you choose to upload data directly.
 
@@ -44,7 +44,7 @@ We can also use the website to glean information about previously submitted jobs
 
 ![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/submit2.JPG)
 
-Here, we can do one of two things: either get the status of a job, or kill a job. To do either, simply select the option from the dropdown menu, and enter the same unique token that was used when the job was submitted. Be sure to also upload your credentials CSV file:
+Here, we can do one of two things: either get the status of a job, or kill a job. To do either, simply select the option from the dropdown menu, and enter the same unique token that you used when submitting the job. Be sure to also upload your credentials CSV file:
 
 ![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/query.JPG)
 
