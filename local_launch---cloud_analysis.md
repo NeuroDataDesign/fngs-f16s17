@@ -51,5 +51,21 @@ Once the participant level analysis is complete, you can also run group level an
 ```
 ndmg_cloud group --bucket fngstestbucket --bidsdir DC1-demo/ndmg_0-0-49 --jobdir demo1234 --credentials /home/Downloads/accessKeys.csv --modality func --stc None --dataset DC1
 ```
+We can also obtain information about our submitted jobs. Using "ndmg_cloud", we can either get the status of jobs or kill them. Below is the template for queries:
 
+```
+ndmg_cloud <query-type> --jobdir <jobdir> --credentials <creds>
+```
+
+"query-type" is the action you want to perform. This can be "status" or "kill".
+
+"jobdir" is the unique identifier you used when submitting the jobs.
+
+"creds" is your AWS credentials file.
+
+Below is an example call to kill our previously created jobs:
+
+```
+ndmg_cloud kill --jobdir demo1234 --credentials /home/Downloads/accessKeys.csv
+```
 
