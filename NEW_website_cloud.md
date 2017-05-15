@@ -152,7 +152,7 @@ This will upload our data to S3 with the appropriate permissions.
 
 # Setting up AWS Batch
 
-To use the NDMG pipeline on the cloud, we will need to initialize AWS Batch. Type the following into your address bar:
+To use the FNGS pipeline on the cloud, we will need to initialize AWS Batch. Type the following into your address bar:
 
 ```
 https://aws.amazon.com/batch/
