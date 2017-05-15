@@ -24,7 +24,7 @@ The website also offers functionality to upload data directly through the websit
 If this option is selected, the website will upload the contents of the zip to the S3 bucket specified in the form. Please make sure the "BIDS Directory" entered
 into the form is the same as the root folder in the zip.
 
-![image]()
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/submit1.JPG)
 
 To start analyzing, click the "Submit Job" button. Once your data is analyzed, the outputs can be found in your specified S3 bucket, inside the specified BIDs directory root.
 
@@ -34,11 +34,11 @@ NOTE: Click the "Submit Job" button exactly once. Once clicked, do not interfere
 
 We can also use the website to glean information about previously submitted jobs. Click the "Query" tab:
 
-![image]()
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/submit2.JPG)
 
 Here, we can do one of two things: either get the status of a job, or kill a job. To do either, simply select the option from the dropdown menu, and enter the same unique token that was used when the job was submitted. Be sure to also upload your credentials CSV file:
 
-![image]()
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/query.JPG)
 
 Upon clicking "Submit Query", the page should refresh and you should see the requested information below the form.
 
