@@ -261,4 +261,20 @@ ndmg_cloud kill --jobdir demo1234 --credentials /home/Downloads/accessKeys.csv
 
 The above query will print the relevant information to your terminal screen.
 
+Once your data is analyzed, the outputs can be found in your specified S3 bucket, inside the specified BIDs directory root. For example, to navigate to my bucket "fngstestbucket", I would type the following into my address bar:
+
+```
+https://console.aws.amazon.com/s3/buckets/fngstestbucket/
+```
+
+This will take me to the following page, which is the root of my bucket:
+
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/getoutputs1.jpg)
+
+From here, I click on my BIDS directory to get to the following page:
+
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/getoutputs2.jpg)
+
+Clicking the above folder takes me to my outputs!
+
 That about wraps it up for this tutorial. You should now be well equipped to use the FNGS docker container to analyze your data.
