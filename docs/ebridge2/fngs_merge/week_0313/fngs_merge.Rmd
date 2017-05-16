@@ -11,15 +11,16 @@ output: html_document
 
 ```{r, fig.height=6, fig.width=12, message=FALSE}
   require(Discriminability)
-  inpath <- 'C:/Users/ebrid/Documents/R/fngs_merge/fngs_0410/ts_roi/desikan-2mm/'
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0503/BNU1/aal-2mm/'
   tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
-  scan_pos = 3
+  scan_pos = 2
   tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
   signal <- tsobj[[1]]
   ids <- tsobj[[3]]
   
   signal_overall <- c(signal)
   ids_overall <- c(ids)
+  dataset_overall <- c(rep('BNU1', times=length(signal)))
 ```
 
 ### Timeseries
@@ -34,7 +35,7 @@ output: html_document
 
 ```{r  fig.height=6, fig.width=12, message=FALSE}
   title = paste('Correlation plot for subject', ids[1])
-  print(plot_square(cor(ts1), title=title, legend="corr"))
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
 ```
 
 ## Non Ranking
@@ -44,7 +45,7 @@ output: html_document
 #### Raw Amplitude Spectrum
 
 ```{r, fig.height=6, fig.width=12, message=FALSE}
-  tr = 2.5
+  tr = 2.0
   lc = 0.01
   amp <- freq_discr(signal, ids, tr, lc, spec='amp', rank=FALSE)
   print(amp$combinedplot)
@@ -90,7 +91,8 @@ output: html_document
 ```
 
 ```{r }
-  collection <- data.frame(dataset='BNU1', postprocessing=c('amp', 'power', 'corr', 'ramped', 'rpower', 'rcorr'),
+  collection <- data.frame(dataset='BNU1',
+                           postprocessing=c('amp', 'power', 'corr', 'ramped', 'rpower', 'rcorr'),
                            discr=c(amp$d, pow$d, td$d, ampr$d, powr$d, tdr$d))
 ```
 
@@ -99,15 +101,16 @@ output: html_document
 ## Non Ranking
 ```{r, fig.height=6, fig.width=12, message=FALSE}
   require(Discriminability)
-  inpath <- 'C:/Users/ebrid/Documents/R/fngs_merge/DC1/roi_timeseries/desikan-2mm/'
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0503/DC1/aal-2mm/'
   tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
-  scan_pos = 3
+  scan_pos = 2
   tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
   signal <- tsobj[[1]]
   ids <- tsobj[[3]]
   
   signal_overall <- c(signal_overall, signal)
-  ids_overall <- c(ids_overall)
+  ids_overall <- c(ids_overall, ids)
+  dataset_overall <- c(dataset_overall, rep('DC1', times=length(signal)))
 ```
 
 ## Sanity Check
@@ -124,7 +127,7 @@ output: html_document
 
 ```{r  fig.height=6, fig.width=12, message=FALSE}
   title = paste('Correlation plot for subject', ids[1])
-  print(plot_square(cor(ts1), title=title, legend="corr"))
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
 ```
 
 ### Spectral Approach 
@@ -132,7 +135,7 @@ output: html_document
 #### Raw Amplitude Spectrum
 
 ```{r, fig.height=6, fig.width=12, message=FALSE}
-  tr = 2.5
+  tr = 1
   lc = 0.01
   amp <- freq_discr(signal, ids, tr, lc, spec='amp', rank=FALSE)
   print(amp$combinedplot)
@@ -178,25 +181,26 @@ output: html_document
 ```
 
 ```{r }
-  collection <- rbind(collection, data.frame(dataset='DC1', postprocessing=c('amp', 'power', 'corr', 'ramped', 'rpower', 'rcorr'),
+  collection <- rbind(collection, data.frame(dataset='DC1',
+                                             postprocessing=c('amp', 'power', 'corr', 'ramped', 'rpower', 'rcorr'),
                            discr=c(amp$d, pow$d, td$d, ampr$d, powr$d, tdr$d)))
 ```
 
 
-# NKI1
+# LMU3
 
 ## Non Ranking
 ```{r, fig.height=6, fig.width=12, message=FALSE}
-  require(Discriminability)
-  inpath <- 'C:/Users/ebrid/Documents/R/fngs_merge/NKI1/roi_timeseries/desikan-2mm/'
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0503/LMU3/aal-2mm/'
   tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
-  scan_pos = 4
+  scan_pos = 2
   tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
   signal <- tsobj[[1]]
   ids <- tsobj[[3]]
   
   signal_overall <- c(signal_overall, signal)
-  ids_overall <- c(ids_overall)
+  ids_overall <- c(ids_overall, ids)
+  dataset_overall <- c(dataset_overall, rep('LMU3', times=length(signal)))
 ```
 
 ## Sanity Check
@@ -213,7 +217,7 @@ output: html_document
 
 ```{r  fig.height=6, fig.width=12, message=FALSE}
   title = paste('Correlation plot for subject', ids[1])
-  print(plot_square(cor(ts1), title=title, legend="corr"))
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
 ```
 
 ### Spectral Approach 
@@ -221,7 +225,7 @@ output: html_document
 #### Raw Amplitude Spectrum
 
 ```{r, fig.height=6, fig.width=12, message=FALSE}
-  tr = 1.4
+  tr = 3
   lc = 0.01
   amp <- freq_discr(signal, ids, tr, lc, spec='amp', rank=FALSE)
   print(amp$combinedplot)
@@ -267,24 +271,25 @@ output: html_document
 ```
 
 ```{r }
-  collection <- rbind(collection, data.frame(dataset='NKI1', postprocessing=c('amp', 'power', 'corr', 'ramped', 'rpower', 'rcorr'),
+  collection <- rbind(collection, data.frame(dataset='LMU3', postprocessing=c('amp', 'power', 'corr', 'ramped', 'rpower', 'rcorr'),
                            discr=c(amp$d, pow$d, td$d, ampr$d, powr$d, tdr$d)))
 ```
 
-# LMU1
+# UWM
 
 ## Non Ranking
 ```{r, fig.height=6, fig.width=12, message=FALSE}
   require(Discriminability)
-  inpath <- 'C:/Users/ebrid/Documents/R/fngs_merge/LMU1/roi_timeseries/desikan-2mm/'
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0503/UWM/aal-2mm/'
   tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
-  scan_pos = 4
+  scan_pos = 2
   tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
   signal <- tsobj[[1]]
   ids <- tsobj[[3]]
   
   signal_overall <- c(signal_overall, signal)
   ids_overall <- c(ids_overall)
+  dataset_overall <- c(dataset_overall, rep('UWM', times=length(signal)))
 ```
 
 ## Sanity Check
@@ -301,7 +306,7 @@ output: html_document
 
 ```{r  fig.height=6, fig.width=12, message=FALSE}
   title = paste('Correlation plot for subject', ids[1])
-  print(plot_square(cor(ts1), title=title, legend="corr"))
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
 ```
 
 ### Spectral Approach 
@@ -309,7 +314,7 @@ output: html_document
 #### Raw Amplitude Spectrum
 
 ```{r, fig.height=6, fig.width=12, message=FALSE}
-  tr = 2.5
+  tr = 2.6
   lc = 0.01
   amp <- freq_discr(signal, ids, tr, lc, spec='amp', rank=FALSE)
   print(amp$combinedplot)
@@ -355,7 +360,186 @@ output: html_document
 ```
 
 ```{r }
-  collection <- rbind(collection, data.frame(dataset='LMU1', postprocessing=c('amp', 'power', 'corr', 'ramped', 'rpower', 'rcorr'),
+  collection <- rbind(collection, data.frame(dataset='UWM', postprocessing=c('amp', 'power', 'corr', 'ramped', 'rpower', 'rcorr'),
+                           discr=c(amp$d, pow$d, td$d, ampr$d, powr$d, tdr$d)))
+```
+
+# NYU1
+
+## Non Ranking
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  require(Discriminability)
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0503/NYU1/aal-2mm/'
+  tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
+  scan_pos = 2
+  tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
+  signal <- tsobj[[1]]
+  ids <- tsobj[[3]]
+  
+  signal_overall <- c(signal_overall, signal)
+  ids_overall <- c(ids_overall)
+  dataset_overall <- c(dataset_overall, rep('NYU1', times=length(signal)))
+```
+
+## Sanity Check
+
+### Timeseries
+
+```{r fig.height=6, fig.width=12, message=FALSE}
+  ts1 = signal[[1]]
+  title = paste('Timeseries plot for subject', ids[1])
+  print(plot_timeseries(ts1, title=title))
+
+```
+### Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
+```
+
+### Spectral Approach 
+
+#### Raw Amplitude Spectrum
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tr = 2
+  lc = 0.01
+  amp <- freq_discr(signal, ids, tr, lc, spec='amp', rank=FALSE)
+  print(amp$combinedplot)
+```
+
+#### Raw Power Spectrum
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  pow <- freq_discr(signal, ids, tr, lc, spec='pow', rank=FALSE)
+  print(pow$combinedplot)
+```
+
+### Standard Discriminability Approach
+
+#### Raw Correaltion Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  td <- time_discr(signal, ids, rank=FALSE)
+  print(td$combinedplot)
+```
+
+## Ranking
+
+### Spectral Approach 
+
+#### Ranked Amplitude Spectrum
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  ampr <- freq_discr(signal, ids, tr, lc, spec='amp', rank=TRUE)
+  print(ampr$combinedplot)
+```
+
+#### Ranked Power Spectrum
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  powr <- freq_discr(signal, ids, tr, lc, spec='pow', rank=TRUE)
+  print(powr$combinedplot)
+```
+
+### Standard Discriminability Approach
+
+#### Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tdr <- time_discr(signal, ids, rank=TRUE)
+  print(tdr$combinedplot)
+```
+
+```{r }
+  collection <- rbind(collection, data.frame(dataset='NYU1', postprocessing=c('amp', 'power', 'corr', 'ramped', 'rpower', 'rcorr'),
+                           discr=c(amp$d, pow$d, td$d, ampr$d, powr$d, tdr$d)))
+```
+
+# HNU1
+
+## Non Ranking
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  require(Discriminability)
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0503/HNU1/aal-2mm/'
+  tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
+  scan_pos = 2
+  tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
+  signal <- tsobj[[1]]
+  ids <- tsobj[[3]]
+  
+  signal_overall <- c(signal_overall, signal)
+  ids_overall <- c(ids_overall)
+  dataset_overall <- c(dataset_overall, rep('HNU1', times=length(signal)))
+```
+
+## Sanity Check
+
+### Timeseries
+
+```{r fig.height=6, fig.width=12, message=FALSE}
+  ts1 = signal[[1]]
+  title = paste('Timeseries plot for subject', ids[1])
+  print(plot_timeseries(ts1, title=title))
+
+```
+### Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
+```
+
+### Spectral Approach 
+
+#### Raw Amplitude Spectrum
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tr = 2
+  lc = 0.01
+  amp <- freq_discr(signal, ids, tr, lc, spec='amp', rank=FALSE)
+  print(amp$combinedplot)
+```
+
+#### Raw Power Spectrum
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  pow <- freq_discr(signal, ids, tr, lc, spec='pow', rank=FALSE)
+  print(pow$combinedplot)
+```
+
+### Standard Discriminability Approach
+
+#### Raw Correaltion Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  td <- time_discr(signal, ids, rank=FALSE)
+  print(td$combinedplot)
+```
+
+## Ranking
+
+### Spectral Approach 
+
+#### Ranked Amplitude Spectrum
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  ampr <- freq_discr(signal, ids, tr, lc, spec='amp', rank=TRUE)
+  print(ampr$combinedplot)
+```
+
+#### Ranked Power Spectrum
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  powr <- freq_discr(signal, ids, tr, lc, spec='pow', rank=TRUE)
+  print(powr$combinedplot)
+```
+
+### Standard Discriminability Approach
+
+#### Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tdr <- time_discr(signal, ids, rank=TRUE)
+  print(tdr$combinedplot)
+```
+
+```{r }
+  collection <- rbind(collection, data.frame(dataset='HNU1',
+                                             postprocessing=c('amp', 'power', 'corr', 'ramped', 'rpower', 'rcorr'),
                            discr=c(amp$d, pow$d, td$d, ampr$d, powr$d, tdr$d)))
 ```
 
@@ -364,7 +548,7 @@ output: html_document
   collection$postprocessing <- factor(collection$postprocessing)
   summaryfig <- ggplot(collection, aes(x=postprocessing, y=discr, color=dataset)) +
     geom_point(size=4) +
-    ggtitle('Comparing Discriminability over 4 reference datasets using different postprocessing techniques')
+    ggtitle('Comparing Discriminability over 4 reference datasets')
   print(summaryfig)
 ```
 
@@ -372,6 +556,6 @@ output: html_document
   summaryfig <- ggplot(collection, aes(x=postprocessing, y=discr, fill=postprocessing)) +
     geom_violin() +
     geom_boxplot(width=0.1) +
-    ggtitle('Comparing Discriminability over 4 reference datasets using different postprocessing techniques')
+    ggtitle('Comparing Discriminability over 4 reference datasets')
   print(summaryfig)
 ```
