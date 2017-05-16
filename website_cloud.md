@@ -2,7 +2,7 @@ Welcome to our website cloud deployment tutorial! In this walkthrough, we will c
 
 # Setup of Batch
 
-For the website demo, we assume that the user has set up their AWS account properly. Begin by navigating to the [AWS website](https://aws.amazon.com/), and creating a user as below:
+We assume that the user has set up their AWS account properly. Begin by navigating to the [AWS website](https://aws.amazon.com/), and creating a user as below:
 
 ![image](https://cloud.githubusercontent.com/assets/8883547/26090633/4335a568-39d4-11e7-909e-e591bcde33aa.png)
 
