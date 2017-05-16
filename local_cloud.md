@@ -275,6 +275,12 @@ From here, I click on my BIDS directory to get to the following page:
 
 ![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/getoutputs2.jpg)
 
-Clicking the above folder takes me to my outputs!
+Clicking the above folder takes me to my participant level outputs! To get to my graph level outputs, I can go to the "qa" folder:
+
+![image]()
+
+Here, I have the quality assurance results for the participant and group level analyses.
+
+![image]()
 
 That about wraps it up for this tutorial. You should now be well equipped to use the FNGS docker container to analyze your data.
