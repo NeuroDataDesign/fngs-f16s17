@@ -1,4 +1,4 @@
-Welcome to our local cloud tutorial! In this walkthrough, we will cover what is required to go step-by-step through getting your BIDs spec'd data onto the could, so that you can launch your analyses in the cloud from the command line.  If you've already setup your AWS account and have Batch and IAM users setup, you can skip to [here](#getting-data-into-bids-spec). 
+Welcome to our local cloud tutorial! In this walkthrough, we will cover what is required to go step-by-step through getting your BIDs spec'd data onto the could, so that you can launch your analyses in the cloud from the command line.  If you've already setup your AWS account and have Batch and IAM users setup, you can skip to [here](#getting-data-in-bids-spec). 
 
 # Setup of Batch
 
