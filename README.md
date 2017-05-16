@@ -4,8 +4,8 @@ Welcome to the FNGS repository! In this markdown, we will go over some strategie
 
 ## Demos
 
-+ [Website Deployment of the Cloud Demo](https://github.com/NeuroDataDesign/fngs/blob/master/website_demo_walkthrough.md)
-+ [Local Deployment of a Simple Demo](https://github.com/NeuroDataDesign/fngs/blob/master/local_demo.md)
++ [Website Deployment of the Cloud Demo](https://github.com/NeuroDataDesign/fngs/blob/master/website_demo_walkthrough.md) (approximately 15 minutes, full demo)
++ [Local Deployment of a Simple Demo](https://github.com/NeuroDataDesign/fngs/blob/master/local_demo.md) (approximately 3-5 minutes, downsampled demo)
 
 ## Tutorials and Walkthroughs
 
