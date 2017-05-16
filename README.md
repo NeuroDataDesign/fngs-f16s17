@@ -1,7 +1,5 @@
 # FNGS Team Repository
 
-## Available Tutorials
-
 Welcome to the FNGS repository! In this markdown, we will go over some strategies for how to use the FNGS webservice effectively for many of the deployment common use-cases users might have. They may include:
 
 ## Demos
