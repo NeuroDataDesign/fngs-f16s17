@@ -63,3 +63,5 @@ Great! Now your user is created, and you can continue with the actual deployment
 ```
 /home/<your-user>/Downloads/accessKeys.csv
 ```
+
+Now, you can navigate back to the website and just use these as your credentials and the provided data to complete the tutorial. 
