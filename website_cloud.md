@@ -259,7 +259,7 @@ Clicking the above folder takes me to my participant level outputs! To get to my
 
 ![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/getoutputs3.jpg)
 
-Here, I have the quality assurance results for the participant and group level analyses.
+Here, I have the quality assurance results for the participant and group level analyses. The boxed folders in the image below are the group outputs, and the rest are participant outputs:
 
 ![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/getoutputs4.jpg)
 
