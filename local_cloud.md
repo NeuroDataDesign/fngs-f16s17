@@ -277,10 +277,46 @@ From here, I click on my BIDS directory to get to the following page:
 
 Clicking the above folder takes me to my participant level outputs! To get to my graph level outputs, I can go to the "qa" folder:
 
-![image]()
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/getoutputs3.jpg)
 
-Here, I have the quality assurance results for the participant and group level analyses.
+Here, I have the quality assurance results for the participant and group level analyses. The boxed folders in the image below are the group outputs, and the rest are participant outputs:
 
-![image]()
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/getoutputs4.jpg)
 
-That about wraps it up for this tutorial. You should now be well equipped to use the FNGS docker container to analyze your data.
+That about wraps it up for this tutorial. You should now be well equipped to use the FNGS web service to analyze your data.
+
+# Avoiding Phantom AWS Batch Charges
+
+Since AWS Batch is still a relatively new service, there are many bugs. It is possible for you to incur costs even if you aren't using Batch! This happens because the compute environments and job queues can sometimes spawn instances for no reason. Below, we show you how to avoid these charges by deleting your FNGS compute environment and job queue once you are done analyzing your data.
+
+To start, first go to your Batch console dashboard by using the following url:
+
+```
+https://console.aws.amazon.com/batch/home?region=us-east-1#/dashboard
+```
+
+This will take you to the dashboard. Click on "Job Queues" as shown below:
+
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/delete1.jpg)
+
+Here you will see a list of your queues. The one we are interested in is called "ndmg-fmri-queue". Select this queue and click "Disable":
+
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/delete2.jpg)
+
+Now you must wait for the queue to be disabled. Refresh the page occasionally until the queue becomes "DISABLED" and stops "UPDATING". Now, select the queue again and click "Delete":
+
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/delete3.jpg)
+
+This can take some time. Refresh the page occasionally until the queue disappears. Now, click on "Compute Environments":
+
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/delete4.jpg)
+
+Here we are interested in "ndmg-fmri-env". Select this environment and click "Disable":
+
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/delete5.jpg)
+
+Now you must wait for the environment to be disabled. Refresh the page occasionally until the environment becomes "DISABLED" and stops "UPDATING". Now, select the environment again and click "Delete":
+
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/delete6.jpg)
+
+This can take some time. Refresh the page occasionally until the environment disappears. You are done! Now you can rest assured that you won't incur random costs due to buggy Batch services.
