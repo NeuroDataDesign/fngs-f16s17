@@ -1,5 +1,32 @@
 Welcome to our website cloud deployment tutorial! In this walkthrough, we will cover how to launch your analyses in the cloud, without having to use the command line. We do not assume any requisite software is installed for this tutorial. 
 
+# Setup of Batch
+
+For the website demo, we assume that the user has set up their AWS account properly. Begin by navigating to the [AWS website](https://aws.amazon.com/), and creating a user as below:
+
+![image](https://cloud.githubusercontent.com/assets/8883547/26090633/4335a568-39d4-11e7-909e-e591bcde33aa.png)
+
+Follow the prompts from AWS, and you should be able to create a free-tier user. 
+
+Next, we need to do some initial configuration of AWS Batch so that the service is available to your user. First, select the console as shown below:
+
+![image](https://cloud.githubusercontent.com/assets/8883547/26090665/750afb7e-39d4-11e7-909a-eff8e90d80aa.png)
+
+Make sure to set your region to N. Virginia, even if you do not actually live there by clicking the dropdown in the top right:
+
+![image](https://cloud.githubusercontent.com/assets/8883547/26090714/b7cc07b4-39d4-11e7-814a-0f432e1b06f2.png)
+
+Click the dropdown for all services, and then select Batch:
+
+![image](https://cloud.githubusercontent.com/assets/8883547/26090687/96142782-39d4-11e7-9852-194089e1fa82.png)
+
+Get started with Batch:
+
+![image](https://cloud.githubusercontent.com/assets/8883547/26090745/e01933d6-39d4-11e7-9ac8-f61b1c3e1764.png)
+
+Click through the getting started guide, following the remainder of the instructions as-per the Amazon Web-Services Website. 
+
+
 # Getting Data into BIDs Spec
 
 For these purposes, I have made a small dataset available for us to play around with. First, download the following tarball in your home directory (you can download it anywhere, but we will assume the home directory here):
