@@ -65,3 +65,21 @@ Great! Now your user is created, and you can continue with the actual deployment
 ```
 
 Now, you can navigate back to the website and just use these as your credentials and the provided data to complete the tutorial. 
+
+# Retrieving Outputs
+
+Once your data is analyzed, the outputs can be found in your specified S3 bucket, inside the specified BIDs directory root. For example, to navigate to my bucket "fngstestbucket", I would type the following into my address bar:
+
+```
+https://console.aws.amazon.com/s3/buckets/fngstestbucket/
+```
+
+This will take me to the following page, which is the root of my bucket:
+
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/getoutputs1.jpg)
+
+From here, I click on my BIDS directory to get to the following page:
+
+![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/getoutputs2.jpg)
+
+Clicking the above folder takes me to my outputs!
