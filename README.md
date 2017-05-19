@@ -14,3 +14,7 @@ Welcome to the FNGS repository! In this markdown, we will go over some strategie
 + [Website Deployment of the Pipeline on the Cloud](https://github.com/NeuroDataDesign/fngs/blob/master/website_cloud.md)
 
 Note that for many steps we assume that the user has pre-installed docker, which can be installed following the tutorial provided [by docker](https://docs.docker.com/engine/installation/). Click the respective use-case you are interested in learning more about for a demo of how to use the respective option. 
+
+## Live Website
+
+Our live website can be found at [FNGS website](ec2-54-89-102-191.compute-1.amazonaws.com).
