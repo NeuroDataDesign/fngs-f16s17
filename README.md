@@ -18,3 +18,7 @@ Note that for many steps we assume that the user has pre-installed docker, which
 ## Live Website
 
 Our live website can be found at [FNGS website](ec2-54-89-102-191.compute-1.amazonaws.com).
+
+## Latest version of Code
+
+Our live version of the code can be found at [NDMG: eric-dev-gkiar-fmri](https://github.com/neurodata/ndmg/tree/eric-dev-gkiar-fmri)
