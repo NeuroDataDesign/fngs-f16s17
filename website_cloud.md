@@ -299,4 +299,4 @@ Now you must wait for the environment to be disabled. Refresh the page occasiona
 
 ![image](https://raw.githubusercontent.com/NeuroDataDesign/fngs/master/docs/02agarwalt/project1/week_0424/delete6.jpg)
 
-This can take some time. Refresh the page occasionally until the environment disappears. You are done! Now you can rest assured that you won't incur random costs due to Batch services.
+This can take some time. Refresh the page occasionally until the environment disappears. You are done! Now you can rest assured that you won't incur random costs due to Batch services. 
