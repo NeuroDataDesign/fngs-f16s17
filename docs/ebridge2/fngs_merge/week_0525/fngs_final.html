@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>FNGS Final Project - Neurodata</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../../../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../../../reveal.js/css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../../../reveal.js/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../../../reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>FNGS</h1>
+					<h3>A One-Click Pipeline for the Automated Acquisition of Functional MRI Connectomes</h3>
+					<p>
+						<small>Created by <a href="http://ericwb.me">Eric Bridgeford</a>, Tanay Agarwal, Eric Walker / Contact: <a href="http://github.com/ebridge2">@ebridge2</a></small>
+					</p>
+					<p></p>
+					<p>
+						<small>Follow the slides: <a href="ericwb.me/lectures/fngs_final.html">ericwb.me/lectures/fngs_final.html</a></small>
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2><a href="https://neurodatadesign.github.io/fngs/about_fngs/Preprocessing.html">Preprocessing</a></h2>	
+				    	<img src="img/preproc.png" style="width: 80%; "/>
+				    	<img src="img/bottom.png" border="0" style="width: 60%;"/>
+					</section>
+
+					<section>
+						<h3>Protocol</h3>
+						<ul>
+							<li>Slice Timing Correction: slicetimer</li>
+							<ul>
+								<li>User Input: choice of 3 common sequences (Interleaved, Bottom-up, Top-down)</li>
+								<li>Also accepts: metadata file</li>
+							</ul>
+							<li>6 DOF Motion Parameter Estimation with mcflirt and apply with flirt</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>What we do is similar to...FMRI-prep</h3>
+						<ul>
+							<li>Use 6 DOF Motion Parameter Estimation with mcflirt</li>
+							<li>Difference: They use ANTs to apply the transform</li>
+							<ul>
+								<li>ANTs interpolation method preferred by them (Lanczos)</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<h3>What we do is similar to...FMRI-prep</h3>
+						<ul>						
+							<li>Difference: They use 3dTshift from AFNI for STC; we use FSL</li>
+							<ul>
+								<li>Why? They look algorithmically identical</li>
+							</ul>
+							<li>Difference: They accept only SliceTiming metadata file</li>
+							<ul>
+								<li>Why? metadata is more flexible to different protocols, but most studies just use interleaved anyway (and most datasets do not have this file)</li>
+								<li>Ours allows either user-input or metadata</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<h3>What we do is different from... CPAC</h3>
+						<ul>
+							<li>Use 6 DOF Motion Parameter estimation with 3dvolreg (AFNI registration)</li>
+							<li>They read slice timing information from headers</li>
+							<ul>
+								<li>Pros: easy if the headers are set</li>
+								<li>Cons: headers often aren't set to the scan protocols properly</li>
+							</ul>
+							<li>Possible improvement: If no slice timing information user-provided, check header; if not set, don't correct at all</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Validation/QA</h3>
+						<ul>
+							<li>Industry de-factos from all 3 pipelines</li>
+							<ul>
+								<li>Plots of motion params estimated</li>
+								<li>Plots of the volume realigned to, and the average intensities to check for blurring</li>
+							</ul>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2><a href="https://neurodatadesign.github.io/fngs/about_fngs/Registration.html">Registration</a></h2>
+				    	<img src="./img/reg.png" style="width: 80%; "/>
+						<img src="./img/bottom.png" border="0" style="width: 60%;"/>
+					</section>
+
+					<section>
+						<h3>What we do is similar to... CPAC FSL pipeline</h3>
+						<ul>
+							<li>they don't use epi-reg, but they basically call the functions of epi-reg by hand (to use BBR cost function)</li>
+							<li>use same FNIRT workflow (MNI default)</li>
+							<li>self and template registrations performed independently</li>
+							<li>Difference: we assume 2mm, CPAC assumes 3mm</li>
+							<li>Why we call the way we do: FSL people have tuned epi-reg to do what the CPAC people do by hand</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>What we do is different from ... fmriprep</h3>
+						<ul>
+							<li>they use strictly ANTs for template, but BBR cost function from FSL</li>
+							<li>Freesurfer for boundary identification</li>
+							<li>Pros: supposedly more robust than FSL</li>
+							<li>Cons: very, very expensive computationally (more later)</li>
+							<li>All analyses performed at 1mm</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>What we do differently from everybody</h3>
+						<ul>
+							<li>DICE score for registration quality</li>
+							<li>If the score is bad, use more gentle transforms</li>
+							<li>Why I like this approach: low-quality inputs can fail sometimes with non-linear transforms in FSL (presumably ANTs) and this is a good fail-safe</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Example of Registration Failure</h3>
+						<img src="./img/distorted.png" style="width: 40%;"/>
+						<img src="./img/no_distortion.png" style="width: 40%;"/>
+						<ul>
+							<li>Use-case: Kara's data</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Validation/QA</h3>
+						<ul>
+							<li>Similarities: verbose alignment plots for self and template registration</li>
+							<li>Differences: they use boundaries of the atlas instead of low-alpha alignment images</li>
+							<ul>
+								<li>Pro: Easier to see immediate failure locations</li>
+								<li>Con: Don't see full template, but just its outline</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<h3>TODO: ADD IMAGE SHOWING FIRST SLICE OVERLAP WITH MEAN SLICE FROM ALL 3 PIPELINES</h3>
+					</section>
+
+
+					<section>
+						<h3>TODO: RESULTS OF PERMUTATION TEST DISCUSSED 05/25</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3><a href="https://neurodatadesign.github.io/fngs/about_fngs/Nuisance+Correction.html">Nuisance Correction</a></h3>
+				    	<img src="./img/nuis.png" style="width: 80%; "/>
+				    	<img src="./img/bottom.png" border="0" style="width: 60%;"/>
+					</section>
+
+					<section>
+						<h3>What we do is different from ... CPAC</h3>
+						<ul>
+							<li>CPAC lets users choose their nuisance workflows</li>
+							<li>Their preferred: GLM (csf mean regression, quadratic detrend, top 5 WM components regression, 24-param Friston motion correction)</li>
+							<li>Relatively black box: very not-exhaustive qa plots of what's going on here</li>
+							<li>Con: top 5 anatomically-defined WM PC shown in literature to be good, but hard to get subject-specific qa</li>
+							<li>Potential danger: could regress task-related signal</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>What we do</h3>
+						<ul>
+							<li>GLM (csf mean regression, quadratic detrend), high-pass filter</li>
+							<li>Pro: every step is intuitive and immediately visualizable for accuracy</li>
+							<li>We know what the subject-specific implications are and don't have to rely on literature</li>
+						</ul>
+					</section>
+					<!--
+					<section>
+						<h3>Future Explorations</h3>
+						<ul>
+							<li>What is subject-specific signal?</li>
+							<ul>
+								<li>Frequency Bands?</li>
+								<li>Implications on task-MRI?</li>
+							</ul>
+							<li>temporal CompCor: high-frequency white matter voxels shown to correlate highly with physiological stimuli (defined in literature)</li>
+							<li>Only use these for compcor, instead of the entire WM for PC regression</li>
+							<li>Dataset to play with: HCP</li>
+						</ul>
+					</section>
+					-->
+					<section>
+						<h3>Validation/QA</h3>
+						<ul>
+							<li>FNGS is totally glass-box: every step is visualizable in the appropriate domain</li>
+							<li>Average GM signal shown before and after each step, along with the signal regressed out by the pipeline</li>
+							<li>CPAC is relatively black-box: lacking visualizations of the befeore and after signal and regressed signal</li>
+							<ul>
+								<li>No visualization of the GLM, but they do show fourier-domain before/after frequency filtering</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<h3>TODO: ADD IMAGE OF BEFORE/AFTER QA AVERAGE GM SIGNAL FOR FNGS/CPAC</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2><a href="https://neurodatadesign.github.io/fngs/about_fngs/Timeseries+Extraction.html">Connectome Estimation</a></h2>
+				    	<img src="./img/con_est.png" style="width: 80%; "/>
+				    	<img src="./img/bottom.png" border="0" style="width: 60%;"/>
+				    </section>
+
+			    	<section>
+			    		<h3>Standard Practice for Everybody</h3>
+			    		<ul>
+			    			<li>Average over voxels in a given region of interest at each timepoint, excluding zero-variance voxels (voxels out of the brain)</li>
+			    		</ul>
+			    	</section>
+
+				    <section>
+				    	<h3>Validation/QA</h3>
+				    	<ul>
+						<img src="./img/cpac_vs_fngs.png" border="0"/>
+				    	</ul>
+				    </section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Performance Comparisons</h2>
+					</section>
+
+					<section>
+						<h2>fmriprep</h2>
+					</section>
+
+					<section>
+						<h2>CPAC</h2>
+					</section>
+
+					<section>
+						<h2>FNGS</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Use-Cases</h2>
+					</section>
+
+					<section>
+						<h3>You should use fmriprep if...</h3>
+						<ul>
+							<li>You have a need for 1mm registration</li>
+							<li>You have very high quality inputs and associated fieldmaps</li>
+							<li>You only want registered brains, and don't want an end-to-end pipeline</li>
+							<li>You want your pipeline to be glass-box validation and QA wise</li>
+							<li>Processing time and computational resources used are non-factors to you</li>
+							<li>You have a very powerful workstation (not configured by default with clusters)</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>You should use CPAC if...</h3>
+						<ul>
+							<li>You are very well-versed in the nuances of fMRI pipelines and know the innate differences between options</li>
+							<li>You want to vary your processing strategies from run-to-run</li>
+							<li>You don't mind steps being relatively black-box</li>
+							<li>You want an end-to-end pipeline</li>
+							<li>you like 3mm or 4mm registration</li>
+							<li>You have an SGE cluster</li>
+							<li>You know exactly how to use their config files (they do not work intuitively)</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>You should use fngs if...</h3>
+						<ul>
+							<li>you like 2mm registration</li>
+							<li>You want a simple, glass-box, end-to-end processing pipeline</li>
+							<li>you have computational restrictions (time, compute resources)</li>
+							<li>you want a pipeline that scales well in the cloud</li>
+						</ul>
+					</section>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="../../../reveal.js/lib/js/head.min.js"></script>
+		<script src="../../../reveal.js/js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				math: {
+					// mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+					config: 'TeX-AMS_HTML-full'
+				},
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '../../../reveal.js/plugin/math/math.js', async: true },
+					{ src: '../../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../../reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../../../reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
