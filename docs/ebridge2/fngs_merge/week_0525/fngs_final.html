@@ -46,32 +46,16 @@
 					<p>
 						<small>Created by <a href="http://ericwb.me">Eric Bridgeford</a>, Tanay Agarwal, Eric Walker / Contact: <a href="http://github.com/ebridge2">@ebridge2</a></small>
 					</p>
-					<p></p>
-					<p>
-						<small>Follow the slides: <a href="ericwb.me/lectures/fngs_final.html">ericwb.me/lectures/fngs_final.html</a></small>
-					</p>
 				</section>
 
 				<section>
 					<section>
-						<h2><a href="https://neurodatadesign.github.io/fngs/about_fngs/Preprocessing.html">Preprocessing</a></h2>	
-				    	<img src="img/preproc.png" style="width: 80%; "/>
-				    	<img src="img/bottom.png" border="0" style="width: 60%;"/>
+						<img src="./img/schematic.png" width="100%"/>
 					</section>
-
+				</section>
+				<section>
 					<section>
-						<h3>Protocol</h3>
-						<ul>
-							<li>Slice Timing Correction: slicetimer</li>
-							<ul>
-								<li>User Input: choice of 3 common sequences (Interleaved, Bottom-up, Top-down)</li>
-								<li>Also accepts: metadata file</li>
-							</ul>
-							<li>6 DOF Motion Parameter Estimation with mcflirt and apply with flirt</li>
-						</ul>
-					</section>
-
-					<section>
+						<h3>Summary of Steps</h3>
 						<table>
 							<thead>
 								<tr>
@@ -84,25 +68,52 @@
 							<tbody>
 								<tr>
 									<td>MC</td>
-									<td>mcflirt (FSL, 0 vol)</td>
-									<td>3dvolreg (AFNI, meanvol)</td>
-									<td>mcflirt (FSL, middle vol); apply with ANTs</td>
+									<td>mcflirt$^*$</td>
+									<td>3dvolreg$^\dagger$</td>
+									<td>mcflirt$^\dagger$; ANTs-l$^\dagger$</td>
 								</tr>
 								<tr>
 									<td>STC</td>
-									<td>slicetimer (FSL)</td>
-									<td>custom (CPAC)</td>
-									<td>3dTshift (AFNI)</td>
+									<td>slicetimer$^*$</td>
+									<td>CPAC</td>
+									<td>3dTshift$^*$</td>
+								</tr>
+								<tr>
+									<td>segment</td>
+									<td>FAST$^*$</td>
+									<td>FAST$^*$</td>
+									<td>freesurfer$^\dagger$</td>
+								</tr>
+								<tr>
+									<td>sreg</td>
+									<td>epireg$^*$</td>
+									<td>FLIRT-bbr$^\dagger$</td>
+									<td>FLIRT-bbr$^\dagger$</td>
+								</tr>
+								<tr>
+									<td>treg</td>
+									<td>FNIRT$^*$</td>
+									<td>FNIRT$^*$</td>
+									<td>ANTs-n$^\dagger$</td>
+								</tr>
+								<tr>
+									<td>nuis</td>
+									<td>quad, CSFm, HP</td>
+									<td>quad, CSFm, aCC</td>
+									<td>-</td>
 								</tr>
 							</tbody>
 						</table>
 					</section>
+				</section>
 
+				<section>
 					<section>
+						<h3>Performance Comparison</h3>
 						<table>
 							<thead>
 								<tr>
-									<th>QA Measure</th>
+									<th>Metric</th>
 									<th>FNGS</th>
 									<th>CPAC</th>
 									<th>fmriprep</th>
@@ -110,368 +121,43 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>rotations</td>
-									<td>Y</td>
-									<td>Y</td>
-									<td>Y</td>
+									<td>time s/hr</td>
+									<td>1250/.35</td>
+									<td>1600/.44</td>
+									<td>40000/11</td>
 								</tr>
 								<tr>
-									<td>translations</td>
-									<td>Y</td>
-									<td>Y</td>
-									<td>Y</td>
+									<td>$RAM_{mx}$</td>
+									<td>6.5 GB</td>
+									<td>4.0 GB</td>
+									<td>15.1 GB</td>
 								</tr>
 								<tr>
-									<td>overall FDs</td>
-									<td>Y</td>
-									<td>Y</td>
-									<td>Y</td>
+									<td>$RAM_{avg}$</td>
+									<td>1.6 GB</td>
+									<td>1.0 GB</td>
+									<td>3.6 GB</td>
 								</tr>
 								<tr>
-									<td>Relative FDs</td>
-									<td>Y</td>
-									<td>N</td>
-									<td>Y</td>
+									<td>$CPU_{mx}$</td>
+									<td>100%</td>
+									<td>200%</td>
+									<td>400%</td>
+								</tr>
+								<tr>
+									<td>$CPU_{avg}$</td>
+									<td>99.5%</td>
+									<td>133%</td>
+									<td>381%</td>
+								</tr>
+								<tr>
+									<td>$Disk$</td>
+									<td>4.8 GB</td>
+									<td>5.6 GB</td>
+									<td>12.1 GB</td>
 								</tr>
 							</tbody>
 						</table>
-					</section>
-
-					<section>
-						<h3>QA Comparison</h3>
-						<ul>
-							<li>Number of Volumes with FD > 1 mm from aligned volume</li>
-							<ul>
-								<li>FNGS: 48 (0 volume)</li>
-								<li>CPAC: 36 (mean volume)</li>
-								<li>fmriprep: 25 (same tool as FNGS, but they use middle, 100, volume)</li>
-							</ul>
-						</ul>
-						<img src="./img/fngs_mc.png" border="0" style="width: 30%;"/>						
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h2><a href="https://neurodatadesign.github.io/fngs/about_fngs/Registration.html">Registration</a></h2>
-				    	<img src="./img/reg.png" style="width: 80%; "/>
-						<img src="./img/bottom.png" border="0" style="width: 60%;"/>
-					</section>
-
-					<section>
-						<table>
-							<thead>
-								<tr>
-									<th>Step</th>
-									<th>FNGS</th>
-									<th>CPAC</th>
-									<th>fmriprep</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>self</td>
-									<td>epireg (FSL script that uses bbr among other things)</td>
-									<td>use FSL bbr only</td>
-									<td>use FSL bbr but apply with ANTs</td>
-								</tr>
-								<tr>
-									<td>template</td>
-									<td>FNIRT with MNI152 spec file</td>
-									<td>FNIRT</td>
-									<td>ANTs non-linear</td>
-								</tr>
-							</tbody>
-						</table>
-					</section>
-
-					<section>
-						<table>
-							<thead>
-								<tr>
-									<th>QA Measure</th>
-									<th>FNGS</th>
-									<th>CPAC</th>
-									<th>fmriprep</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>bet quality (self)</td>
-									<td>Y</td>
-									<td>Y</td>
-									<td>Y</td>
-								</tr>
-								<tr>
-									<td>bet quality (temp)</td>
-									<td>Y</td>
-									<td>N</td>
-									<td>Y</td>
-								</tr>
-								<tr>
-									<td>func/anat</td>
-									<td>Y</td>
-									<td>Y</td>
-									<td>Y</td>
-								</tr>
-								<tr>
-									<td>anatomical/MNI</td>
-									<td>Y</td>
-									<td>Y</td>
-									<td>Y</td>
-								</tr>
-								<tr>
-									<td>func/MNI</td>
-									<td>Y</td>
-									<td>Y</td>
-									<td>Y</td>
-								</tr>
-								<tr>
-									<td>SNR</td>
-									<td>Y</td>
-									<td>Y</td>
-									<td>N</td>
-								</tr>
-								<tr>
-									<td>CNR</td>
-									<td>Y</td>
-									<td>N</td>
-									<td>N</td>
-								</tr>
-							</tbody>
-						</table>
-					</section>
-
-					<section>
-						<h3>Example of Registration Failure</h3>
-						<img src="./img/distorted.png" style="width: 40%;"/>
-						<img src="./img/no_distortion.png" style="width: 40%;"/>
-						<ul>
-							<li>Use-case: Kara's data</li>
-							<li>Use more-robust transforms when a brain fails</li>
-							<li>Identify: DICE score below $0.8$</li>
-						</ul>
-					</section>
-
-
-					<section>
-						<h3>Template Alignment Quality</h3>
-						<img src="./img/cpac_reg.png" style="width: 40%;"/>
-						<img src="./img/fngs_reg.png" style="width: 40%;"/>
-						<ul>
-							<li>CPAC DICE score: 0.831</li>
-							<li>FNGS DICE score: 0.852</li>
-						</ul>
-					</section>
-
-
-					<section>
-						<h3>Hierarchical Registration Implications</h3>
-						<img src="./img/reg_dist.png" style="width: 70%;"/>
-						<ul>
-							<li>Unranked $d=0.538$, $p=0$, emp $d=0.501$</li>
-							<li>Ranked: $d=0.581$, $p=0$, emp $d=0.498$</li>
-							<li>Theoretical Chance: $0.253$</li>
-						</ul>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3><a href="https://neurodatadesign.github.io/fngs/about_fngs/Nuisance+Correction.html">Nuisance Correction</a></h3>
-				    	<img src="./img/nuis.png" style="width: 80%; "/>
-				    	<img src="./img/bottom.png" border="0" style="width: 60%;"/>
-					</section>
-
-
-					<section>
-						<table>
-							<thead>
-								<tr>
-									<th>Step</th>
-									<th>FNGS</th>
-									<th>CPAC</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>quadratic detrend</td>
-									<td>Y</td>
-									<td>Y</td>
-								</tr>
-								<tr>
-									<td>CSF mean</td>
-									<td>Y</td>
-									<td>Y</td>
-								</tr>
-								<tr>
-									<td>WM top 5 PC</td>
-									<td>N</td>
-									<td>Y</td>
-								</tr>
-								<tr>
-									<td>highpass filter</td>
-									<td>Y</td>
-									<td>N</td>
-								</tr>
-							</tbody>
-						</table>
-					</section>
-					<section>
-						<h3>Validation/QA</h3>
-						<table>
-							<thead>
-								<tr>
-									<th>QA Measure</th>
-									<th>FNGS</th>
-									<th>CPAC</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>segmentation masks</td>
-									<td>CSF, WM, GM</td>
-									<td>CSF, WM</td>
-								</tr>
-								<tr>
-									<td>GM signal before/during/after nuisance</td>
-									<td>Y</td>
-									<td>N</td>
-								</tr>
-								<tr>
-									<td>signal being regressed at every step</td>
-									<td>Y</td>
-									<td>N</td>
-								</tr>
-								<tr>
-									<td>SNR</td>
-									<td>Y</td>
-									<td>N</td>
-								</tr>
-								<tr>
-									<td>CNR</td>
-									<td>Y</td>
-									<td>N</td>
-								</tr>
-							</tbody>
-						</table>
-					</section>
-
-					<!--
-					<section>
-						<h3>Future Explorations</h3>
-						<ul>
-							<li>What is subject-specific signal?</li>
-							<ul>
-								<li>Frequency Bands?</li>
-								<li>Implications on task-MRI?</li>
-							</ul>
-							<li>temporal CompCor: high-frequency white matter voxels shown to correlate highly with physiological stimuli (defined in literature)</li>
-							<li>Only use these for compcor, instead of the entire WM for PC regression</li>
-							<li>Dataset to play with: HCP</li>
-						</ul>
-					</section>
-					-->
-
-				</section>
-
-				<section>
-					<section>
-						<h2><a href="https://neurodatadesign.github.io/fngs/about_fngs/Timeseries+Extraction.html">Connectome Estimation</a></h2>
-				    	<img src="./img/con_est.png" style="width: 80%; "/>
-				    	<img src="./img/bottom.png" border="0" style="width: 60%;"/>
-				    </section>
-
-			    	<section>
-			    		<h3>Standard Practice for Everybody</h3>
-			    		<ul>
-			    			<li>Average over voxels in a given region of interest (spatial average) at each timepoint, excluding zero-variance voxels (voxels out of the brain)</li>
-			    		</ul>
-			    	</section>
-
-					<section>
-						<h3>Validation/QA</h3>
-						<table>
-							<thead>
-								<tr>
-									<th>QA Measure</th>
-									<th>FNGS</th>
-									<th>CPAC</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>overlap of parcellation with template</td>
-									<td>Y</td>
-									<td>N</td>
-								</tr>
-								<tr>
-									<td>ROI timeseries</td>
-									<td>Y</td>
-									<td>N</td>
-								</tr>
-								<tr>
-									<td>connectome as a matrix</td>
-									<td>Y</td>
-									<td>N</td>
-								</tr>
-							</tbody>
-						</table>
-					</section>
-
-					<section>
-						<h3>Connectome Comparison</h3>
-						<img src="./img/cpac_corr.png" style="width: 40%;"/>
-						<img src="./img/fngs_corr.png" style="width: 40%;"/>
-					</section>
-
-					<section>
-						<h3>Connectome Comparison</h3>
-						<ul>
-							<li>Difference: WM regression inherently de-correlates ROI timeseries</li>
-							<li>CPAC connectome looks more sparse as a result</li>
-							<li><a href="https://neurodatadesign.github.io/fngs/ebridge2/fngs_merge/week_0525/img/cpac_ts.html">CPAC timeseries</a></li>
-							<li><a href="https://neurodatadesign.github.io/fngs/ebridge2/fngs_merge/week_0525/img/sub-0025864_ses-1_bold_aal-2mm_timeseries.html">FNGS timesereies</a></li>
-						</ul>
-					</section>
-
-				    <section>
-				    	<h3>Validation/QA</h3>
-				    	<ul>
-						<img src="./img/cpac_vs_fngs.png" border="0"/>
-				    	</ul>
-				    </section>
-				</section>
-
-				<section>
-					<section>
-						<h2>Performance Comparisons</h2>
-					</section>
-
-					<section>
-						<h2>Runtime</h2>
-						<ul>
-							<li>fmriprep: 40000 seconds (11 hours)</li>
-							<ul>
-								<li>Why? ANTs registration/freesurfer segmentations. also, needed 4 cores to get this runtime for 1mm registration</li>
-							</ul>
-							<li>fngs: 1250 seconds (20 minutes) 1 core</li>
-							<li>CPAC: 1600 seconds (26 minutes) ~1.5 cores avg</li>
-						</ul>
-					</section>
-
-					<section>
-						<h2>Disk</h2>
-						<ul>
-							<li>FNGS: 4.8 GB</li>
-							<li>CPAC: 5.6 GB</li>
-							<li>fmriprep: 12.1 GB</li>
-						</ul>
-					</section>
-
-					<section>
-						<h2>Memory</h2>
-						<img src="./img/cpac_fngs_mem.png" border="0"/>						
 					</section>
 				</section>
 
