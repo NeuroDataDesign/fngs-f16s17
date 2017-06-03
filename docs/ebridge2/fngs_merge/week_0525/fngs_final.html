@@ -72,52 +72,82 @@
 					</section>
 
 					<section>
-						<h3>What we do is similar to...FMRI-prep</h3>
-						<ul>
-							<li>Use 6 DOF Motion Parameter Estimation with mcflirt</li>
-							<li>Difference: They use ANTs to apply the transform</li>
-							<ul>
-								<li>ANTs interpolation method preferred by them (Lanczos)</li>
-							</ul>
-						</ul>
+						<table>
+							<thead>
+								<tr>
+									<th>Step</th>
+									<th>FNGS</th>
+									<th>CPAC</th>
+									<th>fmriprep</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>MC</td>
+									<td>mcflirt (FSL, 0 vol)</td>
+									<td>3dvolreg (AFNI, meanvol)</td>
+									<td>mcflirt (FSL, middle vol); apply with ANTs</td>
+								</tr>
+								<tr>
+									<td>STC</td>
+									<td>slicetimer (FSL)</td>
+									<td>custom (CPAC)</td>
+									<td>3dTshift (AFNI)</td>
+								</tr>
+							</tbody>
+						</table>
 					</section>
 
 					<section>
-						<h3>What we do is similar to...FMRI-prep</h3>
-						<ul>						
-							<li>Difference: They use 3dTshift from AFNI for STC; we use FSL</li>
-							<ul>
-								<li>Why? They look algorithmically identical</li>
-							</ul>
-							<li>Difference: They accept only SliceTiming metadata file</li>
-							<ul>
-								<li>Why? metadata is more flexible to different protocols, but most studies just use interleaved anyway (and most datasets do not have this file)</li>
-								<li>Ours allows either user-input or metadata</li>
-							</ul>
-						</ul>
+						<table>
+							<thead>
+								<tr>
+									<th>QA Measure</th>
+									<th>FNGS</th>
+									<th>CPAC</th>
+									<th>fmriprep</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>rotations</td>
+									<td>Y</td>
+									<td>Y</td>
+									<td>Y</td>
+								</tr>
+								<tr>
+									<td>translations</td>
+									<td>Y</td>
+									<td>Y</td>
+									<td>Y</td>
+								</tr>
+								<tr>
+									<td>overall FDs</td>
+									<td>Y</td>
+									<td>Y</td>
+									<td>Y</td>
+								</tr>
+								<tr>
+									<td>Relative FDs</td>
+									<td>Y</td>
+									<td>N</td>
+									<td>Y</td>
+								</tr>
+							</tbody>
+						</table>
 					</section>
 
 					<section>
-						<h3>What we do is different from... CPAC</h3>
+						<h3>QA Comparison</h3>
 						<ul>
-							<li>Use 6 DOF Motion Parameter estimation with 3dvolreg (AFNI registration)</li>
-							<li>They read slice timing information from headers</li>
+							<li>Number of Volumes with FD > 1 mm from aligned volume</li>
 							<ul>
-								<li>Pros: easy if the headers are set</li>
-								<li>Cons: headers often aren't set to the scan protocols properly</li>
-							</ul>
-							<li>Possible improvement: If no slice timing information user-provided, check header; if not set, don't correct at all</li>
-						</ul>
-					</section>
-					<section>
-						<h3>Validation/QA</h3>
-						<ul>
-							<li>Industry de-factos from all 3 pipelines</li>
-							<ul>
-								<li>Plots of motion params estimated</li>
-								<li>Plots of the volume realigned to, and the average intensities to check for blurring</li>
+								<li>FNGS: 48 (0 volume)</li>
+								<li>CPAC: 36 (mean volume)</li>
+								<li>fmriprep: 25 (same tool as FNGS, but they use middle, 100, volume)</li>
 							</ul>
 						</ul>
+						<img src="./img/fngs_mc.png" border="0" style="width: 30%;"/>						
 					</section>
 				</section>
 
@@ -129,34 +159,87 @@
 					</section>
 
 					<section>
-						<h3>What we do is similar to... CPAC FSL pipeline</h3>
-						<ul>
-							<li>they don't use epi-reg, but they basically call the functions of epi-reg by hand (to use BBR cost function)</li>
-							<li>use same FNIRT workflow (MNI default)</li>
-							<li>self and template registrations performed independently</li>
-							<li>Difference: we assume 2mm, CPAC assumes 3mm</li>
-							<li>Why we call the way we do: FSL people have tuned epi-reg to do what the CPAC people do by hand</li>
-						</ul>
+						<table>
+							<thead>
+								<tr>
+									<th>Step</th>
+									<th>FNGS</th>
+									<th>CPAC</th>
+									<th>fmriprep</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>self</td>
+									<td>epireg (FSL script that uses bbr among other things)</td>
+									<td>use FSL bbr only</td>
+									<td>use FSL bbr but apply with ANTs</td>
+								</tr>
+								<tr>
+									<td>template</td>
+									<td>FNIRT with MNI152 spec file</td>
+									<td>FNIRT</td>
+									<td>ANTs non-linear</td>
+								</tr>
+							</tbody>
+						</table>
 					</section>
 
 					<section>
-						<h3>What we do is different from ... fmriprep</h3>
-						<ul>
-							<li>they use strictly ANTs for template, but BBR cost function from FSL</li>
-							<li>Freesurfer for boundary identification</li>
-							<li>Pros: supposedly more robust than FSL</li>
-							<li>Cons: very, very expensive computationally (more later)</li>
-							<li>All analyses performed at 1mm</li>
-						</ul>
-					</section>
-
-					<section>
-						<h3>What we do differently from everybody</h3>
-						<ul>
-							<li>DICE score for registration quality</li>
-							<li>If the score is bad, use more gentle transforms</li>
-							<li>Why I like this approach: low-quality inputs can fail sometimes with non-linear transforms in FSL (presumably ANTs) and this is a good fail-safe</li>
-						</ul>
+						<table>
+							<thead>
+								<tr>
+									<th>QA Measure</th>
+									<th>FNGS</th>
+									<th>CPAC</th>
+									<th>fmriprep</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>bet quality (self)</td>
+									<td>Y</td>
+									<td>Y</td>
+									<td>Y</td>
+								</tr>
+								<tr>
+									<td>bet quality (temp)</td>
+									<td>Y</td>
+									<td>N</td>
+									<td>Y</td>
+								</tr>
+								<tr>
+									<td>func/anat</td>
+									<td>Y</td>
+									<td>Y</td>
+									<td>Y</td>
+								</tr>
+								<tr>
+									<td>anatomical/MNI</td>
+									<td>Y</td>
+									<td>Y</td>
+									<td>Y</td>
+								</tr>
+								<tr>
+									<td>func/MNI</td>
+									<td>Y</td>
+									<td>Y</td>
+									<td>Y</td>
+								</tr>
+								<tr>
+									<td>SNR</td>
+									<td>Y</td>
+									<td>Y</td>
+									<td>N</td>
+								</tr>
+								<tr>
+									<td>CNR</td>
+									<td>Y</td>
+									<td>N</td>
+									<td>N</td>
+								</tr>
+							</tbody>
+						</table>
 					</section>
 
 					<section>
@@ -165,28 +248,31 @@
 						<img src="./img/no_distortion.png" style="width: 40%;"/>
 						<ul>
 							<li>Use-case: Kara's data</li>
+							<li>Use more-robust transforms when a brain fails</li>
+							<li>Identify: DICE score below $0.8$</li>
 						</ul>
 					</section>
 
+
 					<section>
-						<h3>Validation/QA</h3>
+						<h3>Template Alignment Quality</h3>
+						<img src="./img/cpac_reg.png" style="width: 40%;"/>
+						<img src="./img/fngs_reg.png" style="width: 40%;"/>
 						<ul>
-							<li>Similarities: verbose alignment plots for self and template registration</li>
-							<li>Differences: they use boundaries of the atlas instead of low-alpha alignment images</li>
-							<ul>
-								<li>Pro: Easier to see immediate failure locations</li>
-								<li>Con: Don't see full template, but just its outline</li>
-							</ul>
+							<li>CPAC DICE score: 0.831</li>
+							<li>FNGS DICE score: 0.852</li>
 						</ul>
 					</section>
 
-					<section>
-						<h3>TODO: ADD IMAGE SHOWING FIRST SLICE OVERLAP WITH MEAN SLICE FROM ALL 3 PIPELINES</h3>
-					</section>
-
 
 					<section>
-						<h3>TODO: RESULTS OF PERMUTATION TEST DISCUSSED 05/25</h3>
+						<h3>Hierarchical Registration Implications</h3>
+						<img src="./img/reg_dist.png" style="width: 70%;"/>
+						<ul>
+							<li>Unranked $d=0.538$, $p=0$, emp $d=0.501$</li>
+							<li>Ranked: $d=0.581$, $p=0$, emp $d=0.498$</li>
+							<li>Theoretical Chance: $0.253$</li>
+						</ul>
 					</section>
 				</section>
 
@@ -197,25 +283,80 @@
 				    	<img src="./img/bottom.png" border="0" style="width: 60%;"/>
 					</section>
 
-					<section>
-						<h3>What we do is different from ... CPAC</h3>
-						<ul>
-							<li>CPAC lets users choose their nuisance workflows</li>
-							<li>Their preferred: GLM (csf mean regression, quadratic detrend, top 5 WM components regression, 24-param Friston motion correction)</li>
-							<li>Relatively black box: very not-exhaustive qa plots of what's going on here</li>
-							<li>Con: top 5 anatomically-defined WM PC shown in literature to be good, but hard to get subject-specific qa</li>
-							<li>Potential danger: could regress task-related signal</li>
-						</ul>
-					</section>
 
 					<section>
-						<h3>What we do</h3>
-						<ul>
-							<li>GLM (csf mean regression, quadratic detrend), high-pass filter</li>
-							<li>Pro: every step is intuitive and immediately visualizable for accuracy</li>
-							<li>We know what the subject-specific implications are and don't have to rely on literature</li>
-						</ul>
+						<table>
+							<thead>
+								<tr>
+									<th>Step</th>
+									<th>FNGS</th>
+									<th>CPAC</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>quadratic detrend</td>
+									<td>Y</td>
+									<td>Y</td>
+								</tr>
+								<tr>
+									<td>CSF mean</td>
+									<td>Y</td>
+									<td>Y</td>
+								</tr>
+								<tr>
+									<td>WM top 5 PC</td>
+									<td>N</td>
+									<td>Y</td>
+								</tr>
+								<tr>
+									<td>highpass filter</td>
+									<td>Y</td>
+									<td>N</td>
+								</tr>
+							</tbody>
+						</table>
 					</section>
+					<section>
+						<h3>Validation/QA</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>QA Measure</th>
+									<th>FNGS</th>
+									<th>CPAC</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>segmentation masks</td>
+									<td>CSF, WM, GM</td>
+									<td>CSF, WM</td>
+								</tr>
+								<tr>
+									<td>GM signal before/during/after nuisance</td>
+									<td>Y</td>
+									<td>N</td>
+								</tr>
+								<tr>
+									<td>signal being regressed at every step</td>
+									<td>Y</td>
+									<td>N</td>
+								</tr>
+								<tr>
+									<td>SNR</td>
+									<td>Y</td>
+									<td>N</td>
+								</tr>
+								<tr>
+									<td>CNR</td>
+									<td>Y</td>
+									<td>N</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
 					<!--
 					<section>
 						<h3>Future Explorations</h3>
@@ -231,21 +372,7 @@
 						</ul>
 					</section>
 					-->
-					<section>
-						<h3>Validation/QA</h3>
-						<ul>
-							<li>FNGS is totally glass-box: every step is visualizable in the appropriate domain</li>
-							<li>Average GM signal shown before and after each step, along with the signal regressed out by the pipeline</li>
-							<li>CPAC is relatively black-box: lacking visualizations of the befeore and after signal and regressed signal</li>
-							<ul>
-								<li>No visualization of the GLM, but they do show fourier-domain before/after frequency filtering</li>
-							</ul>
-						</ul>
-					</section>
 
-					<section>
-						<h3>TODO: ADD IMAGE OF BEFORE/AFTER QA AVERAGE GM SIGNAL FOR FNGS/CPAC</h3>
-					</section>
 				</section>
 
 				<section>
@@ -258,9 +385,55 @@
 			    	<section>
 			    		<h3>Standard Practice for Everybody</h3>
 			    		<ul>
-			    			<li>Average over voxels in a given region of interest at each timepoint, excluding zero-variance voxels (voxels out of the brain)</li>
+			    			<li>Average over voxels in a given region of interest (spatial average) at each timepoint, excluding zero-variance voxels (voxels out of the brain)</li>
 			    		</ul>
 			    	</section>
+
+					<section>
+						<h3>Validation/QA</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>QA Measure</th>
+									<th>FNGS</th>
+									<th>CPAC</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>overlap of parcellation with template</td>
+									<td>Y</td>
+									<td>N</td>
+								</tr>
+								<tr>
+									<td>ROI timeseries</td>
+									<td>Y</td>
+									<td>N</td>
+								</tr>
+								<tr>
+									<td>connectome as a matrix</td>
+									<td>Y</td>
+									<td>N</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<h3>Connectome Comparison</h3>
+						<img src="./img/cpac_corr.png" style="width: 40%;"/>
+						<img src="./img/fngs_corr.png" style="width: 40%;"/>
+					</section>
+
+					<section>
+						<h3>Connectome Comparison</h3>
+						<ul>
+							<li>Difference: WM regression inherently de-correlates ROI timeseries</li>
+							<li>CPAC connectome looks more sparse as a result</li>
+							<li><a href="https://neurodatadesign.github.io/fngs/ebridge2/fngs_merge/week_0525/img/cpac_ts.html">CPAC timeseries</a></li>
+							<li><a href="https://neurodatadesign.github.io/fngs/ebridge2/fngs_merge/week_0525/img/sub-0025864_ses-1_bold_aal-2mm_timeseries.html">FNGS timesereies</a></li>
+						</ul>
+					</section>
 
 				    <section>
 				    	<h3>Validation/QA</h3>
@@ -276,15 +449,29 @@
 					</section>
 
 					<section>
-						<h2>fmriprep</h2>
+						<h2>Runtime</h2>
+						<ul>
+							<li>fmriprep: 40000 seconds (11 hours)</li>
+							<ul>
+								<li>Why? ANTs registration/freesurfer segmentations. also, needed 4 cores to get this runtime for 1mm registration</li>
+							</ul>
+							<li>fngs: 1250 seconds (20 minutes) 1 core</li>
+							<li>CPAC: 1600 seconds (26 minutes) ~1.5 cores avg</li>
+						</ul>
 					</section>
 
 					<section>
-						<h2>CPAC</h2>
+						<h2>Disk</h2>
+						<ul>
+							<li>FNGS: 4.8 GB</li>
+							<li>CPAC: 5.6 GB</li>
+							<li>fmriprep: 12.1 GB</li>
+						</ul>
 					</section>
 
 					<section>
-						<h2>FNGS</h2>
+						<h2>Memory</h2>
+						<img src="./img/cpac_fngs_mem.png" border="0"/>						
 					</section>
 				</section>
 
@@ -296,12 +483,11 @@
 					<section>
 						<h3>You should use fmriprep if...</h3>
 						<ul>
-							<li>You have a need for 1mm registration</li>
-							<li>You have very high quality inputs and associated fieldmaps</li>
+							<li>You have a need for 1mm registration, and want all steps state-of-the-art</li>
 							<li>You only want registered brains, and don't want an end-to-end pipeline</li>
-							<li>You want your pipeline to be glass-box validation and QA wise</li>
+							<li>You want your pipeline to be glass-box QA wise</li>
 							<li>Processing time and computational resources used are non-factors to you</li>
-							<li>You have a very powerful workstation (not configured by default with clusters)</li>
+							<li>You have a very, very powerful workstation (not configured by default with clusters)</li>
 						</ul>
 					</section>
 
@@ -310,9 +496,8 @@
 						<ul>
 							<li>You are very well-versed in the nuances of fMRI pipelines and know the innate differences between options</li>
 							<li>You want to vary your processing strategies from run-to-run</li>
-							<li>You don't mind steps being relatively black-box</li>
+							<li>You don't mind steps being relatively black-box (QA is heavily limited)</li>
 							<li>You want an end-to-end pipeline</li>
-							<li>you like 3mm or 4mm registration</li>
 							<li>You have an SGE cluster</li>
 							<li>You know exactly how to use their config files (they do not work intuitively)</li>
 						</ul>
@@ -323,6 +508,7 @@
 						<ul>
 							<li>you like 2mm registration</li>
 							<li>You want a simple, glass-box, end-to-end processing pipeline</li>
+							<li>you want quality assurance that is based around the voxelwise signal itself</li>
 							<li>you have computational restrictions (time, compute resources)</li>
 							<li>you want a pipeline that scales well in the cloud</li>
 						</ul>

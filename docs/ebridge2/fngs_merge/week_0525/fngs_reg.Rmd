@@ -1,0 +1,209 @@
+---
+title: "Connectome Method"
+author: "Eric Bridgeford"
+date: "May 4, 2017"
+output: html_document
+---
+
+Below, we first show an aggregation of the latest version of FNGS for our respective post-processing pipelines:
+
+```{r}
+  require(Discriminability)
+  signal_overall <- c()
+  ids_overall <- c()
+  dataset_overall <- c()
+  all_signals <- list()
+```
+
+# FNGS
+
+## BNU1 EPI FNIRT
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  require(Discriminability)
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0530/BNU_1/epi_fnirt/aal-2mm/'
+  tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
+  scan_pos = 2
+  tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
+  signal <- tsobj[[1]]
+  ids <- tsobj[[3]]
+  all_signals[[1]] <- signal
+  
+  signal_overall <- c(signal)
+  ids_overall <- c(rep('BNU1_epi_fnirt', length(signal)))
+```
+
+### Sanity Check
+
+#### Timeseries
+
+```{r fig.height=6, fig.width=12, message=FALSE}
+  ts1 = signal[[1]]
+  title = paste('Timeseries plot for subject', ids[1])
+  print(plot_timeseries(ts1, title=title))
+
+```
+#### FNGS Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
+```
+
+#### FNGS Raw Correaltion Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  td <- time_discr(signal, ids, rank=FALSE)
+  print(td$combinedplot)
+```
+
+#### FNGS Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tdr <- time_discr(signal, ids, rank=TRUE)
+  print(tdr$combinedplot)
+```
+
+
+## BNU1 EPI FLIRT
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  require(Discriminability)
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0530/BNU_1/epi_flirt/aal-2mm/'
+  tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
+  scan_pos = 2
+  tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
+  signal <- tsobj[[1]]
+  ids <- tsobj[[3]]
+  all_signals[[2]] <- signal
+  
+  signal_overall <- c(signal_overall, signal)
+  ids_overall <- c(ids_overall, rep('BNU1_epi_flirt', length(signal)))
+```
+
+### Sanity Check
+
+#### Timeseries
+
+```{r fig.height=6, fig.width=12, message=FALSE}
+  ts1 = signal[[1]]
+  title = paste('Timeseries plot for subject', ids[1])
+  print(plot_timeseries(ts1, title=title))
+
+```
+#### FNGS Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
+```
+
+#### FNGS Raw Correaltion Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  td <- time_discr(signal, ids, rank=FALSE)
+  print(td$combinedplot)
+```
+
+#### FNGS Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tdr <- time_discr(signal, ids, rank=TRUE)
+  print(tdr$combinedplot)
+```
+
+
+## BNU1 FLIRT FNIRT
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  require(Discriminability)
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0530/BNU_1/flirt_fnirt/aal-2mm/'
+  tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
+  scan_pos = 2
+  tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
+  signal <- tsobj[[1]]
+  ids <- tsobj[[3]]
+  all_signals[[3]] <- signal
+  
+  signal_overall <- c(signal_overall, signal)
+  ids_overall <- c(ids_overall, rep('BNU1_flirt_fnirt', length(signal)))
+```
+
+### Sanity Check
+
+#### Timeseries
+
+```{r fig.height=6, fig.width=12, message=FALSE}
+  ts1 = signal[[1]]
+  title = paste('Timeseries plot for subject', ids[1])
+  print(plot_timeseries(ts1, title=title))
+
+```
+#### FNGS Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
+```
+
+#### FNGS Raw Correaltion Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  td <- time_discr(signal, ids, rank=FALSE)
+  print(td$combinedplot)
+```
+
+#### FNGS Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tdr <- time_discr(signal, ids, rank=TRUE)
+  print(tdr$combinedplot)
+```
+
+
+## BNU1 FLIRT FLIRT
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  require(Discriminability)
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0530/BNU_1/flirt_flirt/aal-2mm/'
+  tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
+  scan_pos = 2
+  tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
+  signal <- tsobj[[1]]
+  ids <- tsobj[[3]]
+  all_signals[[4]] <- signal
+  
+  signal_overall <- c(signal_overall, signal)
+  ids_overall <- c(ids_overall, rep('BNU1_flirt_flirt', length(signal)))
+```
+
+### Sanity Check
+
+#### Timeseries
+
+```{r fig.height=6, fig.width=12, message=FALSE}
+  ts1 = signal[[1]]
+  title = paste('Timeseries plot for subject', ids[1])
+  print(plot_timeseries(ts1, title=title))
+
+```
+#### FNGS Correlation Matrix
+
+```{r  fig.height=6, fig.width=12, message=FALSE}
+  title = paste('Correlation plot for subject', ids[1])
+  print(plot_square(abs(cor(ts1)), title=title, legend="corr"))
+```
+
+#### FNGS Raw Correaltion Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  td <- time_discr(signal, ids, rank=FALSE)
+  print(td$combinedplot)
+```
+
+#### FNGS Ranked Correlation Graphs
+```{r, fig.height=6, fig.width=12, message=FALSE}
+  tdr <- time_discr(signal, ids, rank=TRUE)
+  print(tdr$combinedplot)
+```
+
+
+## Overall CMP
+
+```{r, fig.height=6, fig.width=12, message=FALSE}
+tdr <- time_discr(signal_overall, ids_overall, rank=FALSE)
+print(tdr$combinedplot)
+```
