@@ -55,7 +55,7 @@
 				</section>
 				<section>
 					<section>
-						<h3>Summary of Steps</h3>
+						<h3>Summary of Methods</h3>
 						<table>
 							<thead>
 								<tr>
@@ -69,8 +69,8 @@
 								<tr>
 									<td>MC</td>
 									<td>mcflirt$^*$</td>
-									<td>3dvolreg$^\dagger$</td>
-									<td>mcflirt$^\dagger$; ANTs-l$^\dagger$</td>
+									<td>Opt/3dvolreg$^\dagger$</td>
+									<td>mcflirt$^\dagger$</td>
 								</tr>
 								<tr>
 									<td>STC</td>
@@ -81,35 +81,97 @@
 								<tr>
 									<td>segment</td>
 									<td>FAST$^*$</td>
-									<td>FAST$^*$</td>
+									<td>Opt/FAST$^*$</td>
 									<td>freesurfer$^\dagger$</td>
 								</tr>
 								<tr>
 									<td>sreg</td>
-									<td>epireg$^*$</td>
-									<td>FLIRT-bbr$^\dagger$</td>
+									<td>epireg$^\dagger$</td>
+									<td>Opt/FLIRT-bbr$^\dagger$</td>
 									<td>FLIRT-bbr$^\dagger$</td>
 								</tr>
 								<tr>
 									<td>treg</td>
-									<td>FNIRT$^*$</td>
-									<td>FNIRT$^*$</td>
+									<td>FNIRT$^\dagger$</td>
+									<td>Opt/FNIRT$^\dagger$</td>
 									<td>ANTs-n$^\dagger$</td>
-								</tr>
-								<tr>
-									<td>nuis</td>
-									<td>quad, CSFm, HP</td>
-									<td>quad, CSFm, aCC</td>
-									<td>-</td>
 								</tr>
 							</tbody>
 						</table>
+					</section>
+
+					<section>
+						<h3>FNGS Performs Preprocessing using FSL Default Parameters</h3>
+						<ul>
+							<li>mcflirt: align slices to 0 volume, FSL default</li>
+							<li>slicetimer: slice-time correct according to the given acquisition sequence or metadata</li>
+							<li>Justification to use 0 volume: subject less likely to be moving right as scanning begin</li>
+							<ul>
+								<li>if using a mean volume or later volume and there is a lot of motion, alignment template will be blurred</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0602/mc_cmp.ipynb">FNGS effectively aligns 4D functional volume with itself</a></h3>
+						<ul>
+							<li>Jaccard Index for CPAC and FNGS between pairs of slices</li>
+							<li>How well does brain align with itself?</li>
+						</ul>
+						<img src="./img/mc_quant.png" width="50%"/>
+					</section>
+
+					<section>
+						<h3>FNGS Registers using default EPIreg with better initialization</h3>
+						<ul>
+							<li>use default epireg script</li>
+							<li>default epireg script initializes with a single 6 DOF affine transformation</li>
+							<li>going head on with a 6 DOF transform can be problematic if the brains are not initially close</li>
+							<li>solution: use gentle translation FLIRT to align x, y, z, then local optimization FLIRT to get local features close (default FLIRT schedule files)</li>
+							<li>Once local features are close, use epireg</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0602/reg_cmp.ipynb">FNGS effectively aligns functional and anatomical images</a></h3>
+						<ul>
+							<li>Jaccard Index for CPAC and FNGS between s0 functional and anatomical template</li>
+							<li>FNGS: $.86$ CPAC: $.86$</li>
+						</ul>
+						<img src="./img/fngs_reg.png" width="40%"/>
+						<img src="./img/cpac_reg.png" width="40%"/>
+					</section>
+
+					<section>
+						<h3>FNGS Uses Easily qualified Nuisance Correction</h3>
+						<ul>
+							<li>quadratic detrend, CSF mean signal, highpass-filtered (all are options from CPAC)</li>
+							<li>Avoid CompCor: hard to know exactly what it is doing on a per-subject basis</li>
+							<ul>
+								<li>some people use tCompCor (ANTs, Neuroconductor), others use aCompCor (CPAC)</li>
+								<li>many hyperparams</li>
+								<li>Need to extensively investigate before wholesomely including or excluding, as it has a PROFOUND impact on the resulting signal</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0602/timeseries.ipynb">aCompCor de-correlates fMRI timeseries</a></h3>
+						<ul>
+							<li>aCompCor <a href="https://arxiv.org/pdf/1608.03616.pdf">performs similar</a> to Global Signal Regression in that it impacts the overall correlations</li>
+						</ul>
+						<img src="./img/fngs_corr.png" width="40%"/>
+						<img src="./img/cpac_corr.png" width="40%"/>
+					</section>
+					<section>
+						<h3>FNGS Achieves competitive discriminability scores to CPAC</h3>
+						<img src="./img/cpac_vs_fngs.png" width="60%"/>
 					</section>
 				</section>
 
 				<section>
 					<section>
-						<h3>Performance Comparison</h3>
+						<h3>Performance Comparison (average of 5 subs, except for fmriprep)</h3>
 						<table>
 							<thead>
 								<tr>
@@ -158,6 +220,13 @@
 								</tr>
 							</tbody>
 						</table>
+					</section>
+
+					<section>
+						<h3>Eric provides graphs/qa for greg to have fun with</h3>
+						<ul>
+							<li>cortex.jhu.edu:/braindrive/backups/datasets/BNU_1/ outputs_epi_fnirt/connectomes</li>
+						</ul>
 					</section>
 				</section>
 
