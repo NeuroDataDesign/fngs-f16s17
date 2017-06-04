@@ -67,37 +67,38 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>MC</td>
-									<td>mcflirt$^*$</td>
-									<td>Opt/3dvolreg$^\dagger$</td>
-									<td>mcflirt$^\dagger$</td>
+									<td><font size="6">MC</font></td>
+									<td><font size="6">mcflirt$^*$</font></td>
+									<td><font size="6">Opt/3dvolreg$^\dagger$</font></td>
+									<td><font size="6">mcflirt$^\dagger$</font></td>
 								</tr>
 								<tr>
-									<td>STC</td>
-									<td>slicetimer$^*$</td>
-									<td>CPAC</td>
-									<td>3dTshift$^*$</td>
+									<td><font size="6">STC</font></td>
+									<td><font size="6">slicetimer$^*$</font></td>
+									<td><font size="6">CPAC</font></td>
+									<td><font size="6">3dTshift$^*$</font></td>
 								</tr>
 								<tr>
-									<td>segment</td>
-									<td>FAST$^*$</td>
-									<td>Opt/FAST$^*$</td>
-									<td>freesurfer$^\dagger$</td>
+									<td><font size="6">segment</font></td>
+									<td><font size="6">FAST$^*$</font></td>
+									<td><font size="6">Opt/FAST$^*$</font></td>
+									<td><font size="6">freesurfer$^\dagger$</font></td>
 								</tr>
 								<tr>
-									<td>sreg</td>
-									<td>epireg$^\dagger$</td>
-									<td>Opt/FLIRT-bbr$^\dagger$</td>
-									<td>FLIRT-bbr$^\dagger$</td>
+									<td><font size="6">sreg</font></td>
+									<td><font size="6">epireg$^\dagger$</font></td>
+									<td><font size="6">Opt/FLIRT-bbr$^\dagger$</font></td>
+									<td><font size="6">FLIRT-bbr$^\dagger$</font></td>
 								</tr>
 								<tr>
-									<td>treg</td>
-									<td>FNIRT$^\dagger$</td>
-									<td>Opt/FNIRT$^\dagger$</td>
-									<td>ANTs-n$^\dagger$</td>
+									<td><font size="6">treg</font></td>
+									<td><font size="6">FNIRT$^\dagger$</font></td>
+									<td><font size="6">Opt/FNIRT$^\dagger$</font></td>
+									<td><font size="6">ANTs-nonlinear$^\dagger$</font></td>
 								</tr>
 							</tbody>
 						</table>
+						$^* = $ default, $^\dagger = $ custom
 					</section>
 
 					<section>
@@ -105,10 +106,6 @@
 						<ul>
 							<li>mcflirt: align slices to 0 volume, FSL default</li>
 							<li>slicetimer: slice-time correct according to the given acquisition sequence or metadata</li>
-							<li>Justification to use 0 volume: subject less likely to be moving right as scanning begin</li>
-							<ul>
-								<li>if using a mean volume or later volume and there is a lot of motion, alignment template will be blurred</li>
-							</ul>
 						</ul>
 					</section>
 
@@ -124,10 +121,8 @@
 					<section>
 						<h3>FNGS Registers using default EPIreg with better initialization</h3>
 						<ul>
-							<li>use default epireg script</li>
-							<li>default epireg script initializes with a single 6 DOF affine transformation</li>
-							<li>going head on with a 6 DOF transform can be problematic if the brains are not initially close</li>
-							<li>solution: use gentle translation FLIRT to align x, y, z, then local optimization FLIRT to get local features close (default FLIRT schedule files)</li>
+							<li>use gentle translation FLIRT to align x, y, z</li>
+							<li>local optimization FLIRT to get local features close (default FLIRT schedule files)</li>
 							<li>Once local features are close, use epireg</li>
 						</ul>
 					</section>
@@ -136,8 +131,8 @@
 						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0602/reg_cmp.ipynb">FNGS effectively aligns functional and anatomical images</a></h3>
 						<ul>
 							<li>Jaccard Index for CPAC and FNGS between s0 functional and anatomical template</li>
-							<li>FNGS: $.86$ CPAC: $.86$</li>
 						</ul>
+						<p>FNGS: $.86$ &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp CPAC: $.86$</p>
 						<img src="./img/fngs_reg.png" width="40%"/>
 						<img src="./img/cpac_reg.png" width="40%"/>
 					</section>
@@ -158,7 +153,7 @@
 					<section>
 						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0602/timeseries.ipynb">aCompCor de-correlates fMRI timeseries</a></h3>
 						<ul>
-							<li>aCompCor <a href="https://arxiv.org/pdf/1608.03616.pdf">performs similar</a> to Global Signal Regression in that it impacts the overall correlations</li>
+							<li>aCompCor (CPAC pipeline) <a href="https://arxiv.org/pdf/1608.03616.pdf">performs similar</a> to Global Signal Regression in that it impacts the overall correlations</li>
 						</ul>
 						<img src="./img/fngs_corr.png" width="40%"/>
 						<img src="./img/cpac_corr.png" width="40%"/>
@@ -183,90 +178,95 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>time s/hr</td>
-									<td>1250/.35</td>
-									<td>1600/.44</td>
-									<td>40000/11</td>
+									<td><font size="6">time (s)</font></td>
+									<td><font size="7"><strong>1250</strong></font></td>
+									<td><font size="6">1600</font></td>
+									<td><font size="6">40000</font></td>
 								</tr>
 								<tr>
-									<td>$RAM_{mx}$</td>
-									<td>6.5 GB</td>
-									<td>4.0 GB</td>
-									<td>15.1 GB</td>
+									<td><font size="6">$RAM_{mx}$ (GB)</font></td>
+									<td><font size="6">6.5</font></td>
+									<td><font size="7"><strong>4.0</strong></font></td>
+									<td><font size="6">15.1</font></td>
 								</tr>
 								<tr>
-									<td>$RAM_{avg}$</td>
-									<td>1.6 GB</td>
-									<td>1.0 GB</td>
-									<td>3.6 GB</td>
+									<td><font size="6">$RAM_{avg}$ (GB)</font></td>
+									<td><font size="6">1.6</font></td>
+									<td><font size="7"><strong>1.0</strong></font></td>
+									<td><font size="6">3.6</font></td>
 								</tr>
 								<tr>
-									<td>$CPU_{mx}$</td>
-									<td>100%</td>
-									<td>200%</td>
-									<td>400%</td>
+									<td><font size="6">$CPU_{mx}$ (threads)</font></td>
+									<td><font size="7"><strong>1</strong></font></td>
+									<td><font size="6">2</font></td>
+									<td><font size="6">4</font></td>
 								</tr>
 								<tr>
-									<td>$CPU_{avg}$</td>
-									<td>99.5%</td>
-									<td>133%</td>
-									<td>381%</td>
+									<td><font size="6">$CPU_{avg}$ (threads)</font></td>
+									<td><font size="7"><strong>.995</strong></font></td>
+									<td><font size="6">1.33</font></td>
+									<td><font size="6">3.81</font></td>
 								</tr>
 								<tr>
-									<td>$Disk$</td>
-									<td>4.8 GB</td>
-									<td>5.6 GB</td>
-									<td>12.1 GB</td>
+									<td><font size="6">$Disk$ (GB)</font></td>
+									<td><font size="7"><strong>4.8</strong></font></td>
+									<td><font size="6">5.6</font></td>
+									<td><font size="6">12.1</font></td>
 								</tr>
 							</tbody>
 						</table>
 					</section>
 
 					<section>
-						<h3>Eric provides graphs/qa for greg to have fun with</h3>
-						<ul>
-							<li>cortex.jhu.edu:/braindrive/backups/datasets/BNU_1/ outputs_epi_fnirt/connectomes</li>
-						</ul>
+						<h3><a href="http://openconnecto.me/mrdata/share/fmri/fngs_v008/">Eric provides graphs/qa for greg to have fun with</a></h3>
 					</section>
 				</section>
 
 				<section>
 					<section>
-						<h2>Use-Cases</h2>
-					</section>
-
-					<section>
-						<h3>You should use fmriprep if...</h3>
-						<ul>
-							<li>You have a need for 1mm registration, and want all steps state-of-the-art</li>
-							<li>You only want registered brains, and don't want an end-to-end pipeline</li>
-							<li>You want your pipeline to be glass-box QA wise</li>
-							<li>Processing time and computational resources used are non-factors to you</li>
-							<li>You have a very, very powerful workstation (not configured by default with clusters)</li>
-						</ul>
-					</section>
-
-					<section>
-						<h3>You should use CPAC if...</h3>
-						<ul>
-							<li>You are very well-versed in the nuances of fMRI pipelines and know the innate differences between options</li>
-							<li>You want to vary your processing strategies from run-to-run</li>
-							<li>You don't mind steps being relatively black-box (QA is heavily limited)</li>
-							<li>You want an end-to-end pipeline</li>
-							<li>You have an SGE cluster</li>
-							<li>You know exactly how to use their config files (they do not work intuitively)</li>
-						</ul>
-					</section>
-
-					<section>
-						<h3>You should use fngs if...</h3>
-						<ul>
-							<li>you like 2mm registration</li>
-							<li>You want a simple, glass-box, end-to-end processing pipeline</li>
-							<li>you want quality assurance that is based around the voxelwise signal itself</li>
-							<li>you have computational restrictions (time, compute resources)</li>
-							<li>you want a pipeline that scales well in the cloud</li>
-						</ul>
+						<h3>Use-Cases</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>Case</th>
+									<th>FNGS</th>
+									<th>CPAC</th>
+									<th>fmriprep</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><font size="6">Resolution</font></td>
+									<td><font size="6">2 mm</font></td>
+									<td><font size="6">2, 3, 4 mm</font></td>
+									<td><font size="6">1 mm</font></td>
+								</tr>
+								<tr>
+									<td><font size="6">QA</font></td>
+									<td><font size="6">glass box</font></td>
+									<td><font size="6">black box</font></td>
+									<td><font size="6">glass box</font></td>
+								</tr>
+								<tr>
+									<td><font size="6">pipeline type</font></td>
+									<td><font size="6">end-to-end</font></td>
+									<td><font size="6">end-to-end</font></td>
+									<td><font size="6">registration only</font></td>
+								</tr>
+								<tr>
+									<td><font size="6">workstation</font></td>
+									<td><font size="6">local, EC2, Batch</font></td>
+									<td><font size="6">local, cluster, EC2</font></td>
+									<td><font size="6">local</font></td>
+								</tr>
+								<tr>
+									<td><font size="6">compute requirements</font></td>
+									<td><font size="6">light</font></td>
+									<td><font size="6">light</font></td>
+									<td><font size="6">heavy</font></td>
+								</tr>
+							</tbody>
+						</table>
 					</section>
 				</section>
 			</div>
