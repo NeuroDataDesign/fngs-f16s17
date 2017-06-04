@@ -110,7 +110,7 @@
 					</section>
 
 					<section>
-						<h3>FNGS Registers using default EPIreg with better initialization</h3>
+						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0525/img/sreg.pdf">FNGS Registers using default EPIreg with better initialization</a></h3>
 						<ul>
 							<li><font size="6">3d translation and then local optimization FLIRT to get local features close (default FLIRT schedule files)</font></li>
 							<li><font size="6">Once local features are close, use epireg</font></li>
@@ -119,6 +119,11 @@
 
 						<img src="./img/bad_sreg.png" width="30%"/>
 						<img src="./img/good_sreg.png" width="30%"/>
+					</section>
+
+					<section>
+						<h3>TODO: add slide reporting average Jaccard Index of functional volume to anatomical volume with just epireg vs translation/local opt FLIRT before</h3>
+						<p>use BNU1 and HNU1 as dataset examples</p>
 					</section>
 
 					<section>
@@ -132,19 +137,6 @@
 					</section>
 
 					<section>
-						<h3>FNGS Uses Easily qualified Nuisance Correction</h3>
-						<ul>
-							<li>quadratic detrend, CSF mean signal, highpass-filtered (all are options from CPAC)</li>
-							<li>Avoid CompCor: hard to know exactly what it is doing on a per-subject basis</li>
-							<ul>
-								<li>some people use tCompCor (ANTs, Neuroconductor), others use aCompCor (CPAC)</li>
-								<li>many hyperparams</li>
-								<li>Need to extensively investigate before wholesomely including or excluding, as it has a PROFOUND impact on the resulting signal</li>
-							</ul>
-						</ul>
-					</section>
-
-					<section>
 						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0602/timeseries.ipynb">aCompCor de-correlates fMRI timeseries</a></h3>
 						<ul>
 							<li>aCompCor (CPAC pipeline) <a href="https://arxiv.org/pdf/1608.03616.pdf">performs similar</a> to Global Signal Regression in that it impacts the overall correlations</li>
@@ -154,10 +146,9 @@
 					</section>
 					<section>
 						<h3>FNGS Achieves competitive discriminability scores to CPAC</h3>
-						<img src="./img/cpac_vs_fngs.png" width="60%"/>
+						<img src="./img/cpac_vs_fngs.png" width="40%"/>
 						<ul>
-							<li>SWU4 is relatively low quality and I did not have slice-timing information, whereas CPAC reads from headers</li>
-							<li></li>
+							<li><font size="6">SWU4 has no documentation and I did not have slice-timing information, whereas CPAC reads metadata from headers</font></li>
 						</ul>
 					</section>
 				</section>
@@ -267,19 +258,49 @@
 						</table>
 					</section>
 				</section>
+
 				<section>
-					<h3>Next steps</h3>
-					<ul>
-						<li>Pipeline is 9 rounds in total, each round introducing error</li>
+					<section>
+						<h3>Next steps for Registration</h3>
 						<ul>
-							<li><font size="6">2xpreprocessing: motion correction and slice-timing correction</font></li>
-							<li><font size="6">5x registration: 3xsreg (flirt, epireg, resample), 2xtreg (fnirt resample)</font></li>
-							<li><font size="6">3x nuisance: recenter, GLM, fft</font></li>
-							<li><font size="6">Can reduce to 2x registration rounds and 1 preprocessing round by daisy chaining transforms instead of applying constantly</font></li>
-							<li><font size="6">Will improve memory usage as well</font></li>
+							<li>Pipeline is 9 float-rounds in total, each round introducing error</li>
+							<ul>
+								<li><font size="6">2x preprocessing: motion correction and slice-timing correction</font></li>
+								<li><font size="6">5x registration: 3xsreg (flirt, epireg, resample), 2xtreg (fnirt resample)</font></li>
+								<li><font size="6">3x nuisance: recenter, GLM, fft</font></li>
+								<li><font size="6">Can reduce to 2x registration rounds by daisy chaining transforms instead of applying constantly</font></li>
+								<li><font size="6">Will improve memory usage as well: application of a transform is the memory intensive part</font></li>
+							</ul>
 						</ul>
-						<li>Quantify good vs bad nuisance, try 3-4 pipelines on large sample of CoRR</li>
-					</ul>
+					</section>
+					<section>
+						<h3>Next steps for nuisance correction</h3>
+						<ul>
+							<li>Avoid CompCor: hard to know exactly what it is doing on a per-subject basis</li>
+							<ul>
+								<li><font size="6">some people use tCompCor (ANTs, Neuroconductor), others use aCompCor (CPAC)</font></li>
+								<li><font size="6">many hyperparams</font></li>
+								<li><font size="6">Need to extensively investigate before wholesomely including or excluding, as it has a PROFOUND impact on the resulting signal</font></li>
+							</ul>
+							<li>Friston 24-parameter model</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Timeline to Improve</h3>
+						<ul>
+							<li>Improve registration in spare time over the next 3 weeks</li>
+							<ul>
+								<li><font size="6">20 examples of quality control showing changes are robust</font></li>
+								<li><font size="6">5 datasets aggregated Jaccard Index scores and discriminability before/after</font></li>
+							</ul>
+							<li>Improve nuisance correction after we have a good model for wSSG (next semester?)</li>
+							<ul>
+								<li><font size="6">Look at adding (wm-PCA, Friston-24 param) or (wm-mean, Friston-24 param) or (Friston-24 param) to what we have</font></li>
+								<li><font size="6">Show how wSSG could be used in conjunction with discriminability to improve a pipeline for task-fMRI</font></li>
+							</ul>
+						</ul>
+					</section>
 				</section>
 			</div>
 
