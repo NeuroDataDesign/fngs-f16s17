@@ -68,37 +68,37 @@
 							<tbody>
 								<tr>
 									<td><font size="5">Motion correct</font></td>
-									<td><font size="5">mcflirt$^*$ (FSL)</font></td>
-									<td><font size="5">Opt/3dvolreg$^*$ (AFNI)</font></td>
-									<td><font size="5">mcflirt (FSL; ANTs)</font></td>
+									<td><font size="5">mcflirt (FSL)</font></td>
+									<td><font size="5">Opt/3dvolreg (AFNI)</font></td>
+									<td><font size="5">mcflirt$^*$ (FSL; ANTs)</font></td>
 								</tr>
 								<tr>
 									<td><font size="5">Slicetime correct</font></td>
-									<td><font size="5">slicetimer$^*$ (FSL)</font></td>
-									<td><font size="5">CPAC</font></td>
-									<td><font size="5">3dTshift$^*$ (AFNI)</font></td>
+									<td><font size="5">slicetimer (FSL)</font></td>
+									<td><font size="5">CPAC $^*$</font></td>
+									<td><font size="5">3dTshift (AFNI)</font></td>
 								</tr>
 								<tr>
 									<td><font size="5">segment</font></td>
-									<td><font size="5">FAST$^*$ (FSL)</font></td>
-									<td><font size="5">Opt/FAST$^*$ (FSL)</font></td>
-									<td><font size="5">freesurfer$^\dagger$</font></td>
+									<td><font size="5">FAST (FSL)</font></td>
+									<td><font size="5">Opt/FAST (FSL)</font></td>
+									<td><font size="5">freesurfer$^*$</font></td>
 								</tr>
 								<tr>
 									<td><font size="5">self-register</font></td>
-									<td><font size="5">epireg (FSL)</font></td>
-									<td><font size="5">Opt/FLIRT-bbr (FSL)</font></td>
-									<td><font size="5">FLIRT-bbr (FSL)</font></td>
+									<td><font size="5">epireg $^*$ (FSL)</font></td>
+									<td><font size="5">Opt/FLIRT-bbr $^*$ (FSL)</font></td>
+									<td><font size="5">FLIRT-bbr $^*$ (FSL)</font></td>
 								</tr>
 								<tr>
 									<td><font size="5">template-register</font></td>
-									<td><font size="5">FNIRT (FSL)</font></td>
-									<td><font size="5">Opt/FNIRT (FSL)</font></td>
-									<td><font size="5">ANTs-nonlinear (ANTs)</font></td>
+									<td><font size="5">FNIRT $^*$ (FSL)</font></td>
+									<td><font size="5">Opt/FNIRT $^*$ (FSL)</font></td>
+									<td><font size="5">ANTs-nonlinear $^*$ (ANTs)</font></td>
 								</tr>
 							</tbody>
 						</table>
-						$^* = $ default
+						$^* = $ custom
 					</section>
 
 					<section>
@@ -110,13 +110,12 @@
 					</section>
 
 					<section>
-						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0525/img/sreg.pdf">FNGS Registers using default EPIreg with better initialization</a></h3>
+						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0525/img/reg_algos.pdf">FNGS Registers using default EPIreg with better initialization</a></h3>
 						<ul>
 							<li><font size="6">3d translation and then local optimization FLIRT to get local features close (default FLIRT schedule files)</font></li>
 							<li><font size="6">Once local features are close, use epireg</font></li>
 						</ul>
 						<p><font size="6">epireg only: $.68$ &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp with trans/local opt: $.76$</font></p>
-
 						<img src="./img/bad_sreg.png" width="30%"/>
 						<img src="./img/good_sreg.png" width="30%"/>
 					</section>
@@ -261,6 +260,13 @@
 
 				<section>
 					<section>
+						<h3>The FNGS pipeline is ready to be merged</h3>
+						<ul>
+							<li>The pipeline is fully functional, well-tested, and has an extensive quality control suite</li>
+							<li>Remaining "next steps" are future improvements, and should be done after an initial merge</li>
+						</ul>
+					</section>
+					<section>
 						<h3>Next steps for Registration</h3>
 						<ul>
 							<li>Pipeline is 9 float-rounds in total, each round introducing error</li>
@@ -289,7 +295,7 @@
 					<section>
 						<h3>Timeline to Improve</h3>
 						<ul>
-							<li>Improve registration in spare time over the next 3 weeks</li>
+							<li>Improve registration in spare time over the next 4 weeks</li>
 							<ul>
 								<li><font size="6">20 examples of quality control showing changes are robust</font></li>
 								<li><font size="6">5 datasets aggregated Jaccard Index scores and discriminability before/after</font></li>
