@@ -22,15 +22,15 @@ Below, we first show an aggregation of the latest version of FNGS for our respec
 
 ```{r, fig.height=6, fig.width=12, message=FALSE}
   require(Discriminability)
-  inpath <- 'C:/Users/ebrid/Documents/R/fngs_merge/BNU1/roi_timeseries/HarvardOxford-cort-maxprob-thr25-2mm/'
+  inpath <- 'C:/Users/ebrid/Documents/R/fngs_2mm_0530/BNU_1/epi_fnirt/aal-2mm/'
   tsnames <- list.files(inpath, pattern="\\.rds", full.names=TRUE)
-  scan_pos = 3
+  scan_pos = 2
   tsobj <- open_timeseries(tsnames, sub_pos=scan_pos, exclude = TRUE)
   signal <- tsobj[[1]]
   ids <- tsobj[[3]]
   
-  signal_overall <- c(signal_overall, signal)
-  ids_overall <- c(ids_overall, tsobj$dataset)
+  signal_overall <- c(signal)
+  ids_overall <- c(tsobj$dataset)
   
   cpac_inpath <- 'C:/Users/ebrid/Documents/R/CPAC_results/BNU1/FSL_frf_nsc_ngs_des/'
   cpac_tsnames <- list.files(cpac_inpath, pattern="\\.graphml", full.names=TRUE)
@@ -39,8 +39,8 @@ Below, we first show an aggregation of the latest version of FNGS for our respec
   cpac_graphs <- cpac_graobj[[1]]
   cpac_ids <- cpac_graobj[[3]]
   
-  cpac_graphs_overall <- c(cpac_graphs_overall, cpac_graphs)
-  ids_overall <- c(ids_overall, cpac_graobj$dataset)
+  cpac_graphs_overall <- c(cpac_graphs)
+  ids_overall <- c(cpac_graobj$dataset)
 ```
 
 ### Sanity Check
@@ -437,7 +437,7 @@ Below, we first show an aggregation of the latest version of FNGS for our respec
 new = collection[which(collection$postprocessing == 'fngs_rcorr' | collection$postprocessing == 'cpac_rcorr'),]
 levels(new$postprocessing)[levels(new$postprocessing) == 'fngs_rcorr'] <- 'FNGS'
 levels(new$postprocessing)[levels(new$postprocessing) == 'cpac_rcorr'] <- 'CPAC'
-ggplot(new, aes(x=postprocessing, y=discr, color=dataset)) +
-  geom_point(size=4) +
+ggplot(new, aes(x=postprocessing, y=discr, color=dataset, group=dataset)) +
+  geom_line(size=2) +
   ggtitle('Discriminability of CPAC vs FNGS')
 ```

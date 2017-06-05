@@ -55,69 +55,81 @@
 				</section>
 				<section>
 					<section>
-						<h3>Summary of Methods</h3>
+						<h3><font size="5">Summary of Methods: $^* = $ custom</font></h3>
 						<table>
 							<thead>
 								<tr>
-									<th>Step</th>
-									<th>FNGS</th>
-									<th>CPAC</th>
-									<th>fmriprep</th>
+									<th><font size="5">Step</font></th>
+									<th><font size="5">FNGS</font></th>
+									<th><font size="5">CPAC</font></th>
+									<th><font size="5">fmriprep</font></th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td><font size="5">Motion correct</font></td>
-									<td><font size="5">mcflirt (FSL)</font></td>
-									<td><font size="5">Opt/3dvolreg (AFNI)</font></td>
-									<td><font size="5">mcflirt$^*$ (FSL; ANTs)</font></td>
+									<td><font size="4">Motion correct</font></td>
+									<td><font size="4">mcflirt (FSL)</font></td>
+									<td><font size="4">Opt/3dvolreg (AFNI)</font></td>
+									<td><font size="4">mcflirt$^*$ (FSL; ANTs)</font></td>
 								</tr>
 								<tr>
-									<td><font size="5">Slicetime correct</font></td>
-									<td><font size="5">slicetimer (FSL)</font></td>
-									<td><font size="5">CPAC $^*$</font></td>
-									<td><font size="5">3dTshift (AFNI)</font></td>
+									<td><font size="4">Slicetime correct</font></td>
+									<td><font size="4">slicetimer (FSL)</font></td>
+									<td><font size="4">CPAC $^*$</font></td>
+									<td><font size="4">3dTshift (AFNI)</font></td>
 								</tr>
 								<tr>
-									<td><font size="5">segment</font></td>
-									<td><font size="5">FAST (FSL)</font></td>
-									<td><font size="5">Opt/FAST (FSL)</font></td>
-									<td><font size="5">freesurfer$^*$</font></td>
+									<td><font size="4">segment</font></td>
+									<td><font size="4">FAST (FSL)</font></td>
+									<td><font size="4">Option/FAST (FSL)</font></td>
+									<td><font size="4">freesurfer$^*$</font></td>
 								</tr>
 								<tr>
-									<td><font size="5">self-register</font></td>
-									<td><font size="5">epireg $^*$ (FSL)</font></td>
-									<td><font size="5">Opt/FLIRT-bbr $^*$ (FSL)</font></td>
-									<td><font size="5">FLIRT-bbr $^*$ (FSL)</font></td>
+									<td><font size="4">self-register</font></td>
+									<td><font size="4">epireg $^*$ (FSL)</font></td>
+									<td><font size="4">Opt/FLIRT-bbr $^*$ (FSL)</font></td>
+									<td><font size="4">FLIRT-bbr $^*$ (FSL)</font></td>
 								</tr>
 								<tr>
-									<td><font size="5">template-register</font></td>
-									<td><font size="5">FNIRT $^*$ (FSL)</font></td>
-									<td><font size="5">Opt/FNIRT $^*$ (FSL)</font></td>
-									<td><font size="5">ANTs-nonlinear $^*$ (ANTs)</font></td>
+									<td><font size="4">template-register</font></td>
+									<td><font size="4">FNIRT $^*$ (FSL)</font></td>
+									<td><font size="4">Opt/FNIRT $^*$ (FSL)</font></td>
+									<td><font size="4">ANTs-nonlinear $^*$ (ANTs)</font></td>
+								</tr>
+								<tr>
+									<td><font size="4">nuisance</font></td>
+									<td><font size="2">quad, CSF-mean, highpass$^*$</font></td>
+									<td><font size="2">quad, CSF-mean, aCompCor$^*$</font></td>
+									<td><font size="4">-</font></td>
+								</tr>
+								<tr>
+									<td><font size="4">timeseries</font></td>
+									<td><font size="4">FNGS$^*$</font></td>
+									<td><font size="4">CPAC$^*$</font></td>
+									<td><font size="4">-</font></td>
 								</tr>
 							</tbody>
 						</table>
-						$^* = $ custom
 					</section>
 
 					<section>
 						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0602/mc_cmp.ipynb">FNGS effectively aligns 4D functional volume with itself</a></h3>
 						<ul>
-							<li>Jaccard Index for CPAC and FNGS between pairs of slices $X$ and $Y$ indicating how well brain aligns with itself</li>
+							<li>Jaccard Index for CPAC and FNGS between all permutations of motion-corrected volumes 0:20:maxtimepoint</li>
 						</ul>
 						<img src="./img/mc_quant.png" width="50%"/>
 					</section>
 
 					<section>
 						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0525/img/reg_algos.pdf">FNGS Registers using default EPIreg with better initialization</a></h3>
-						<ul>
-							<li><font size="6">3d translation and then local optimization FLIRT to get local features close (default FLIRT schedule files)</font></li>
-							<li><font size="6">Once local features are close, use epireg</font></li>
-						</ul>
-						<p><font size="6">epireg only: $.68$ &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp with trans/local opt: $.76$</font></p>
-						<img src="./img/bad_sreg.png" width="30%"/>
-						<img src="./img/good_sreg.png" width="30%"/>
+						<img src="./img/sreg_algo.png" width="70%"/>
+					</section>
+
+					<section>
+						<h3>Custom initialization prevents overscaling of epireg</h3>
+						<p><font size="6"> &nbsp &nbsp  &nbsp &nbsp  &nbsp &nbsp epireg only: $.68$ &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp with trans/local opt: $.76$</font></p>
+						<img src="./img/bad_sreg.png" width="45%"/>
+						<img src="./img/good_sreg.png" width="45%"/>
 					</section>
 
 					<section>
@@ -133,6 +145,16 @@
 						<p>FNGS: $.86$ &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp CPAC: $.86$</p>
 						<img src="./img/fngs_reg.png" width="40%"/>
 						<img src="./img/cpac_reg.png" width="40%"/>
+					</section>
+
+					<section>
+						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0525/img/reg_algos.pdf">FNGS Registers to Template using MNI152 config files</a></h3>
+						<img src="./img/treg_algo.png" width="70%"/>
+					</section>
+
+					<section>
+						<h3>TODO: add slide reporting average Jaccard Index of functional volume to anatomical template volume</h3>
+						<p>use BNU1 and HNU1 as dataset examples</p>
 					</section>
 
 					<section>
