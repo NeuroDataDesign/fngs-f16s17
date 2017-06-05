@@ -138,6 +138,11 @@
 					</section>
 
 					<section>
+						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0525/img/reg_algos.pdf">FNGS Registers to Template using MNI152 config files</a></h3>
+						<img src="./img/treg_algo.png" width="70%"/>
+					</section>
+
+					<section>
 						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0602/reg_cmp.ipynb">FNGS effectively aligns functional and anatomical images</a></h3>
 						<ul>
 							<li>Jaccard Index for CPAC and FNGS between s0 functional and anatomical template</li>
@@ -148,13 +153,30 @@
 					</section>
 
 					<section>
-						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0525/img/reg_algos.pdf">FNGS Registers to Template using MNI152 config files</a></h3>
-						<img src="./img/treg_algo.png" width="70%"/>
+						<h3>TODO: add slide reporting average Jaccard Index of functional volume to anatomical template volume</h3>
+						<p>use BNU1 and HNU1 as dataset examples</p>
 					</section>
 
 					<section>
-						<h3>TODO: add slide reporting average Jaccard Index of functional volume to anatomical template volume</h3>
-						<p>use BNU1 and HNU1 as dataset examples</p>
+						<h3><font size="7">FNGS performs nuisance correction using GLM and hp-filtering</font></h3>
+						<img src="./img/nuis_alg.png" width="60%"/>
+					</section>
+
+					<section>
+						<h3>FNGS extracts a quadratic with the mean CSF signal removed</h3>
+						<img src="./img/csf_reg.png" width="40%"/>
+						<img src="./img/glm_sig.png" width="40%"/>
+					</section>
+
+					<section>
+						<h3>FNGS highpass filters low-frequency drift</h3>
+						<img src="./img/fft_reg.png" width="40%"/>
+						<img src="./img/fft_sig.png" width="40%"/>
+					</section>
+
+					<section>
+						<h3><font size="7">FNGS extracts connectomes using spatial parcellation maps</font></h3>
+						<img src="./img/conn_est_alg.png" width="60%"/>
 					</section>
 
 					<section>
@@ -165,6 +187,7 @@
 						<img src="./img/fngs_corr.png" width="40%"/>
 						<img src="./img/cpac_corr.png" width="40%"/>
 					</section>
+					
 					<section>
 						<h3>FNGS Achieves competitive discriminability scores to CPAC</h3>
 						<img src="./img/cpac_vs_fngs.png" width="40%"/>
