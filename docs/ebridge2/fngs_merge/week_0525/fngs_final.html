@@ -111,7 +111,9 @@
 							</tbody>
 						</table>
 					</section>
+				</section>
 
+				<section>
 					<section>
 						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0602/mc_cmp.ipynb">FNGS effectively Motion Corrects Functional volume</a></h3>
 						<ul>
@@ -119,7 +121,9 @@
 						</ul>
 						<img src="./img/mc_quant.png" width="50%"/>
 					</section>
+				</section>
 
+				<section>
 					<section>
 						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0525/img/reg_algos.pdf">FNGS Registers using default EPIreg with better initialization</a></h3>
 						<img src="./img/sreg_algo.png" width="70%"/>
@@ -133,10 +137,23 @@
 					</section>
 
 					<section>
-						<h3>TODO: add slide reporting average Jaccard Index of functional volume to anatomical volume with just epireg vs translation/local opt FLIRT before</h3>
-						<p>use BNU1 and HNU1 as dataset examples</p>
+						<h3>Performing Self Registration with Better Initialization minorly improves registration scoring and discriminability</h3>
+						<ul>
+							<li>BNU1</li>
+							<ul>
+								<li>discriminability improves from .9253 to .9275</li>
+								<li>Registration scoring improves from .8012 to .8024</li>
+							</ul>
+							<li>HNU1</li>
+							<ul>
+								<li>discriminability score improves from .9500 to .9573</li>
+								<li>Average registration scoring improves from .809 to .816</li>
+							</ul>
+						</ul>
 					</section>
+				</section>
 
+				<section>
 					<section>
 						<h3><a href="https://github.com/NeuroDataDesign/fngs/blob/master/docs/ebridge2/fngs_merge/week_0525/img/reg_algos.pdf">FNGS Registers to Template using MNI152 config files</a></h3>
 						<img src="./img/treg_algo.png" width="70%"/>
@@ -153,10 +170,21 @@
 					</section>
 
 					<section>
-						<h3>TODO: add slide reporting average Jaccard Index of functional volume to anatomical template volume</h3>
-						<p>use BNU1 and HNU1 as dataset examples</p>
+						<h3>FNGS Registration Effectively Transforms our EPI Inputs to the Template Space</h3>
+						<ul>
+							<li>BNU1</li>
+							<ul>
+								<li>Registration score average of .861</li>
+							</ul>
+							<li>HNU1</li>
+							<ul>
+								<li>Registration Score average of .853</li>
+							</ul>
+						</ul>
 					</section>
+				</section>
 
+				<section>
 					<section>
 						<h3><font size="7">FNGS performs nuisance correction using GLM and hp-filtering</font></h3>
 						<img src="./img/nuis_alg.png" width="60%"/>
@@ -173,7 +201,9 @@
 						<img src="./img/fft_reg.png" width="40%"/>
 						<img src="./img/fft_sig.png" width="40%"/>
 					</section>
-
+				</section>
+				
+				<section>
 					<section>
 						<h3><font size="7">FNGS extracts connectomes using spatial parcellation maps</font></h3>
 						<img src="./img/conn_est_alg.png" width="60%"/>
@@ -304,13 +334,6 @@
 				</section>
 
 				<section>
-					<section>
-						<h3>The FNGS pipeline is ready to be merged</h3>
-						<ul>
-							<li>The pipeline is fully functional, well-tested, and has an extensive quality control suite</li>
-							<li>Remaining "next steps" are future improvements, and should be done after an initial merge</li>
-						</ul>
-					</section>
 					<section>
 						<h3>Next steps for Registration</h3>
 						<ul>
