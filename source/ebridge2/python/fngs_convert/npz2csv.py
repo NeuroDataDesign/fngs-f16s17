@@ -7,13 +7,13 @@
 import numpy as np
 from argparse import ArgumentParser
 
-def npy2csv(npyname, csvname):
-    data = np.load(npyname)['roi']
+def npy2csv(npzname, csvname):
+    data = np.load(npzname)['roi']
     np.savetxt(csvname, data)
 
 def main():
     parser=ArgumentParser(description="")
-    parser.add_argument("in_file", help="the npy file to convert to csv.")
+    parser.add_argument("in_file", help="the npz file to convert to csv.")
     parser.add_argument("out_file", help="the csv file to be converted to.")
     result=parser.parse_args()
     npy2csv(result.in_file, result.out_file)
