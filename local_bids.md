@@ -61,13 +61,13 @@ and we have set an environment variable appropriately so that you can replace th
 We are now ready to start analyzing data using FNGS. To do so, we will first need to pull the docker container. If you don't already have docker installed, see the docker page for details [docker](https://docs.docker.com/engine/installation/). Once you have docker installed, pull the docker container:
 
 ```
-$ docker pull ericw95/fngs:0.0.7
+$ docker pull ericw95/fngs:0.0.8
 ```
 
 Now, we will enter the docker container.
 
 ```
-$ docker run -ti --entrypoint /bin/bash -v $bidsdir:/data ericw95/fngs:0.0.7
+$ docker run -ti --entrypoint /bin/bash -v $bidsdir:/data ericw95/fngs:0.0.8
 ```
 
 Next, we will run our subjects. We will use the "ndmg_bids" program, which requires several arguments. Below is a template call, followed by explanations of the arguments:

@@ -5,7 +5,7 @@ In this demo, we will walkthrough the basic single-scan demonstration of the pip
 To begin, pull the FNGS docker container:
 
 ```
-$ docker pull ericw95/fngs:0.0.7
+$ docker pull ericw95/fngs:0.0.8
 ```
 
 # Running the Mini-Demo
@@ -13,7 +13,7 @@ $ docker pull ericw95/fngs:0.0.7
 Next, we will enter the docker container, passing in our "tmp" directory so that the outputs of our demo will be available to the user:
 
 ```
-$ docker run -ti --entrypoint /bin/bash -v /tmp:/tmp ericw95/fngs:0.0.7
+$ docker run -ti --entrypoint /bin/bash -v /tmp:/tmp ericw95/fngs:0.0.8
 ```
 
 The outputs of our mini-demo will be placed in the tmp directory, so offering our tmp directory locally to the docker container will let us find our outputs once we have run the mini-demo. Next, type the following line into your docker container:
