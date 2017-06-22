@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>FNGS merging</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="../../../reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="../../../reveal.js/css/theme/black.css" id="theme">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="../../../reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="../../../reveal.js/lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>FNGS Pipeline</h1>
+                    <h3>Improvements made since 06/15</h3>
+                    <p>
+                        <small>Created by <a href="http://ericwb.me">Eric Bridgeford</a> / Contact: <a href="http://github.com/ebridge2">@ebridge2</a></small>
+                    </p>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Friston-24 motion regressors remove motion-related noise</h3>
+                        <ul>
+                            <li>Motion correction itself only corrects for spatial noise</li>
+                            <li>does nothing to correct for signal distortions imposed by motion</li>
+                            <li>Incorporate the motion parameter estimates and derivatives into the nuisance GLM as regressors</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Friston-24 motion regressors improve discriminability</h3>
+                        (TODO: add figure)
+                        <ul>
+                            <li>Discriminability for SWU4 dataset: $.75 -> .80$ (460 subjects; $p=.001$)</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Adding Compcor Reduces Physiological Noise</h3>
+                        <ul>
+                            <li>anatomical CompCor, or incorporation of white-matter regressors has been shown to reduce noise from things like pulse and heartbeat</li>
+                            <li>take top 5 PCs and incorporate as regressors into nuisance GLM</li>
+                        </ul>
+                    </section>
+                        <h3>WM compcor regressors Improve Discriminability</h3>
+                        <p>wm mask &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp regressors</p>
+                        (TODO: add figure)
+                        <ul>
+                            <li>Discriminability for SWU4 dataset: $.80 \righarrow .88$ (460 subjects; $p=0.001$)</li>
+                        </ul>
+                </section>
+                <section>
+                    <section>
+                        <h3>Single-Pass Registration does no worse</h3>
+                        <ul>
+                            <li>registration is just a series of transformations, linear and nonlinear</li>
+                            <li>no reason to ever apply a transform at intermediate steps; just introduces unnecessary multiplications</li>
+                            <li>merge transforms as you go and just use the previous transforms to initialize successive operations</li>
+                            <li>Discriminability for SWU4 dataset: $.875 \rightarrow .878$</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Adding Anatomical Preprocessing Improves Brain-Extraction</h3>
+                        <ul>
+                            <li>I noticed that about 30 subjects of the SWU4 dataset fail in registration due to bad brain extraction</li>
+                            <li>FSL's BET is limited in what it can do</li>
+                            <li>Use AFNI's brain-extraction tools to preprocess/brain-extract T1w data</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Adding Anatomical Preprocessing Improves Brain-Extraction</h3>
+                        (TODO: add figure)
+                        <ul>
+                            <li>Discriminability for SWU4 dataset: $.88 \rightarrow .91$ ($p = .005$)</li>
+                            <li>number of registration failures (DICE overlap $< 0.7$): $25 \rightarrow 10$</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Showing edges in QA plots strategically makes it easier to visualize registration</h3>
+                        <ul>
+                            <li>Most people like to see edges when registering brains</li>
+                            <li>Poor local registrations might not be obvious when you can't see the image beneath the top layer</li>
+                            <li>Edges are a lot easier to visualize on things like atlases</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <p>old &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp new</p>
+                        (TODO: add figure)
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Local multithreading support makes cluster deployment trivial</h3>
+                        <ul>
+                            <li>Previously no support for multithreading for the pipeline</li>
+                            <li>Needed separate bids dirs for each thread, and had to launch each thread manually</li>
+                            <li>User input: $min(\frac{cores \cdot threads}{core}, RAM/10)$</li>
+                            <li>Launches an entire BIDs-dir on however many cores you tell it to</li>
+                        </ul>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h3>Best Pipeline</h3>
+                        <ul>
+                            <li><font size="5">func preproc: slicetimer, mcflirt</font></li>
+                            <li><font size="5">anat preproc: 3dUnifize (normalize intensities), 3dSkullstrip (skullstrip), 3dAutoMask (apply skullstrip)</font></li>
+                            <li><font size="5">self registration: flirt (translational), flirt (local), fast (segment wm mask), flirt (bbr using wm mask)</font></li>
+                            <li><font size="5">template registration: flirt (12 DOF), FNIRT (MNI152 config)</font></li>
+                            <li><font size="5">nuisance correction: quadratic, csf mean, wm CompCor, friston-24, highpass filter</font></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>By Monday</h3>
+                        <ul>
+                            <li>Finish running (all of CoRR?) by Monday (at least 15 datasets)</li>
+                            <li>report discriminability scores, and show compared to best non-GSR CPAC pipeline</li>
+                            <li>Incorporate these slides into presentation for @gkiar</li>
+                            <li>Have a list of 5xfigures explained in words and captions for a manuscript</li>
+                        </ul>
+                    </section>
+                </section>
+
+            </div>
+
+        </div>
+
+        <script src="../../../reveal.js/lib/js/head.min.js"></script>
+        <script src="../../../reveal.js/js/reveal.js"></script>
+
+        <script>
+
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                math: {
+                    // mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+                    config: 'TeX-AMS_HTML-full'
+                },
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: '../../../reveal.js/plugin/math/math.js', async: true },
+                    { src: '../../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: '../../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: '../../../reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: '../../../reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
