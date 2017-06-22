@@ -148,10 +148,10 @@
                     <section>
                         <h3>Best Pipeline</h3>
                         <ul>
-                            <li><font size="5">func preproc: slicetimer, mcflirt</font></li>
-                            <li><font size="5">anat preproc: 3dUnifize (normalize intensities), 3dSkullstrip (skullstrip), 3dAutoMask (apply skullstrip)</font></li>
-                            <li><font size="5">self registration: flirt (translational), flirt (local), fast (segment wm mask), flirt (bbr using wm mask)</font></li>
-                            <li><font size="5">template registration: flirt (12 DOF), FNIRT (MNI152 config)</font></li>
+                            <li><font size="5">func preproc: slicetimer (FSL), mcflirt (FSL)</font></li>
+                            <li><font size="5">anat preproc: 3dUnifize (AFNI, normalize intensities), 3dSkullstrip (AFNI, skullstrip), 3dAutoMask (AFNI, apply skullstrip)</font></li>
+                            <li><font size="5">self registration: flirt (FSL, translational), flirt (FSL, local), fast (segment wm mask), flirt (FSL, bbr using wm mask)</font></li>
+                            <li><font size="5">template registration: flirt (FSL, 12 DOF), FNIRT (FSL, MNI152 config)</font></li>
                             <li><font size="5">nuisance correction: quadratic, csf mean, wm CompCor, friston-24, highpass filter</font></li>
                         </ul>
                     </section>
