@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>FNGS merging</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="../../../reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="../../../reveal.js/css/theme/black.css" id="theme">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="../../../reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="../../../reveal.js/lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>FNGS Pipeline</h1>
+                    <h3>A Scalable Pipeline for fMRI Connectomics</h3>
+                    <img src="./img/corr.png" width="20%"/>
+                    <p>
+                        <small>Created by <a href="http://ericwb.me">Eric Bridgeford</a> / Contact: <a href="http://github.com/ebridge2">@ebridge2</a></small>
+                    </p>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Functional Neuroimaging offers a Combination of Temporal and Spatial Acuity</h3>
+                        <ul>
+                            <li>4D fMRI: 3 spatial dimensions (approx $2mm \times 2mm \times 2mm$) + 1 time dimension (approx $TR=2.5s$)</li>
+                            <li>view of the <i><b>dynamic</b></i> brain at each <i><b>spatial</b></i> position</li>
+                            <li>most other modalities offer only strongly one or the other</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Thousands of Processing Options, each offering theoretical desiderata</h3>
+                        <ul>
+                            <li>Particular pipeline options work well together, and others do not, in a nonconvex fashion</li>
+                            <li>Best pipelines per dataset might not be globally optimal: necessity for meganalysis</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>FNGS: A Scalable and Robust Pipelines for fMRI connectomics</h3>
+                        <ul>
+                            <li>pipeline refined from results of <a href="http://github.com/neurodata/Discriminability">Discriminability</a> optimal pipeline</li>
+                            <li>Offers local <i><b>and</b></i> cloud scaling options, enabling basic meganalysis on clusters or remotes</li>
+                            <li>Containerized: trivial to deploy</li>
+                            <li>Offers high-end performance at low computational requirements</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Functional Preprocessing removes spatial artifacts</h3>
+                        <img src="./img/sch_func_prep.png" width="70%"/>
+                        <img src="./img/bottom.png" width="40%"/>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Anatomical Preprocessing enables superior Brain Extraction</h3>
+                        <img src="./img/sch_t1w_prep.png" width="70%"/>
+                        <img src="./img/bottom.png" width="40%"/>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Registration Spatially Aligns Scans</h3>
+                        <img src="./img/sch_reg.png" width="60%"/>
+                        <img src="./img/bottom.png" width="40%"/>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Nuisance Correction removes Noise Variables from Signal</h3>
+                        <img src="./img/sch_nuis.png" width="70%"/>
+                        <img src="./img/bottom.png" width="40%"/>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Downsampling Yields Computationally Feasible Dimensionality</h3>
+                        <img src="./img/sch_conn_est.png" width="70%"/>
+                        <img src="./img/bottom.png" width="40%"/>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>FNGS is effective on Local or Cloud Infrastructure</h3>
+                        <ul>
+                            <li>Local</li>
+                            <ul>
+                                <li>Single or Multithread depending on how many threads/RAM you have available</li>
+                            </ul>
+                            <li>Cloud</li>
+                            <ul>
+                                <li>Deployment scripts and web-service to interface with AWS Batch</li>
+                            </ul>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>FNGS Offers Web-based Cloud Deployment</h3>
+                        <img src="./img/cloud.png" width="70%"/>                        
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>FNGS Offers Superior Computational Performance</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>FNGS</th>
+                                    <th>CPAC</th>
+                                    <th>fmriprep</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><font size="5">time (s)</font></td>
+                                    <td><font size="7"><strong>1250</strong></font></td>
+                                    <td><font size="5">1600</font></td>
+                                    <td><font size="5">40000</font></td>
+                                </tr>
+                                <tr>
+                                    <td><font size="5">$RAM_{mx}$ (GB)</font></td>
+                                    <td><font size="5">6.0</font></td>
+                                    <td><font size="7"><strong>4.0</strong></font></td>
+                                    <td><font size="5">15.1</font></td>
+                                </tr>
+                                <tr>
+                                    <td><font size="5">$RAM_{avg}$ (GB)</font></td>
+                                    <td><font size="5">1.6</font></td>
+                                    <td><font size="7"><strong>1.0</strong></font></td>
+                                    <td><font size="5">3.6</font></td>
+                                </tr>
+                                <tr>
+                                    <td><font size="5">$CPU_{mx}$ (threads)</font></td>
+                                    <td><font size="7"><strong>1</strong></font></td>
+                                    <td><font size="5">2</font></td>
+                                    <td><font size="5">4</font></td>
+                                </tr>
+                                <tr>
+                                    <td><font size="5">$CPU_{avg}$ (threads)</font></td>
+                                    <td><font size="7"><strong>.995</strong></font></td>
+                                    <td><font size="5">1.33</font></td>
+                                    <td><font size="5">3.81</font></td>
+                                </tr>
+                                <tr>
+                                    <td><font size="5">$Disk$ (GB)</font></td>
+                                    <td><font size="7"><strong>4.8</strong></font></td>
+                                    <td><font size="5">5.6</font></td>
+                                    <td><font size="5">12.1</font></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section>
+                        <h3>... Without Sacrificing Robustness</h3>
+                        (TODO: Add Discriminability Investigations)
+                    </section>
+                </section>
+
+                <section>
+                    <h3>Future Goals</h3>
+                    <ul>
+                        <li>FNGS is "tuned" for resting-state fMRI</li>
+                        <ul>
+                            <li>Is there a difference with what we would do for task fMRI?</li>
+                            <li>How can we quantify this? modifications of Signal-Subgraphing</li>
+                        </ul>
+                        <li>FNIRT is far from perfect</li>
+                        <ul>
+                            <li>Are there better registration models out there? Possibility of LDDMM?</li>
+                        </ul>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Links</h3>
+                    <ul>
+                        <li>(TODO: make processed data public)</li>
+                        <li><a href="http://github.com/neurodatadesign/fngs">FNGS issues/documentation/Tutorials repo</a></li>
+                        <li><a href="https://github.com/neurodata/ndmg/tree/eric-dev-gkiar-fmri">Code</a></li>
+                        <li><a href="http://github.com/ebridge2/FNGS_website">deployable website</a></li>
+                        <li><a href="https://neurodatadesign.github.io/fngs/about_fngs/Schematic.html">Slightly outdated Schematic</a></li>
+                    </ul>
+                </section>
+
+            </div>
+
+        </div>
+
+        <script src="../../../reveal.js/lib/js/head.min.js"></script>
+        <script src="../../../reveal.js/js/reveal.js"></script>
+
+        <script>
+
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                math: {
+                    // mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+                    config: 'TeX-AMS_HTML-full'
+                },
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: '../../../reveal.js/plugin/math/math.js', async: true },
+                    { src: '../../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: '../../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: '../../../reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: '../../../reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
