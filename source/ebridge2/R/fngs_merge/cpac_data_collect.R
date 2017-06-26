@@ -13,7 +13,7 @@ for (pipe in pipes) {
 }
 
 subids <- list()
-for (dataset in datasets[(length(discrs[[pipe]])+1):length(datasets)]) {
+for (dataset in datasets) {
   print(dataset)
   subids[[dataset]] <- list()
   for (pipe in pipes) {
@@ -31,10 +31,12 @@ for (dataset in datasets[(length(discrs[[pipe]])+1):length(datasets)]) {
   }
 }
 
-results <- list()
+cpac_results <- list()
 
 for (pipe in pipes) {
-  results[[pipe]] <- data.frame(dataset=datasets,
-                                pipeline=rep('CPAC', length(datasets)),
-                                discrs[[pipe]])
+  cpac_results[[pipe]] <- data.frame(dataset=datasets,
+                                     pipeline=rep('CPAC', length(datasets)),
+                                     discrs[[pipe]])
 }
+
+cpac_n <- sapply(subids, function(x) length(x$FSL_nff_nsc_ngs_aal))
