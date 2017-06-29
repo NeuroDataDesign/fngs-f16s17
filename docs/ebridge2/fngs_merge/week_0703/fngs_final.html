@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>FNGS merging</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../../../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../../../reveal.js/css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../../../reveal.js/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../../../reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>FNGS</h1>
+					<h3>A One-Click Pipeline for the Automated Acquisition of Functional MRI Connectomes</h3>
+					<p>
+						<small>Created by <a href="http://ericwb.me">Eric Bridgeford</a> / Contact: <a href="http://github.com/ebridge2">@ebridge2</a></small>
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<img src="./img/pipeline.png" width="100%"/>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3><font size="5">Summary of Preproc Methods: $^* = $ custom</font></h3>
+						<table>
+							<thead>
+								<tr>
+									<th><font size="5">Step</font></th>
+									<th><font size="5">FNGS</font></th>
+									<th><font size="5">CPAC</font></th>
+									<th><font size="5">fmriprep</font></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><font size="4">Motion correct</font></td>
+									<td><font size="4">mcflirt (FSL)</font></td>
+									<td><font size="4">Opt/3dvolreg (AFNI)</font></td>
+									<td><font size="4">mcflirt$^*$ (FSL; ANTs)</font></td>
+								</tr>
+								<tr>
+									<td><font size="4">Slicetime correct</font></td>
+									<td><font size="4">slicetimer (FSL)</font></td>
+									<td><font size="4">CPAC $^*$</font></td>
+									<td><font size="4">3dTshift (AFNI)</font></td>
+								</tr>
+								<tr>
+									<td><font size="4">EPI Skullstrip</font></td>
+									<td><font size="4">3dAutomask</font></td>
+									<td><font size="4">3dAutomask</font></td>
+									<td><font size="4">BET</font></td>
+								</tr>
+								<tr>
+									<td><font size="4">T1w reorient</font></td>
+									<td><font size="4">-</font></td>
+									<td><font size="4">3dResample</font></td>
+									<td><font size="4">-</font></td>
+								</tr>
+								<tr>
+									<td><font size="4">T1w Skullstrip</font></td>
+									<td><font size="4">3dSkullstrip$^*$</font></td>
+									<td><font size="4">3dSkullstrip$^*$</font></td>
+									<td><font size="4">ANTs</font></td>
+								</tr>
+								<tr>
+									<td><font size="4">T1w segment</font></td>
+									<td><font size="4">FAST (FSL)</font></td>
+									<td><font size="4">FAST (FSL)</font></td>
+									<td><font size="4">FAST (FSL)/freesurfer</font></td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<h3><font size="5">Summary of Later Methods: $^*=custom$</font></h3>
+						<table>
+							<thead>
+								<tr>
+									<th><font size="5">Step</font></th>
+									<th><font size="5">FNGS</font></th>
+									<th><font size="5">CPAC</font></th>
+									<th><font size="5">fmriprep</font></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><font size="4">self-register</font></td>
+									<td><font size="4">flirt (trans), flirt (loc), flirt (6dof), flirt (bbr) (FSL)</font></td>
+									<td><font size="4">flirt (6dof), flirt (bbr) (FSL)</font></td>
+									<td><font size="4">freesurfer (bbr)$^*$ (FSL)</font></td>
+								</tr>
+								<tr>
+									<td><font size="4">template-register</font></td>
+									<td><font size="4">flirt (12 dof), FNIRT (MNI conf) (FSL)</font></td>
+									<td><font size="4">FNIRT $^*$ (FSL)</font></td>
+									<td><font size="4">ANTs-nonlinear $^*$ (ANTs)</font></td>
+								</tr>
+								<tr>
+									<td><font size="4">nuisance</font></td>
+									<td><font size="2">quad, CSF-mean, aCompCor, highpass$^*$</font></td>
+									<td><font size="2">quad, CSF-mean, aCompCor$^*$</font></td>
+									<td><font size="4">-</font></td>
+								</tr>
+								<tr>
+									<td><font size="4">timeseries</font></td>
+									<td><font size="4">FNGS$^*$</font></td>
+									<td><font size="4">CPAC$^*$</font></td>
+									<td><font size="4">-</font></td>
+								</tr>
+								<tr>
+									<td><font size="4">connectome</font></td>
+									<td><font size="4">FNGS$^*$</font></td>
+									<td><font size="4">-</font></td>
+									<td><font size="4">-</font></td>
+								</tr>								
+							</tbody>
+						</table>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>FNGS effectively Removes Spatial Distortions from EPI Scans</h3>
+						<img src="./img/fmri_preproc.png" width="70%"/>
+					</section>
+					<section>
+						<h3>FNGS effectively Removes Spatial Distortions from EPI Scans</h3>
+						<ul>
+							<li>Jaccard Index for CPAC and FNGS between all permutations of motion-corrected volumes 0:20:maxtimepoint</li>
+						</ul>
+						<img src="./img/mc_quant.png" width="50%"/>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>AFNI 3dSkullstrip Enables Robust Brain Extraction</h3>
+						<ul>
+							<li>BET hyperparameters make it difficult to optimally brain extract</li>
+						</ul>
+						<p><font size="6">  &nbsp &nbsp &nbsp bet default &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp AFNI &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</font></p>
+						<img src="./img/bet_default.png" width="35%"/>
+						<img src="./img/afni_be.png" width="32%"/>
+					</section>
+
+					<section>
+						<h3>T1w Preprocessing with AFNI Reduces Registration Failures</h3>
+						<ul>
+							<li>Registration Failure: Jaccard score $< 0.7$</li>
+							<li>Dataset: SWU4 467 subjects</li>
+							<li>Registration Failures with BET: $30$</li>
+							<li>Registration Failures with 3dSkullstrip: $15$</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>FNGS Registers using default EPIreg with better initialization</h3>
+						<img src="./img/sreg.png" width="70%"/>
+					</section>
+
+					<section>
+						<h3>Custom initialization prevents overscaling of epireg</h3>
+						<p><font size="6"> &nbsp &nbsp  &nbsp &nbsp  &nbsp &nbsp epireg only: $.68$ &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp with trans/local: $.76$</font></p>
+						<img src="./img/bad_sreg.png" width="45%"/>
+						<img src="./img/good_sreg.png" width="45%"/>
+					</section>
+
+					<section>
+						<h3>Performing Self Registration with Better Initialization improves Performance</h3>
+						<ul>
+							<li>BNU1</li>
+							<ul>
+								<li>discriminability improves from .9253 to .9275</li>
+								<li>Registration scoring improves from .8012 to .8024</li>
+							</ul>
+							<li>HNU1</li>
+							<ul>
+								<li>discriminability score improves from .9500 to .9573</li>
+								<li>Average self-registration scoring improves from .809 to .816</li>
+							</ul>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>FNGS Registers to Template using MNI152 config files</h3>
+						<img src="./img/treg.png" width="70%"/>
+					</section>
+
+					<section>
+						<h3>FNGS effectively aligns EPI to reference anatomical images</h3>
+						<ul>
+							<li>Jaccard Index for CPAC and FNGS between s0 functional and anatomical template</li>
+						</ul>
+						<p>FNGS: $.86$ &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp CPAC: $.86$</p>
+						<img src="./img/fngs_reg.png" width="40%"/>
+						<img src="./img/cpac_reg.png" width="40%"/>
+					</section>
+
+					<section>
+						<h3>FNGS Registration Effectively Transforms our EPI Inputs to the Template Space</h3>
+						<ul>
+							<li>BNU1</li>
+							<ul>
+								<li>Registration score average of .861</li>
+							</ul>
+							<li>HNU1</li>
+							<ul>
+								<li>Registration Score average of .853</li>
+							</ul>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3><font size="5">FNGS performs nuisance correction using GLM and hp-filtering</font></h3>
+						<img src="./img/nuis.png" width="50%"/>
+					</section>
+
+					<section>
+						<h3>FNGS corrects signal distortions inherent in fMRI</h3>
+						<ul>
+							<li>Friston 24 params (motion); wm aCompCor, CSF mean (physiological); quadratic drift (scanner)</li>
+						</ul>
+						<img src="./img/glm_sig.png" width="40%"/>
+					</section>
+
+					<section>
+						<h3>FNGS highpass filters low-frequency drift</h3>
+						<img src="./img/fft_reg.png" width="40%"/>
+						<img src="./img/fft_sig.png" width="40%"/>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h3><font size="7">FNGS extracts connectomes using spatial parcellation maps</font></h3>
+						<img src="./img/conn_est.png" width="60%"/>
+					</section>
+
+					<section>
+						<h3>FNGS timeseries do not have low-frequency components</h3>
+						<ul>
+							<li>Notice the drifting present in the CPAC timeseries</li>
+						</ul>
+						<p>FNGS &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp CPAC</p>
+						<img src="./img/fngs_timeseries.png" width="39%"/>
+						<img src="./img/cpac_timeseries.png" width="40%"/>
+					</section>
+
+					<section>
+						<h3>FNGS and CPAC produce similar correlational connectome estimations</h3>
+						<p>FNGS &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp CPAC</p>
+						<img src="./img/fngs_corr.png" width="40%"/>
+						<img src="./img/cpac_Corr.png" width="40%"/>
+					</section>
+				</section>
+
+				<section>
+                    <section>
+                        <h3>FNGS Offers Superior Computational Performance</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>FNGS</th>
+                                    <th>CPAC</th>
+                                    <th>fmriprep</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><font size="5">execution time (s)</font></td>
+                                    <td><font size="7"><strong>1560</strong></font></td>
+                                    <td><font size="5">3120</font></td>
+                                    <td><font size="5">40000</font></td>
+                                </tr>
+                                <tr>
+                                    <td><font size="5">$RAM_{mx}$ (GB)</font></td>
+                                    <td><font size="5">4.3</font></td>
+                                    <td><font size="7"><strong>3.5</strong></font></td>
+                                    <td><font size="5">15.1</font></td>
+                                </tr>
+                                <tr>
+                                    <td><font size="5">$RAM_{avg}$ (GB)</font></td>
+                                    <td><font size="7"><strong>1.0</strong></font></td>
+                                    <td><font size="5">1.7</font></td>
+                                    <td><font size="5">3.6</font></td>
+                                </tr>
+                                <tr>
+                                    <td><font size="5">$CPU_{avg}$ (threads)</font></td>
+                                    <td><font size="7"><strong>1.15</strong></font></td>
+                                    <td><font size="5">1.33</font></td>
+                                    <td><font size="5">3.81</font></td>
+                                </tr>
+                                <tr>
+                                    <td><font size="5">$Disk$ (GB)</font></td>
+                                    <td><font size="7"><strong>1.3</strong></font></td>
+                                    <td><font size="5">2.2</font></td>
+                                    <td><font size="5">12.1</font></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section>
+                        <h3>... Without Sacrificing Robustness</h3>
+                        <img src="./img/cmp.png" width="60%"/>
+                        <ul>
+                            <li>FNGS: $\bar{d} = .887$, CPAC: $\bar{d} = .889$</li>
+                            <li>$p=0.87$, not significant</li>
+                            <li>Note that CPAC fails for 30 more subjects of 8500</li>
+                        </ul>
+                    </section>
+
+					<section>
+						<h3><a href="http://openconnecto.me/mrdata/share/fmri/fngs_v0010/">Eric provides graphs/qa for greg to have fun with</a></h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Use-Cases</h3>
+						<table>
+							<thead>
+								<tr>
+									<th>Case</th>
+									<th>FNGS</th>
+									<th>CPAC</th>
+									<th>fmriprep</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><font size="5">Resolution</font></td>
+									<td><font size="5">2 mm</font></td>
+									<td><font size="5">2, 3, 4 mm</font></td>
+									<td><font size="5">1 mm</font></td>
+								</tr>
+								<tr>
+									<td><font size="5">QA</font></td>
+									<td><font size="5">glass box</font></td>
+									<td><font size="5">black box</font></td>
+									<td><font size="5">glass box</font></td>
+								</tr>
+								<tr>
+									<td><font size="5">pipeline type</font></td>
+									<td><font size="5">raw - connectome</font></td>
+									<td><font size="5">raw - timeseries</font></td>
+									<td><font size="5">raw - registered</font></td>
+								</tr>
+								<tr>
+									<td><font size="5">workstation</font></td>
+									<td><font size="5">local, EC2, Batch</font></td>
+									<td><font size="5">local, cluster, EC2</font></td>
+									<td><font size="5">local</font></td>
+								</tr>
+								<tr>
+									<td><font size="5">compute requirements</font></td>
+									<td><font size="5">light</font></td>
+									<td><font size="5">light</font></td>
+									<td><font size="5">heavy</font></td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="../../../reveal.js/lib/js/head.min.js"></script>
+		<script src="../../../reveal.js/js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				math: {
+					// mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+					config: 'TeX-AMS_HTML-full'
+				},
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '../../../reveal.js/plugin/math/math.js', async: true },
+					{ src: '../../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../../reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../../../reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
