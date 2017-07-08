@@ -44,7 +44,7 @@ DC1-demo/
   ...
 ```
 
-This format is known as the BIDs spec. For more information on how to get your data to conform to the BIDs spec, see the notes from the creators [BIDs](http://bids.neuroimaging.io/). For our purposes, what you can assume is that you must adhere to a naming convention that is similar or identical to the one above, with your own subject names. Note that we don't need the dwi directories and corresponding files here, but we include them so that this tutorial can be used for dwi as well if the user is interested.
+This format is known as the BIDs spec. For more information on how to get your data to conform to the BIDs spec, see the notes from the creators [BIDs](http://bids.neuroimaging.io/). For our purposes, what you can assume is that you must adhere to a naming convention that is similar or identical to the one above, with your own subject names. Note that we don't need the dwi directories and corresponding files here, but we include them so that this tutorial can be used for dwi as well if the user is interested. If you are more familiar with the BIDs spec, there are variations of the above formatting that are also BIDs that are also supported.
 
 We will use this as our BIDs spec'd data hereafter.
 
@@ -61,19 +61,19 @@ and we have set an environment variable appropriately so that you can replace th
 We are now ready to start analyzing data using FNGS. To do so, we will first need to pull the docker container. If you don't already have docker installed, see the docker page for details [docker](https://docs.docker.com/engine/installation/). Once you have docker installed, pull the docker container:
 
 ```
-$ docker pull ericw95/fngs:0.0.8
+$ docker pull ericw95/fngs:0.0.10
 ```
 
 Now, we will enter the docker container.
 
 ```
-$ docker run -ti --entrypoint /bin/bash -v $bidsdir:/data ericw95/fngs:0.0.8
+$ docker run -ti --entrypoint /bin/bash -v $bidsdir:/data ericw95/fngs:0.0.10
 ```
 
 Next, we will run our subjects. We will use the "ndmg_bids" program, which requires several arguments. Below is a template call, followed by explanations of the arguments:
 
 ```
-ndmg_bids <input-dir> <output-dir> <analysis-level> <modality> --stc <stc> --atlas <atlas>
+ndmg_bids <input-dir> <output-dir> <analysis-level> <modality> --stc <stc> --atlas <atlas> --nthreads <nthreads>
 ```
 
 "input-dir" is the root directory of your BIDs spec'd data. If performing participant level analysis, this folder should have all the desired raw data (for example, the BIDS directory of the FNGS-provided demo data is DC1-demo). If performing group level analysis, this directory should contain the outputs of the participant level analysis.
@@ -82,11 +82,13 @@ ndmg_bids <input-dir> <output-dir> <analysis-level> <modality> --stc <stc> --atl
 
 "analysis-level" is the analysis level you want to perform. This can be either 'participant' or 'group'.
 
-"modality" is the modality of your data. This can be either "functional" or "DWI".
+"modality" is the modality of your data. This can be either "func" or "dwi".
 
-"stc" is the slice-timing method, or the manner in which the brain data slices were acquired through the fMRI scanner (used only for participant level functional analysis). The choices are none, bottom up, top down, and interleaved.
+"stc" is the slice-timing method, or the manner in which the brain data slices were acquired through the fMRI scanner (used only for participant level functional analysis). The choices are "None", "ascending", "descending", and "interleaved".
 
-"atlas" is the specific atlas you want to use (only for group analysis). The choices are "aal-2mm", "brodmann-2mm", "desikan-2mm", "pp264-2mm", and "HarvardOxford-cort-maxprob-thr25-2mm".
+"atlas" is the specific atlas you want to use (only for group analysis). The choices are "aal-2mm", "brodmann-2mm", "desikan-2mm", "pp264-2mm", and "HarvardOxford-cort-maxprob-thr25-2mm". If you want another atlas supported, just ask, and we can add it to our software :)
+
+"nthreads" is the number of threads to run with. Generally, the pipeline takes 1 core per thread, and about 5 - 10 gigs of RAM per thread depending on the number of timesteps in the fMRI image. Generaldly, if the input is under 200 timesteps, I usually favor around 5 gigs of RAM per job approximated, and if over, more towards 10. This value should be nthreads=min(ncores, RAM/(RAM per thread)). For example, on a 4 core machine with hyperthreading (8 virtual CPU threads total) and 16 gigs of RAM for a job with 200 timesteps, I would run with nthreads = min(8, 16/5) ~ 4 threads.
 
 Below is an example call for participant level analysis. Note that when entering the Docker container, we mapped the "bidsdir" path to "/data" inside the container:
 
@@ -99,10 +101,10 @@ The above command will start the analysis process. Once your data is analyzed, t
 Once the participant level analysis is complete, you can also run group level analysis. Below is an example call that follows from our previous participant level analysis:
 
 ```
-ndmg_bids /data /data/outputs group func --atlas aal-2mm
+ndmg_bids /data /data/outputs group func --atlas aal-2mm --nthreads 4
 ```
 
 Once the group analysis is complete, you will be able to see the outputs in the specified output folder.
 
-That about wraps it up for this tutorial. You should now be well equipped to use the FNGS docker container to analyze your data locally.
+That about wraps it up for this tutorial. You should now be well equipped to use the FNGS docker container to analyze your data locally. Let us know in the [issues](https://github.com/NeuroDataDesign/fngs/issues) if you have any problems. 
 
