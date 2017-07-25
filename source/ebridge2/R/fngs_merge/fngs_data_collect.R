@@ -1,9 +1,9 @@
 # -------- FNGS Data Collect ----------------------------------#
-datasets <- c('BNU1', 'BNU2', 'DC1', 'HNU1', 'IACAS', 'IBATRT',
-              'NYU1', 'SWU1', 'SWU2', 'SWU3', 'SWU4', 'UM', 'Utah1',
+datasets <- c('BNU1', 'BNU2', 'DC1', 'HNU1', 'IPCAS1', 'IPCAS2', 'IPCAS5', 'IPCAS6',
+              'IPCAS8','IACAS', 'IBATRT', 'NYU1', 'SWU1', 'SWU2', 'SWU3', 'SWU4', 'UM', 'Utah1',
               'UWM', 'XHCUMS')
 
-basepath <- 'C:/Users/ebrid/Documents/R/FNGS_results'
+basepath <- 'C:/Users/ebrid/Documents/R/FNGS_results/fngs_corr_0708/rds'
 
 fngs_scanids <- list()
 fngs_results <- data.frame(dataset=c(), pipeline=c(), discriminability=c())
@@ -19,7 +19,11 @@ for (dataset in datasets) {
     signal <- fngs_obj[[1]]
     fngsids <- fngs_obj[[3]]
     fngs_scanids[[dataset]] <- cpac_ids
-    d <- time_discr(signal, fngsids, rank=TRUE, graphs = FALSE)$d
+    d <- tryCatch({
+      time_discr(signal, fngsids, rank=TRUE, graphs = FALSE)$d
+    },
+    error=function(e) {return(NaN)}
+    )
     print(d)
     fngs_results <- rbind(fngs_results, data.frame(dataset=dataset, pipeline='FNGS',
                                                    n=length(fngs_tsnames), discriminability=d))
